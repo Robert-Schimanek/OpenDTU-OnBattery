@@ -414,6 +414,7 @@ bool ConfigurationClass::read()
     strlcpy(config.PowerMeter.MqttTopicPowerMeter1, powermeter["mqtt_topic_powermeter_1"] | "", sizeof(config.PowerMeter.MqttTopicPowerMeter1));
     strlcpy(config.PowerMeter.MqttTopicPowerMeter2, powermeter["mqtt_topic_powermeter_2"] | "", sizeof(config.PowerMeter.MqttTopicPowerMeter2));
     strlcpy(config.PowerMeter.MqttTopicPowerMeter3, powermeter["mqtt_topic_powermeter_3"] | "", sizeof(config.PowerMeter.MqttTopicPowerMeter3));
+    strlcpy(config.PowerMeter.MqttTopicPowerMeterInverter, powermeter["mqtt_topic_powermeter_inverter"] | "", sizeof(config.PowerMeter.MqttTopicPowerMeterInverter));
     config.PowerMeter.SdmBaudrate =  powermeter["sdmbaudrate"] | POWERMETER_SDMBAUDRATE;
     config.PowerMeter.SdmAddress =  powermeter["sdmaddress"] | POWERMETER_SDMADDRESS;
     config.PowerMeter.HttpIndividualRequests = powermeter["http_individual_requests"] | false;
