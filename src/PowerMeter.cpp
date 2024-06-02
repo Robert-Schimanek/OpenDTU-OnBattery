@@ -202,7 +202,9 @@ void PowerMeterClass::loop()
     // not necessary for mqtt
     //readPowerMeter();
 
-    MessageOutput.printf("PowerMeterClass: TotalPower: %5.2f\r\n", getPowerTotal());
+    if (_verboseLogging) {
+            MessageOutput.printf("PowerMeterClass: TotalPower: %5.2f\r\n", getPowerTotal());
+    }
 
     // moved to verbosity mqtt();
 
