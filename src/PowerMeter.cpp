@@ -154,6 +154,12 @@ bool PowerMeterClass::isDataValid()
     return valid;
 }
 
+float PowerMeterClass::getPowerInverter(bool forceUpdate)
+{
+    std::lock_guard<std::mutex> l(_mutex);
+    return _powerMeterInverterPower;
+}
+
 void PowerMeterClass::mqtt()
 {
     if (!MqttSettings.getConnected()) { return; }
