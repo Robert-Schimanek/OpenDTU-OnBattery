@@ -101,6 +101,7 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
         std::string value(reinterpret_cast<const char*>(payload), len);
         try {
             *subscription.second = std::stof(value);
+            _lastPowerMeterUpdate = millis(); // only successful power meter updates
         }
         catch(std::invalid_argument const& e) {
             MessageOutput.printf("PowerMeterClass: cannot parse payload of topic '%s' as float: %s\r\n",
@@ -111,9 +112,8 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
         if (_verboseLogging) {
             MessageOutput.printf("PowerMeterClass: Updated from '%s', TotalPower: %5.2f\r\n",
                     topic, getPowerTotal());
+            mqtt(); // feedback only necessary if verbosity
         }
-
-        _lastPowerMeterUpdate = millis();
     }
 }
 
@@ -199,11 +199,12 @@ void PowerMeterClass::loop()
         return;
     }
 
-    readPowerMeter();
+    // not necessary for mqtt
+    //readPowerMeter();
 
     MessageOutput.printf("PowerMeterClass: TotalPower: %5.2f\r\n", getPowerTotal());
 
-    mqtt();
+    // moved to verbosity mqtt();
 
     _lastPowerMeterCheck = millis();
 }
