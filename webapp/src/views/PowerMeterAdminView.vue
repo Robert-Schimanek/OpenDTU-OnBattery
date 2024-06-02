@@ -68,6 +68,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row mb-3">
+                        <label for="inputMqttTopicPowerMeterInverter" class="col-sm-2 col-form-label">{{ $t('powermeteradmin.MqttTopicPowerMeterInverter') }}:</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="inputMqttTopicPowerMeterInverter"
+                                    placeholder="shellies/inverter/apower" v-model="powerMeterConfigList.mqtt_topic_powermeter_inverter" />
+                            </div>
+                        </div>
+                    </div>
                 </CardElement>
 
                 <CardElement v-if="(powerMeterConfigList.source === 1 || powerMeterConfigList.source === 2)"
