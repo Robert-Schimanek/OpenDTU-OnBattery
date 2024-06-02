@@ -447,7 +447,9 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
 
     // We don't use FLD_PAC from the statistics, because that data might be too
     // old and unreliable. TODO(schlimmchen): is this comment outdated?
-    auto inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));
+    // auto inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));
+
+    auto inverterOutput = static_cast<int32_t>(PowerMeter.getPowerInverter());
 
     auto solarPowerAC = inverterPowerDcToAc(inverter, solarPowerDC);
 
