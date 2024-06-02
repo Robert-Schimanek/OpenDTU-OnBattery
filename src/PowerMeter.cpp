@@ -119,6 +119,7 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
 
 float PowerMeterClass::getPowerTotal(bool forceUpdate)
 {
+    /* not necessary for mqtt
     if (forceUpdate) {
         CONFIG_T& config = Configuration.get();
         if (config.PowerMeter.Enabled
@@ -126,6 +127,7 @@ float PowerMeterClass::getPowerTotal(bool forceUpdate)
             readPowerMeter();
         }
     }
+    */
 
     std::lock_guard<std::mutex> l(_mutex);
     return _powerMeter1Power + _powerMeter2Power + _powerMeter3Power;
@@ -177,6 +179,7 @@ void PowerMeterClass::mqtt()
     MqttSettings.publish(topic + "/voltage3", String(_powerMeter3Voltage));
     MqttSettings.publish(topic + "/import", String(_powerMeterImport));
     MqttSettings.publish(topic + "/export", String(_powerMeterExport));
+    MqttSettings.publish(topic + "/powerinverter", String(_powerMeterInverterPower));
 }
 
 void PowerMeterClass::loop()
