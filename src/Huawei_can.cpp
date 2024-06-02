@@ -224,7 +224,7 @@ void HuaweiCanClass::updateSettings(uint8_t huawei_miso, uint8_t huawei_mosi, ui
     };
 
     pinMode(huawei_power, OUTPUT);
-    digitalWrite(huawei_power, HIGH);
+    digitalWrite(huawei_power, HUAWEI_POWER_OFF);
     _huaweiPower = huawei_power;
 
     if (config.Huawei.Auto_Power_Enabled) {
@@ -296,7 +296,7 @@ void HuaweiCanClass::loop()
   }
   if (_outputCurrentOnSinceMillis + HUAWEI_AUTO_MODE_SHUTDOWN_DELAY < millis() &&
       (_mode == HUAWEI_MODE_AUTO_EXT || _mode == HUAWEI_MODE_AUTO_INT)) {
-    digitalWrite(_huaweiPower, 1);
+    digitalWrite(_huaweiPower, HUAWEI_POWER_OFF);
   }
 
 
@@ -476,7 +476,7 @@ void HuaweiCanClass::_setValue(float in, uint8_t parameterType)
     // Start PSU if needed
     if (in > HUAWEI_AUTO_MODE_SHUTDOWN_CURRENT && parameterType == HUAWEI_ONLINE_CURRENT &&
         (_mode == HUAWEI_MODE_AUTO_EXT || _mode == HUAWEI_MODE_AUTO_INT)) {
-      digitalWrite(_huaweiPower, 0);
+      digitalWrite(_huaweiPower, HUAWEI_POWER_ON);
       _outputCurrentOnSinceMillis = millis();
     }
 
@@ -499,11 +499,11 @@ void HuaweiCanClass::setMode(uint8_t mode) {
   }
 
   if(mode == HUAWEI_MODE_OFF) {
-    digitalWrite(_huaweiPower, 1);
+    digitalWrite(_huaweiPower, HUAWEI_POWER_OFF);
     _mode = HUAWEI_MODE_OFF;
   }
   if(mode == HUAWEI_MODE_ON) {
-    digitalWrite(_huaweiPower, 0);
+    digitalWrite(_huaweiPower, HUAWEI_POWER_ON);
     _mode = HUAWEI_MODE_ON;
   }
 
