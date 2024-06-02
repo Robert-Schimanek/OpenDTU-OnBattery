@@ -569,6 +569,7 @@
         "MqttTopicPowerMeter1": "MQTT topic - Power meter #1",
         "MqttTopicPowerMeter2": "MQTT topic - Power meter #2",
         "MqttTopicPowerMeter3": "MQTT topic - Power meter #3",
+        "MqttTopicPowerMeterInverter": "MQTT topic - Power meter inverter (Optional)",
         "SDM": "SDM-Power Meter Parameter",
         "sdmbaudrate": "Baudrate",
         "sdmaddress": "Modbus Address",
