@@ -154,6 +154,7 @@ bool ConfigurationClass::write()
     powermeter["mqtt_topic_powermeter_1"] = config.PowerMeter.MqttTopicPowerMeter1;
     powermeter["mqtt_topic_powermeter_2"] = config.PowerMeter.MqttTopicPowerMeter2;
     powermeter["mqtt_topic_powermeter_3"] = config.PowerMeter.MqttTopicPowerMeter3;
+    powermeter["mqtt_topic_powermeter_inverter"] = config.PowerMeter.MqttTopicPowerMeterInverter;
     powermeter["sdmbaudrate"] = config.PowerMeter.SdmBaudrate;
     powermeter["sdmaddress"] = config.PowerMeter.SdmAddress;
     powermeter["http_individual_requests"] = config.PowerMeter.HttpIndividualRequests;
