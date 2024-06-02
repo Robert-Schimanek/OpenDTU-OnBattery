@@ -53,6 +53,7 @@ void PowerMeterClass::init(Scheduler& scheduler)
         subscribe(config.PowerMeter.MqttTopicPowerMeter1, &_powerMeter1Power);
         subscribe(config.PowerMeter.MqttTopicPowerMeter2, &_powerMeter2Power);
         subscribe(config.PowerMeter.MqttTopicPowerMeter3, &_powerMeter3Power);
+        subscribe(config.PowerMeter.MqttTopicPowerMeterInverter, &_powerMeterInverterPower);
         break;
     }
 
