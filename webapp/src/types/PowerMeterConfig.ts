@@ -21,6 +21,7 @@ export interface PowerMeterConfig {
     mqtt_topic_powermeter_1: string;
     mqtt_topic_powermeter_2: string;
     mqtt_topic_powermeter_3: string;
+    mqtt_topic_powermeter_inverter: string;
     sdmbaudrate: number;
     sdmaddress: number;
     http_individual_requests: boolean;
