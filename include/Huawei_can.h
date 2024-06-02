@@ -63,6 +63,10 @@
 #define HUAWEI_MODE_AUTO_EXT 2
 #define HUAWEI_MODE_AUTO_INT 3
 
+// Pin values for Optocoupler
+#define HUAWEI_POWER_ON 1
+#define HUAWEI_POWER_OFF 0
+
 // Error codes
 #define HUAWEI_ERROR_CODE_RX 0x01
 #define HUAWEI_ERROR_CODE_TX 0x02
