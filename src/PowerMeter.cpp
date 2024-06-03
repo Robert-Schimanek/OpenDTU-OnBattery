@@ -183,6 +183,12 @@ float PowerMeterClass::getPowerInverter(bool forceUpdate)
     return _powerMeterInverterPower;
 }
 
+uint32_t PowerMeterClass::getLastPowerMeterInverterUpdate()
+{
+    std::lock_guard<std::mutex> l(_mutex);
+    return _lastPowerMeterInverterUpdate;
+}
+
 void PowerMeterClass::mqtt()
 {
     if (!MqttSettings.getConnected()) { return; }
