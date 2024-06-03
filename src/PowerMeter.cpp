@@ -95,6 +95,11 @@ void PowerMeterClass::init(Scheduler& scheduler)
 
 void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties& properties, const char* topic, const uint8_t* payload, size_t len, size_t index, size_t total)
 {
+
+    // Retrieve the configuration once
+    CONFIG_T& config = Configuration.get();
+    const std::string& inverterTopic = config.PowerMeter.MqttTopicPowerMeterInverter;
+
     for (auto const& subscription: _mqttSubscriptions) {
         if (subscription.first != topic) { continue; }
 
@@ -102,6 +107,15 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
         try {
             *subscription.second = std::stof(value);
             _lastPowerMeterUpdate = millis(); // only successful power meter updates
+
+            // Update the appropriate timestamp based on the topic
+            if (topic == inverterTopic) {
+                _lastPowerMeterInverterUpdate = millis(); // only successful inverter updates
+            } else {
+                _lastPowerMeterUpdate = millis(); // only successful power meter updates
+            }
+
+
         }
         catch(std::invalid_argument const& e) {
             MessageOutput.printf("PowerMeterClass: cannot parse payload of topic '%s' as float: %s\r\n",
