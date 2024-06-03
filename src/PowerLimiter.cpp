@@ -454,7 +454,7 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
     if (PowerMeter.getLastPowerMeterInverterUpdate() <= (millis() - 1500)) {
         inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));
         if (_verboseLogging) {
-            MessageOutput.printf("[DPL::calcPowerLimit] Inverter power meter update is older than 1500 millis, inverter power from statistics");
+            MessageOutput.printf("[DPL::calcPowerLimit] Inverter power meter update is older than 1500 millis, inverter power from statistics\r\n");
         }
     }
     
