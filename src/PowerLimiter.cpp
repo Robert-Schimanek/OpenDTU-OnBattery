@@ -450,7 +450,11 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
     // auto inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));
 
     auto inverterOutput = static_cast<int32_t>(PowerMeter.getPowerInverter());
-
+    // if the last external power meter update from the inverter ist older than 1,5 seconds take the value from inverter statistics
+    if (PowerMeter.getLastPowerMeterInverterUpdate() <= (millis() - 1500)) {
+        auto inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));
+    }
+    
     auto solarPowerAC = inverterPowerDcToAc(inverter, solarPowerDC);
 
     auto const& config = Configuration.get();
