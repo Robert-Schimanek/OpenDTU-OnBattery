@@ -35,7 +35,12 @@ void HuaweiCanCommunicationTask(void* parameter) {
 
 bool HuaweiCanCommClass::init(uint8_t huawei_miso, uint8_t huawei_mosi, uint8_t huawei_clk,
         uint8_t huawei_irq, uint8_t huawei_cs, uint32_t frequency) {
-    SPI = new SPIClass(HSPI);
+    auto SPI_HUAWEI = HSPI;
+    if(PinMapping.isValidCmt2300Config() && !PinMapping.isValidNrf24Config()) {
+        SPI_HUAWEI = VSPI;
+    }
+    MessageOutput.printf("Huawei CAN: using SPI: %d", SPI_HUAWEI);
+    SPI = new SPIClass(SPI_HUAWEI);
     SPI->begin(huawei_clk, huawei_miso, huawei_mosi, huawei_cs);
     pinMode(huawei_cs, OUTPUT);
     digitalWrite(huawei_cs, HIGH);
