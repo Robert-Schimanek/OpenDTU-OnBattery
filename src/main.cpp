@@ -32,6 +32,7 @@
 #include "WebApi.h"
 #include "PowerMeter.h"
 #include "PowerLimiter.h"
+#include "Control.h"
 #include "defaults.h"
 #include <Arduino.h>
 #include <LittleFS.h>
@@ -183,6 +184,9 @@ void setup()
 
     // Dynamic power limiter
     PowerLimiter.init(scheduler);
+
+    // Control
+    Control.init(scheduler);
 
     // Initialize Huawei AC-charger PSU / CAN bus
     MessageOutput.println("Initialize Huawei AC charger interface... ");
