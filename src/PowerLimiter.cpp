@@ -5,6 +5,7 @@
 
 #include "Utils.h"
 #include "Battery.h"
+#include "Control.h"
 #include "PowerMeter.h"
 #include "PowerLimiter.h"
 #include "Configuration.h"
@@ -20,8 +21,8 @@
 
 PowerLimiterClass PowerLimiter;
 
-void PowerLimiterClass::init(Scheduler& scheduler) 
-{ 
+void PowerLimiterClass::init(Scheduler& scheduler)
+{
     scheduler.addTask(_loopTask);
     _loopTask.setCallback(std::bind(&PowerLimiterClass::loop, this));
     _loopTask.setIterations(TASK_FOREVER);
@@ -445,6 +446,11 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
 
     auto meterValue = static_cast<int32_t>(PowerMeter.getPowerTotal());
 
+    auto inverterChange = static_cast<int32_t>(Control.compute());
+    if (_verboseLogging) {
+        MessageOutput.printf("[DPL::calcPowerLimit] inverterChange %d W \r\n", inverterChange);
+    }
+
     // We don't use FLD_PAC from the statistics, because that data might be too
     // old and unreliable. TODO(schlimmchen): is this comment outdated?
     // auto inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));
@@ -457,7 +463,7 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
             MessageOutput.printf("[DPL::calcPowerLimit] Inverter power meter update is older than 1500 millis, inverter power from statistics\r\n");
         }
     }
-    
+
     auto solarPowerAC = inverterPowerDcToAc(inverter, solarPowerDC);
 
     auto const& config = Configuration.get();
@@ -483,7 +489,9 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
     auto newPowerLimit = baseLoad;
 
     if (meterValid) {
-        newPowerLimit = meterValue;
+        newPowerLimit = 0;
+
+        newPowerLimit -= inverterChange;
 
         if (meterIncludesInv) {
             // If the inverter is wired behind the power meter, i.e., if its
