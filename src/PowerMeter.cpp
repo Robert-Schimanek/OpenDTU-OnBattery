@@ -113,7 +113,6 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
         std::string value(reinterpret_cast<const char*>(payload), len);
         try {
             *subscription.second = std::stof(value);
-            _lastPowerMeterUpdate = millis(); // only successful power meter updates
 
             // Update the appropriate timestamp based on the topic
             if (topic == inverterTopic) {
