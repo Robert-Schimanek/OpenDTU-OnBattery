@@ -117,8 +117,22 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
             // Update the appropriate timestamp based on the topic
             if (topic == inverterTopic) {
                 _lastPowerMeterInverterUpdate = millis(); // only successful inverter updates
+
+                if (_verboseLogging) {
+                    MessageOutput.printf("PowerMeterClass: Updated from '%s', TotalPower: %5.2f\r\n",
+                            topic, getPowerInverter());
+                    // mqtt(); // feedback only necessary if verbosity
+                }
+
             } else {
                 _lastPowerMeterUpdate = millis(); // only successful power meter updates
+
+                if (_verboseLogging) {
+                    MessageOutput.printf("PowerMeterClass: Updated from '%s', TotalPower: %5.2f\r\n",
+                            topic, getPowerTotal());
+                    // mqtt(); // feedback only necessary if verbosity
+                }
+
             }
 
 
@@ -130,9 +144,9 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
         }
 
         if (_verboseLogging) {
-            MessageOutput.printf("PowerMeterClass: Updated from '%s', TotalPower: %5.2f\r\n",
-                    topic, getPowerTotal());
-            mqtt(); // feedback only necessary if verbosity
+            // MessageOutput.printf("PowerMeterClass: Updated from '%s', TotalPower: %5.2f\r\n",
+            //        topic, getPowerTotal());
+            // mqtt(); // feedback only necessary if verbosity
         }
     }
 }
@@ -155,7 +169,6 @@ float PowerMeterClass::getPowerTotal(bool forceUpdate)
 
 uint32_t PowerMeterClass::getLastPowerMeterUpdate()
 {
-    std::lock_guard<std::mutex> l(_mutex);
     return _lastPowerMeterUpdate;
 }
 
@@ -178,13 +191,11 @@ bool PowerMeterClass::isDataValid()
 
 float PowerMeterClass::getPowerInverter(bool forceUpdate)
 {
-    std::lock_guard<std::mutex> l(_mutex);
     return _powerMeterInverterPower;
 }
 
 uint32_t PowerMeterClass::getLastPowerMeterInverterUpdate()
 {
-    std::lock_guard<std::mutex> l(_mutex);
     return _lastPowerMeterInverterUpdate;
 }
 
