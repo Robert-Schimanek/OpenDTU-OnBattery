@@ -20,8 +20,8 @@
 
 PowerLimiterClass PowerLimiter;
 
-void PowerLimiterClass::init(Scheduler& scheduler) 
-{ 
+void PowerLimiterClass::init(Scheduler& scheduler)
+{
     scheduler.addTask(_loopTask);
     _loopTask.setCallback(std::bind(&PowerLimiterClass::loop, this));
     _loopTask.setIterations(TASK_FOREVER);
@@ -186,12 +186,18 @@ void PowerLimiterClass::loop()
     }
 
     if (!_oInverterStatsMillis.has_value()) {
-        auto lastStats = _inverter->Statistics()->getLastUpdate();
-        if (lastStats <= lastUpdateCmd) {
-            return announceStatus(Status::InverterStatsPending);
+        // dont use statics instead use last powermeter update
+        // auto lastStats = _inverter->Statistics()->getLastUpdate();
+
+        // get last inverter power meter update
+        auto lastInverterPowerUpdate = PowerMeter.getLastPowerMeterInverterUpdate();
+
+
+        if (lastInverterPowerUpdate <= lastUpdateCmd) {
+            // return announceStatus(Status::InverterStatsPending);
         }
 
-        _oInverterStatsMillis = lastStats;
+        _oInverterStatsMillis = lastInverterPowerUpdate;
     }
 
     // if the power meter is being used, i.e., if its data is valid, we want to
@@ -202,13 +208,13 @@ void PowerLimiterClass::loop()
     // readers, where a packet needs to travel through the network for some
     // time after the actual measurement was done by the reader.
     if (PowerMeter.isDataValid() && PowerMeter.getLastPowerMeterUpdate() <= (*_oInverterStatsMillis + 2000)) {
-        return announceStatus(Status::PowerMeterPending);
+        // return announceStatus(Status::PowerMeterPending);
     }
 
     // since _lastCalculation and _calculationBackoffMs are initialized to
     // zero, this test is passed the first time the condition is checked.
     if (millis() < (_lastCalculation + _calculationBackoffMs)) {
-        return announceStatus(Status::Stable);
+        // return announceStatus(Status::Stable);
     }
 
     if (_verboseLogging) {
@@ -457,7 +463,7 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
             MessageOutput.printf("[DPL::calcPowerLimit] Inverter power meter update is older than 1500 millis, inverter power from statistics\r\n");
         }
     }
-    
+
     auto solarPowerAC = inverterPowerDcToAc(inverter, solarPowerDC);
 
     auto const& config = Configuration.get();
