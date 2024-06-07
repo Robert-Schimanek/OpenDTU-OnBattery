@@ -106,6 +106,8 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
     // Retrieve the configuration once
     CONFIG_T& config = Configuration.get();
     const std::string& inverterTopic = config.PowerMeter.MqttTopicPowerMeterInverter;
+    const std::string& powerMeterTopic1 = config.PowerMeter.MqttTopicPowerMeter1;
+
 
     for (auto const& subscription: _mqttSubscriptions) {
         if (subscription.first != topic) { continue; }
@@ -124,7 +126,7 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
                     // mqtt(); // feedback only necessary if verbosity
                 }
 
-            } else {
+            } else if (topic == powerMeterTopic1) {
                 _lastPowerMeterUpdate = millis(); // only successful power meter updates
 
                 if (_verboseLogging) {
