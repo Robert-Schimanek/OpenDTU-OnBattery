@@ -163,7 +163,7 @@ float PowerMeterClass::getPowerTotal(bool forceUpdate)
     }
     */
 
-    std::lock_guard<std::mutex> l(_mutex);
+    // std::lock_guard<std::mutex> l(_mutex);
     return _powerMeter1Power + _powerMeter2Power + _powerMeter3Power;
 }
 
@@ -176,7 +176,7 @@ bool PowerMeterClass::isDataValid()
 {
     auto const& config = Configuration.get();
 
-    std::lock_guard<std::mutex> l(_mutex);
+    // std::lock_guard<std::mutex> l(_mutex);
 
     bool valid = config.PowerMeter.Enabled &&
         _lastPowerMeterUpdate > 0 &&
