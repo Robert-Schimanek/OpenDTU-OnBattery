@@ -11,4 +11,5 @@ export interface AcChargerConfig {
   emergency_charge_enabled: boolean;
   stop_batterysoc_threshold: number;
   target_power_consumption: number;
+  target_huawei_data_request_interval: number;
 }

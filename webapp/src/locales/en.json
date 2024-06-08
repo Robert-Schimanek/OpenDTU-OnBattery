@@ -879,7 +879,9 @@
         "Seconds": "@:base.Seconds",
         "EnableEmergencyCharge": "Emergency charge. Battery charged with maximum power if requested by Battery BMS",
         "targetPowerConsumption": "Target power consumption",
-        "targetPowerConsumptionHint": "Postitive values use grid power to charge the battery. Negative values result in early shutdown"
+        "targetPowerConsumptionHint": "Postitive values use grid power to charge the battery. Negative values result in early shutdown",
+        "targetHuaweiDataRequestInterval": "Desired update potential",
+        "targetHuaweiDataRequestIntervalHint": "A base value of 2500 ms for the update potential is used. The update potential can be gradually reduced. It is important to ensure that the console and detailed protocol are disabled. Otherwise, unwanted crashes of the ESP32 may occur."
     },
     "battery": {
         "battery": "Battery",

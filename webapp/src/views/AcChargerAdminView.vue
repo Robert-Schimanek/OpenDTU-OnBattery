@@ -100,6 +100,18 @@
                             </div>
                         </div>
 
+                        <label for="targetHuaweiDataRequestInterval" class="col-sm-2 col-form-label">{{ $t('acchargeradmin.targetHuaweiDataRequestInterval') }}:
+                          <BIconInfoCircle v-tooltip :title="$t('acchargeradmin.targetHuaweiDataRequestIntervalHint')" />
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="targetHuaweiDataRequestInterval"
+                                    placeholder="2500" v-model="acChargerConfigList.target_huawei_data_request_interval"
+                                    aria-describedby="targetHuaweiDataRequestIntervalDescription" min="50" max="2500" required/>
+                                    <span class="input-group-text" id="targetHuaweiDataRequestIntervalDescription">ms</span>
+                            </div>
+                        </div>
+
                     </div>
                 </CardElement>
                 <CardElement :text="$t('acchargeradmin.BatterySoCLimits')" textVariant="text-bg-primary" add-space

@@ -139,7 +139,11 @@ void HuaweiCanCommClass::loop()
 
   if (_nextRequestMillis < millis()) {
     sendRequest();
-    _nextRequestMillis = millis() + HUAWEI_DATA_REQUEST_INTERVAL_MS;
+
+    const CONFIG_T& config = Configuration.get();
+
+    _nextRequestMillis = millis() + config.Huawei.Target_Huawei_Data_Request_Interval;
+
   }
 
 }
@@ -375,7 +379,7 @@ void HuaweiCanClass::loop()
           return;
         }
     }
-    
+
     // Deactivate autopower if power meter update is older than 10 seconds
     if (PowerMeter.getLastPowerMeterUpdate() < ( millis() - 10000 ))  {
         _autoPowerEnabled = false;
@@ -453,7 +457,7 @@ void HuaweiCanClass::loop()
         _setValue(outputCurrent, HUAWEI_ONLINE_CURRENT);
 
         // Don't run auto mode some time to allow for output stabilization after issuing a new value
-        _autoModeBlockedTillMillis = millis() + 2 * HUAWEI_DATA_REQUEST_INTERVAL_MS;
+        _autoModeBlockedTillMillis = millis() + 2 * config.Huawei.Target_Huawei_Data_Request_Interval;
       } else {
         // requested PL is below minium. Set current to 0
         _autoPowerEnabled = false;

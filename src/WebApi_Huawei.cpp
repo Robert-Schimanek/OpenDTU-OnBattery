@@ -153,7 +153,7 @@ void WebApiHuaweiClass::onAdminGet(AsyncWebServerRequest* request)
     if (!WebApi.checkCredentialsReadonly(request)) {
         return;
     }
-    
+
     AsyncJsonResponse* response = new AsyncJsonResponse();
     auto& root = response->getRoot();
     const CONFIG_T& config = Configuration.get();
@@ -167,9 +167,11 @@ void WebApiHuaweiClass::onAdminGet(AsyncWebServerRequest* request)
     root["voltage_limit"] = static_cast<int>(config.Huawei.Auto_Power_Voltage_Limit * 100) / 100.0;
     root["enable_voltage_limit"] = static_cast<int>(config.Huawei.Auto_Power_Enable_Voltage_Limit * 100) / 100.0;
     root["lower_power_limit"] = config.Huawei.Auto_Power_Lower_Power_Limit;
-    root["upper_power_limit"] = config.Huawei.Auto_Power_Upper_Power_Limit;   
+    root["upper_power_limit"] = config.Huawei.Auto_Power_Upper_Power_Limit;
     root["stop_batterysoc_threshold"] = config.Huawei.Auto_Power_Stop_BatterySoC_Threshold;
     root["target_power_consumption"] = config.Huawei.Auto_Power_Target_Power_Consumption;
+    root["target_huawei_data_request_interval"] = config.Huawei.Target_Huawei_Data_Request_Interval;
+
 
     response->setLength();
     request->send(response);
@@ -213,9 +215,11 @@ void WebApiHuaweiClass::onAdminPost(AsyncWebServerRequest* request)
     config.Huawei.Auto_Power_Voltage_Limit = root["voltage_limit"].as<float>();
     config.Huawei.Auto_Power_Enable_Voltage_Limit = root["enable_voltage_limit"].as<float>();
     config.Huawei.Auto_Power_Lower_Power_Limit = root["lower_power_limit"].as<float>();
-    config.Huawei.Auto_Power_Upper_Power_Limit = root["upper_power_limit"].as<float>();    
+    config.Huawei.Auto_Power_Upper_Power_Limit = root["upper_power_limit"].as<float>();
     config.Huawei.Auto_Power_Stop_BatterySoC_Threshold = root["stop_batterysoc_threshold"];
     config.Huawei.Auto_Power_Target_Power_Consumption = root["target_power_consumption"];
+    config.Huawei.Target_Huawei_Data_Request_Interval = root["target_huawei_data_request_interval"];
+
 
     WebApi.writeConfig(retMsg);
 
