@@ -375,7 +375,7 @@ void HuaweiCanClass::loop()
           return;
         }
     }
-    
+
     // Deactivate autopower if power meter update is older than 10 seconds
     if (PowerMeter.getLastPowerMeterUpdate() < ( millis() - 10000 ))  {
         _autoPowerEnabled = false;
@@ -396,7 +396,9 @@ void HuaweiCanClass::loop()
       float efficiency =  (_rp.efficiency > 0.5 ? _rp.efficiency : 1.0);
 
       // Powerlimit is the requested output power + permissable Grid consumption factoring in the efficiency factor
-      newPowerLimit += _rp.output_power + config.Huawei.Auto_Power_Target_Power_Consumption / efficiency;
+      //newPowerLimit += _rp.output_power + config.Huawei.Auto_Power_Target_Power_Consumption / efficiency;
+      newPowerLimit += PowerMeter.getPowerCharger() + config.Huawei.Auto_Power_Target_Power_Consumption / efficiency;
+
 
       if (verboseLogging){
         MessageOutput.printf("[HuaweiCanClass::loop] newPowerLimit: %f, output_power: %f \r\n", newPowerLimit, _rp.output_power);
@@ -421,7 +423,7 @@ void HuaweiCanClass::loop()
         // Check if the output power has dropped below the lower limit (i.e. the battery is full)
         // and if the PSU should be turned off. Also we use a simple counter mechanism here to be able
         // to ramp up from zero output power when starting up
-        if (_rp.output_power < config.Huawei.Auto_Power_Lower_Power_Limit) {
+        if (PowerMeter.getPowerCharger() < config.Huawei.Auto_Power_Lower_Power_Limit) {
           MessageOutput.printf("[HuaweiCanClass::loop] Power and voltage limit reached. Disabling automatic power control .... \r\n");
           _autoPowerEnabledCounter--;
           if (_autoPowerEnabledCounter == 0) {
