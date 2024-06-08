@@ -33,6 +33,8 @@ void WebApiPowerLimiterClass::onStatus(AsyncWebServerRequest* request)
 
     root["enabled"] = config.PowerLimiter.Enabled;
     root["verbose_logging"] = config.PowerLimiter.VerboseLogging;
+    root["inverter_meter_not_stats"] = config.PowerLimiter.InverterMeterNotStats;
+    root["do_not_wait_for_stats"] = config.PowerLimiter.DoNotWaitForStats;
     root["solar_passthrough_enabled"] = config.PowerLimiter.SolarPassThroughEnabled;
     root["solar_passthrough_losses"] = config.PowerLimiter.SolarPassThroughLosses;
     root["battery_always_use_at_night"] = config.PowerLimiter.BatteryAlwaysUseAtNight;
@@ -148,6 +150,9 @@ void WebApiPowerLimiterClass::onAdminPost(AsyncWebServerRequest* request)
     config.PowerLimiter.Enabled = root["enabled"].as<bool>();
     PowerLimiter.setMode(PowerLimiterClass::Mode::Normal);  // User input sets PL to normal operation
     config.PowerLimiter.VerboseLogging = root["verbose_logging"].as<bool>();
+    config.PowerLimiter.InverterMeterNotStats = root["inverter_meter_not_stats"].as<bool>();
+    config.PowerLimiter.DoNotWaitForStats = root["do_not_wait_for_stats"].as<bool>();
+
 
     if (config.Vedirect.Enabled) {
         config.PowerLimiter.SolarPassThroughEnabled = root["solar_passthrough_enabled"].as<bool>();

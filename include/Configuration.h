@@ -206,6 +206,8 @@ struct CONFIG_T {
     struct {
         bool Enabled;
         bool VerboseLogging;
+        bool InverterMeterNotStats;
+        bool DoNotWaitForStats;
         bool SolarPassThroughEnabled;
         uint8_t SolarPassThroughLosses;
         bool BatteryAlwaysUseAtNight;

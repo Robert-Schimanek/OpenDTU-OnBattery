@@ -180,6 +180,8 @@ bool ConfigurationClass::write()
     JsonObject powerlimiter = doc["powerlimiter"].to<JsonObject>();
     powerlimiter["enabled"] = config.PowerLimiter.Enabled;
     powerlimiter["verbose_logging"] = config.PowerLimiter.VerboseLogging;
+    powerlimiter["inverter_meter_not_stats"] = config.PowerLimiter.InverterMeterNotStats;
+    powerlimiter["do_not_wait_for_stats"] = config.PowerLimiter.DoNotWaitForStats;
     powerlimiter["solar_passtrough_enabled"] = config.PowerLimiter.SolarPassThroughEnabled;
     powerlimiter["solar_passthrough_losses"] = config.PowerLimiter.SolarPassThroughLosses;
     powerlimiter["battery_always_use_at_night"] = config.PowerLimiter.BatteryAlwaysUseAtNight;
@@ -443,6 +445,8 @@ bool ConfigurationClass::read()
     JsonObject powerlimiter = doc["powerlimiter"];
     config.PowerLimiter.Enabled = powerlimiter["enabled"] | POWERLIMITER_ENABLED;
     config.PowerLimiter.VerboseLogging = powerlimiter["verbose_logging"] | VERBOSE_LOGGING;
+    config.PowerLimiter.InverterMeterNotStats = powerlimiter["inverter_meter_not_stats"] | POWERLIMITER_INVERTER_METER_NOT_STATS;
+    config.PowerLimiter.DoNotWaitForStats = powerlimiter["do_not_wait_for_stats"] | POWERLIMITER_DO_NOT_WAIT_FOR_STATS;
     config.PowerLimiter.SolarPassThroughEnabled = powerlimiter["solar_passtrough_enabled"] | POWERLIMITER_SOLAR_PASSTHROUGH_ENABLED;
     config.PowerLimiter.SolarPassThroughLosses = powerlimiter["solar_passthrough_losses"] | powerlimiter["solar_passtrough_losses"] | POWERLIMITER_SOLAR_PASSTHROUGH_LOSSES; // solar_passthrough_losses was previously saved as solar_passtrough_losses. Be nice and also try mistyped key.
     config.PowerLimiter.BatteryAlwaysUseAtNight = powerlimiter["battery_always_use_at_night"] | POWERLIMITER_BATTERY_ALWAYS_USE_AT_NIGHT;

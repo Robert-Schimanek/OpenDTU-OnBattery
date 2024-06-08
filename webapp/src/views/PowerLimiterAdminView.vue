@@ -34,6 +34,16 @@
                               v-model="powerLimiterConfigList.verbose_logging"
                               type="checkbox" wide/>
 
+                <InputElement v-show="isEnabled()"
+                              :label="$t('powerlimiteradmin.InverterMeterNotStats')"
+                              v-model="powerLimiterConfigList.inverter_meter_not_stats"
+                              type="checkbox" wide/>
+
+                <InputElement v-show="isEnabled()"
+                              :label="$t('powerlimiteradmin.DoNotWaitForStats')"
+                              v-model="powerLimiterConfigList.do_not_wait_for_stats"
+                              type="checkbox" wide/>
+
                 <InputElement v-show="isEnabled() && hasPowerMeter()"
                               :label="$t('powerlimiteradmin.TargetPowerConsumption')"
                               :tooltip="$t('powerlimiteradmin.TargetPowerConsumptionHint')"
@@ -268,6 +278,16 @@ export default defineComponent({
             // previously selected inverter was deleted. marks serial as
             // invalid, selects placeholder option.
             cfg.inverter_serial = '';
+        },
+        'powerLimiterConfigList.inverter_meter_not_stats': function (newValue) {
+            if (!newValue) {
+                this.powerLimiterConfigList.do_not_wait_for_stats = false;
+            }
+        },
+        'powerLimiterConfigList.do_not_wait_for_stats': function (newValue) {
+            if (newValue) {
+                this.powerLimiterConfigList.inverter_meter_not_stats = true;
+            }
         }
     },
     methods: {

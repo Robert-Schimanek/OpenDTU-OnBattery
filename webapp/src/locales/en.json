@@ -613,6 +613,8 @@
         "General": "General",
         "Enable": "Enable",
         "VerboseLogging": "@:base.VerboseLogging",
+        "InverterMeterNotStats": "Calculation with external power measurement on the inverter (Optional)",
+        "DoNotWaitForStats": "Do not wait for inverter feedback (only for external power measurement on the inverter)",
         "SolarPassthrough": "Solar-Passthrough",
         "EnableSolarPassthrough": "Enable Solar-Passthrough",
         "SolarPassthroughLosses": "(Full) Solar-Passthrough Losses",

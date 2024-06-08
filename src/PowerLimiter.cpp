@@ -20,8 +20,8 @@
 
 PowerLimiterClass PowerLimiter;
 
-void PowerLimiterClass::init(Scheduler& scheduler) 
-{ 
+void PowerLimiterClass::init(Scheduler& scheduler)
+{
     scheduler.addTask(_loopTask);
     _loopTask.setCallback(std::bind(&PowerLimiterClass::loop, this));
     _loopTask.setIterations(TASK_FOREVER);
@@ -186,12 +186,15 @@ void PowerLimiterClass::loop()
     }
 
     if (!_oInverterStatsMillis.has_value()) {
-        auto lastStats = _inverter->Statistics()->getLastUpdate();
-        if (lastStats <= lastUpdateCmd) {
-            return announceStatus(Status::InverterStatsPending);
+        if (config.PowerLimiter.DoNotWaitForStats) {
+            _oInverterStatsMillis = PowerMeter.getLastPowerMeterInverterUpdate();
+        } else if (!config.PowerLimiter.DoNotWaitForStats) {
+            auto lastStats = _inverter->Statistics()->getLastUpdate();
+            if (lastStats <= lastUpdateCmd) {
+                return announceStatus(Status::InverterStatsPending);
+            }
+            _oInverterStatsMillis = lastStats;
         }
-
-        _oInverterStatsMillis = lastStats;
     }
 
     // if the power meter is being used, i.e., if its data is valid, we want to
@@ -201,13 +204,13 @@ void PowerLimiterClass::loop()
     // arrives. this can be the case for readings provided by networked meter
     // readers, where a packet needs to travel through the network for some
     // time after the actual measurement was done by the reader.
-    if (PowerMeter.isDataValid() && PowerMeter.getLastPowerMeterUpdate() <= (*_oInverterStatsMillis + 2000)) {
+    if (!config.PowerLimiter.DoNotWaitForStats && PowerMeter.isDataValid() && PowerMeter.getLastPowerMeterUpdate() <= (*_oInverterStatsMillis + 2000)) {
         return announceStatus(Status::PowerMeterPending);
     }
 
     // since _lastCalculation and _calculationBackoffMs are initialized to
     // zero, this test is passed the first time the condition is checked.
-    if (millis() < (_lastCalculation + _calculationBackoffMs)) {
+    if (!config.PowerLimiter.DoNotWaitForStats && millis() < (_lastCalculation + _calculationBackoffMs)) {
         return announceStatus(Status::Stable);
     }
 
@@ -440,6 +443,7 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
     if (!useFullSolarPassthrough() && HuaweiCan.getAutoPowerStatus()) {
         return shutdown(Status::HuaweiPsu);
     }
+    auto const& config = Configuration.get();
 
     auto meterValid = PowerMeter.isDataValid();
 
@@ -447,20 +451,21 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
 
     // We don't use FLD_PAC from the statistics, because that data might be too
     // old and unreliable. TODO(schlimmchen): is this comment outdated?
-    // auto inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));
-
-    auto inverterOutput = static_cast<int32_t>(PowerMeter.getPowerInverter());
-    // if the last external power meter update from the inverter ist older than 1,5 seconds take the value from inverter statistics
-    if (PowerMeter.getLastPowerMeterInverterUpdate() <= (millis() - 1500)) {
+    //
+    auto inverterOutput = 0;
+    // Take inverter power meter if configured and more recent than 1,5 seconds
+    if (config.PowerLimiter.InverterMeterNotStats && ( PowerMeter.getLastPowerMeterInverterUpdate() > (millis() - 1500) )) {
+        inverterOutput = static_cast<int32_t>(PowerMeter.getPowerInverter());
+    } else {
+        // if the last external power meter update from the inverter ist older than 1,5 seconds take the value from inverter statistics
         inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));
         if (_verboseLogging) {
             MessageOutput.printf("[DPL::calcPowerLimit] Inverter power meter update is older than 1500 millis, inverter power from statistics\r\n");
         }
     }
-    
+
     auto solarPowerAC = inverterPowerDcToAc(inverter, solarPowerDC);
 
-    auto const& config = Configuration.get();
     auto targetConsumption = config.PowerLimiter.TargetPowerConsumption;
     auto baseLoad = config.PowerLimiter.BaseLoadLimit;
     bool meterIncludesInv = config.PowerLimiter.IsInverterBehindPowerMeter;
