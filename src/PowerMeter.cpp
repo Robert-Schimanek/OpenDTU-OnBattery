@@ -55,6 +55,7 @@ void PowerMeterClass::init(Scheduler& scheduler)
         subscribe(config.PowerMeter.MqttTopicPowerMeter2, &_powerMeter2Power);
         subscribe(config.PowerMeter.MqttTopicPowerMeter3, &_powerMeter3Power);
         subscribe(config.PowerMeter.MqttTopicPowerMeterInverter, &_powerMeterInverterPower);
+        subscribe(config.PowerMeter.MqttTopicPowerMeterCharger, &_powerMeterChargerPower);
         break;
     }
 
@@ -107,6 +108,7 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
     CONFIG_T& config = Configuration.get();
     const std::string& inverterTopic = config.PowerMeter.MqttTopicPowerMeterInverter;
     const std::string& powerMeterTopic1 = config.PowerMeter.MqttTopicPowerMeter1;
+    const std::string& chargerTopic = config.PowerMeter.MqttTopicPowerMeterCharger;
 
 
     for (auto const& subscription: _mqttSubscriptions) {
@@ -132,6 +134,15 @@ void PowerMeterClass::onMqttMessage(const espMqttClientTypes::MessageProperties&
                 if (_verboseLogging) {
                     MessageOutput.printf("PowerMeterClass: Updated from '%s', TotalPower: %5.2f\r\n",
                             topic, getPowerTotal());
+                    // mqtt(); // feedback only necessary if verbosity
+                }
+
+            } else if (topic == chargerTopic) {
+                _lastPowerMeterChargerUpdate = millis(); // only successful power meter updates
+
+                if (_verboseLogging) {
+                    MessageOutput.printf("PowerMeterClass: Updated from '%s', TotalPower: %5.2f\r\n",
+                            topic, getPowerCharger());
                     // mqtt(); // feedback only necessary if verbosity
                 }
 
@@ -201,6 +212,16 @@ uint32_t PowerMeterClass::getLastPowerMeterInverterUpdate()
     return _lastPowerMeterInverterUpdate;
 }
 
+float PowerMeterClass::getPowerCharger(bool forceUpdate)
+{
+    return _powerMeterChargerPower;
+}
+
+uint32_t PowerMeterClass::getLastPowerMeterChargerUpdate()
+{
+    return _lastPowerMeterChargerUpdate;
+}
+
 void PowerMeterClass::mqtt()
 {
     if (!MqttSettings.getConnected()) { return; }
@@ -219,6 +240,8 @@ void PowerMeterClass::mqtt()
     MqttSettings.publish(topic + "/import", String(_powerMeterImport));
     MqttSettings.publish(topic + "/export", String(_powerMeterExport));
     MqttSettings.publish(topic + "/powerinverter", String(_powerMeterInverterPower));
+    MqttSettings.publish(topic + "/powercharger", String(_powerMeterChargerPower));
+
 }
 
 void PowerMeterClass::loop()
