@@ -57,16 +57,15 @@ void WebApiPowerMeterClass::onStatus(AsyncWebServerRequest* request)
     root["mqtt_topic_powermeter_2"] = config.PowerMeter.MqttTopicPowerMeter2;
     root["mqtt_topic_powermeter_3"] = config.PowerMeter.MqttTopicPowerMeter3;
     root["mqtt_topic_powermeter_inverter"] = config.PowerMeter.MqttTopicPowerMeterInverter;
-    root["mqtt_topic_powermeter_charger"] = config.PowerMeter.MqttTopicPowerMeterCharger;
     root["sdmbaudrate"] = config.PowerMeter.SdmBaudrate;
     root["sdmaddress"] = config.PowerMeter.SdmAddress;
     root["http_individual_requests"] = config.PowerMeter.HttpIndividualRequests;
 
     auto httpPhases = root["http_phases"].to<JsonArray>();
-
+ 
     for (uint8_t i = 0; i < POWERMETER_MAX_PHASES; i++) {
         auto phaseObject = httpPhases.add<JsonObject>();
-
+  
         phaseObject["index"] = i + 1;
         phaseObject["enabled"] = config.PowerMeter.Http_Phase[i].Enabled;
         phaseObject["url"] = String(config.PowerMeter.Http_Phase[i].Url);
@@ -169,7 +168,6 @@ void WebApiPowerMeterClass::onAdminPost(AsyncWebServerRequest* request)
     strlcpy(config.PowerMeter.MqttTopicPowerMeter2, root["mqtt_topic_powermeter_2"].as<String>().c_str(), sizeof(config.PowerMeter.MqttTopicPowerMeter2));
     strlcpy(config.PowerMeter.MqttTopicPowerMeter3, root["mqtt_topic_powermeter_3"].as<String>().c_str(), sizeof(config.PowerMeter.MqttTopicPowerMeter3));
     strlcpy(config.PowerMeter.MqttTopicPowerMeterInverter, root["mqtt_topic_powermeter_inverter"].as<String>().c_str(), sizeof(config.PowerMeter.MqttTopicPowerMeterInverter));
-    strlcpy(config.PowerMeter.MqttTopicPowerMeterCharger, root["mqtt_topic_powermeter_charger"].as<String>().c_str(), sizeof(config.PowerMeter.MqttTopicPowerMeterCharger));
     config.PowerMeter.SdmBaudrate = root["sdmbaudrate"].as<uint32_t>();
     config.PowerMeter.SdmAddress = root["sdmaddress"].as<uint8_t>();
     config.PowerMeter.HttpIndividualRequests = root["http_individual_requests"].as<bool>();
@@ -206,7 +204,7 @@ void WebApiPowerMeterClass::onTestHttpRequest(AsyncWebServerRequest* request)
 
     auto& retMsg = asyncJsonResponse->getRoot();
 
-    if (!root.containsKey("url") || !root.containsKey("auth_type") || !root.containsKey("username") || !root.containsKey("password")
+    if (!root.containsKey("url") || !root.containsKey("auth_type") || !root.containsKey("username") || !root.containsKey("password") 
             || !root.containsKey("header_key") || !root.containsKey("header_value")
             || !root.containsKey("timeout") || !root.containsKey("json_path")) {
         retMsg["message"] = "Missing fields!";

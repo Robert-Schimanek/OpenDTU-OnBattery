@@ -77,7 +77,7 @@
 #define HUAWEI_AUTO_MODE_SHUTDOWN_CURRENT 0.75
 
 // Updateinterval used to request new values from the PSU
-#define HUAWEI_DATA_REQUEST_INTERVAL_MS 750
+#define HUAWEI_DATA_REQUEST_INTERVAL_MS 2500
 
 typedef struct RectifierParameters {
     float input_voltage;

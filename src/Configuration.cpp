@@ -155,7 +155,6 @@ bool ConfigurationClass::write()
     powermeter["mqtt_topic_powermeter_2"] = config.PowerMeter.MqttTopicPowerMeter2;
     powermeter["mqtt_topic_powermeter_3"] = config.PowerMeter.MqttTopicPowerMeter3;
     powermeter["mqtt_topic_powermeter_inverter"] = config.PowerMeter.MqttTopicPowerMeterInverter;
-    powermeter["mqtt_topic_powermeter_charger"] = config.PowerMeter.MqttTopicPowerMeterCharger;
     powermeter["sdmbaudrate"] = config.PowerMeter.SdmBaudrate;
     powermeter["sdmaddress"] = config.PowerMeter.SdmAddress;
     powermeter["http_individual_requests"] = config.PowerMeter.HttpIndividualRequests;
@@ -416,7 +415,6 @@ bool ConfigurationClass::read()
     strlcpy(config.PowerMeter.MqttTopicPowerMeter2, powermeter["mqtt_topic_powermeter_2"] | "", sizeof(config.PowerMeter.MqttTopicPowerMeter2));
     strlcpy(config.PowerMeter.MqttTopicPowerMeter3, powermeter["mqtt_topic_powermeter_3"] | "", sizeof(config.PowerMeter.MqttTopicPowerMeter3));
     strlcpy(config.PowerMeter.MqttTopicPowerMeterInverter, powermeter["mqtt_topic_powermeter_inverter"] | "", sizeof(config.PowerMeter.MqttTopicPowerMeterInverter));
-    strlcpy(config.PowerMeter.MqttTopicPowerMeterCharger, powermeter["mqtt_topic_powermeter_charger"] | "", sizeof(config.PowerMeter.MqttTopicPowerMeterCharger));
     config.PowerMeter.SdmBaudrate =  powermeter["sdmbaudrate"] | POWERMETER_SDMBAUDRATE;
     config.PowerMeter.SdmAddress =  powermeter["sdmaddress"] | POWERMETER_SDMADDRESS;
     config.PowerMeter.HttpIndividualRequests = powermeter["http_individual_requests"] | false;

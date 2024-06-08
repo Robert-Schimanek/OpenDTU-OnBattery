@@ -31,10 +31,8 @@ public:
     void init(Scheduler& scheduler);
     float getPowerTotal(bool forceUpdate = true);
     float getPowerInverter(bool forceUpdate = true);
-    float getPowerCharger(bool forceUpdate = true);
     uint32_t getLastPowerMeterUpdate();
     uint32_t getLastPowerMeterInverterUpdate();
-    uint32_t getLastPowerMeterChargerUpdate();
     bool isDataValid();
 
 private:
@@ -51,7 +49,6 @@ private:
     // Used in Power limiter for safety check
     uint32_t _lastPowerMeterUpdate;
     uint32_t _lastPowerMeterInverterUpdate;
-    uint32_t _lastPowerMeterChargerUpdate;
 
     float _powerMeter1Power = 0.0;
     float _powerMeter2Power = 0.0;
@@ -63,8 +60,6 @@ private:
     float _powerMeterExport = 0.0;
 
     float _powerMeterInverterPower = 0.0;
-
-    float _powerMeterChargerPower = 0.0;
 
     std::map<String, float*> _mqttSubscriptions;
 
