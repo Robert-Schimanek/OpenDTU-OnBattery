@@ -91,6 +91,8 @@ bool PowerLimiterClass::shutdown(PowerLimiterClass::Status status)
 
     _oTargetPowerState = false;
 
+    _lastRequestedPowerLimit = 0;
+
     return updateInverter();
 }
 

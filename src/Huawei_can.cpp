@@ -371,7 +371,7 @@ void HuaweiCanClass::loop()
     }
 
     if (inverter != nullptr) {
-        if(inverter->isProducing()) {
+        if(inverter->isProducing() || (PowerLimiter.getLastRequestedPowerLimit() > 0 )) {
           _setValue(0.0, HUAWEI_ONLINE_CURRENT);
           // Don't run auto mode for a second now. Otherwise we may send too much over the CAN bus
           _autoModeBlockedTillMillis = millis() + 1000;
@@ -381,7 +381,7 @@ void HuaweiCanClass::loop()
     }
 
     // Deactivate autopower if power meter update is older than 10 seconds
-    if (PowerMeter.getLastPowerMeterUpdate() < ( millis() - 10000 ))  {
+    if (PowerMeter.getLastPowerMeterUpdate() < ( millis() - 10000 ) )  {
         _autoPowerEnabled = false;
         _setValue(0, HUAWEI_ONLINE_CURRENT);
         MessageOutput.printf("[HuaweiCanClass::loop] No updates from powermeter in the last 10 seconds, disable\r\n");
