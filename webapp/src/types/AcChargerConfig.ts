@@ -12,4 +12,5 @@ export interface AcChargerConfig {
   stop_batterysoc_threshold: number;
   target_power_consumption: number;
   target_huawei_data_request_interval: number;
+  charger_meter_not_charger: boolean;
 }

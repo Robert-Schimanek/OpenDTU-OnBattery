@@ -257,6 +257,7 @@ struct CONFIG_T {
         uint8_t Auto_Power_Stop_BatterySoC_Threshold;
         float Auto_Power_Target_Power_Consumption;
         uint32_t Target_Huawei_Data_Request_Interval;
+        bool Charger_Meter_Not_Charger;
     } Huawei;
 
 

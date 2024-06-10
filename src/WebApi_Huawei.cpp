@@ -171,6 +171,7 @@ void WebApiHuaweiClass::onAdminGet(AsyncWebServerRequest* request)
     root["stop_batterysoc_threshold"] = config.Huawei.Auto_Power_Stop_BatterySoC_Threshold;
     root["target_power_consumption"] = config.Huawei.Auto_Power_Target_Power_Consumption;
     root["target_huawei_data_request_interval"] = config.Huawei.Target_Huawei_Data_Request_Interval;
+    root["charger_meter_not_charger"] = config.Huawei.Charger_Meter_Not_Charger;
 
 
     response->setLength();
@@ -219,6 +220,7 @@ void WebApiHuaweiClass::onAdminPost(AsyncWebServerRequest* request)
     config.Huawei.Auto_Power_Stop_BatterySoC_Threshold = root["stop_batterysoc_threshold"];
     config.Huawei.Auto_Power_Target_Power_Consumption = root["target_power_consumption"];
     config.Huawei.Target_Huawei_Data_Request_Interval = root["target_huawei_data_request_interval"];
+    config.Huawei.Charger_Meter_Not_Charger = root["charger_meter_not_charger"];
 
 
     WebApi.writeConfig(retMsg);

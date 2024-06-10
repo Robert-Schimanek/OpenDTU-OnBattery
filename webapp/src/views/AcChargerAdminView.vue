@@ -34,6 +34,11 @@
                               type="checkbox" wide/>
 
                 <InputElement v-show="acChargerConfigList.enabled && acChargerConfigList.auto_power_enabled"
+                              :label="$t('acchargeradmin.ChargerMeterOverChargerStats')"
+                              v-model="acChargerConfigList.charger_meter_not_charger"
+                              type="checkbox" wide/>
+
+                <InputElement v-show="acChargerConfigList.enabled && acChargerConfigList.auto_power_enabled"
                               :label="$t('acchargeradmin.EnableBatterySoCLimits')"
                               v-model="acChargerConfigList.auto_power_batterysoc_limits_enabled"
                               type="checkbox" wide />

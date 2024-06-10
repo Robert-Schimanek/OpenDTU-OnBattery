@@ -859,6 +859,7 @@
         "VerboseLogging": "@:base.VerboseLogging",
         "CanControllerFrequency": "Frequenz des Quarzes am CAN Controller",
         "EnableAutoPower": "Automatische Leistungssteuerung",
+        "ChargerMeterOverChargerStats": "Externer Leistungsmessung ( Powermeter bzw. externe Leistungsmessung benötigt)",
         "EnableBatterySoCLimits": "Ladezustand einer angeschlossenen Batterie berücksichtigen",
         "Limits": "Limits",
         "BatterySoCLimits": "Batterie SoC-Limits",

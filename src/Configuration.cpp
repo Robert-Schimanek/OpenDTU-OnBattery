@@ -229,6 +229,7 @@ bool ConfigurationClass::write()
     huawei["stop_batterysoc_threshold"] = config.Huawei.Auto_Power_Stop_BatterySoC_Threshold;
     huawei["target_power_consumption"] = config.Huawei.Auto_Power_Target_Power_Consumption;
     huawei["target_huawei_data_request_interval"] = config.Huawei.Target_Huawei_Data_Request_Interval;
+    huawei["charger_meter_not_charger"] = config.Huawei.Charger_Meter_Not_Charger;
 
 
     if (!Utils::checkJsonAlloc(doc, __FUNCTION__, __LINE__)) {
@@ -495,7 +496,7 @@ bool ConfigurationClass::read()
     config.Huawei.Auto_Power_Stop_BatterySoC_Threshold = huawei["stop_batterysoc_threshold"] | HUAWEI_AUTO_POWER_STOP_BATTERYSOC_THRESHOLD;
     config.Huawei.Auto_Power_Target_Power_Consumption = huawei["target_power_consumption"] | HUAWEI_AUTO_POWER_TARGET_POWER_CONSUMPTION;
     config.Huawei.Target_Huawei_Data_Request_Interval = huawei["target_huawei_data_request_interval"] | HUAWEI_DATA_REQUEST_INTERVAL_MS;
-
+    config.Huawei.Charger_Meter_Not_Charger = huawei["charger_meter_not_charger"] | HUAWEI_CHARGER_METER_NOT_CHARGER;
 
     f.close();
     return true;

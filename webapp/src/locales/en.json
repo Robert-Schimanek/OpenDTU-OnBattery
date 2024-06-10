@@ -866,6 +866,7 @@
         "VerboseLogging": "@:base.VerboseLogging",
         "CanControllerFrequency": "CAN controller quarz frequency",
         "EnableAutoPower": "Automatic power control",
+        "ChargerMeterOverChargerStats": "External power measurement (requires power meter or external power measurement)",
         "EnableBatterySoCLimits": "Use SoC data of a connected battery",
         "Limits": "Limits",
         "BatterySoCLimits": "Battery SoC Limits",
