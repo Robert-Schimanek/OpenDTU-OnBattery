@@ -374,7 +374,7 @@ void HuaweiCanClass::loop()
         if(config.PowerLimiter.Enabled && PowerLimiter.getLastRequestedPowerLimit() > 0 ) {
           _setValue(0.0, HUAWEI_ONLINE_CURRENT);
           // Don't run auto mode for a second now. Otherwise we may send too much over the CAN bus
-          _autoModeBlockedTillMillis = millis() + 500;
+          _autoModeBlockedTillMillis = millis() + 750;
           MessageOutput.printf("[HuaweiCanClass::loop] Inverter command active, disable\r\n");
           return;
         } else if (!config.PowerLimiter.Enabled && inverter->isProducing()) {
