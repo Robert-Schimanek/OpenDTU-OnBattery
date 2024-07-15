@@ -97,6 +97,7 @@ private:
             std::function<bool(float, float)> compare);
     bool isStartThresholdReached();
     bool isStopThresholdReached();
+    bool isCellStopThresholdReached();
     bool isBelowStopThreshold();
     bool useFullSolarPassthrough();
 };

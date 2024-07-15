@@ -633,6 +633,7 @@
         "IgnoreSoc": "Batterie SoC ignorieren",
         "StartThreshold": "Batterienutzung Start-Schwellwert",
         "StopThreshold": "Batterienutzung Stop-Schwellwert",
+        "CellStopThreshold": "Batterienutzung Mindestspannung der schwächsten Zelle",
         "FullSolarPassthroughStartThreshold": "Full-Solar-Passthrough Start-Schwellwert",
         "FullSolarPassthroughStartThresholdHint": "Oberhalb dieses Schwellwertes wird die Inverterleistung der Victron-MPPT-Leistung gleichgesetzt (abzüglich Effizienzkorrekturfaktor). Kann verwendet werden um überschüssige Solarleistung an das Netz zu liefern wenn die Batterie voll ist.",
         "VoltageSolarPassthroughStopThreshold": "Full-Solar-Passthrough Stop-Schwellwert",

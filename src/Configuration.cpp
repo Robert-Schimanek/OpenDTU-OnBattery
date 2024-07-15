@@ -201,6 +201,7 @@ bool ConfigurationClass::write()
     powerlimiter["battery_soc_stop_threshold"] = config.PowerLimiter.BatterySocStopThreshold;
     powerlimiter["voltage_start_threshold"] = config.PowerLimiter.VoltageStartThreshold;
     powerlimiter["voltage_stop_threshold"] = config.PowerLimiter.VoltageStopThreshold;
+    powerlimiter["voltage_cell_stop_threshold"] = config.PowerLimiter.VoltageCellStopThreshold;
     powerlimiter["voltage_load_correction_factor"] = config.PowerLimiter.VoltageLoadCorrectionFactor;
     powerlimiter["inverter_restart_hour"] = config.PowerLimiter.RestartHour;
     powerlimiter["full_solar_passthrough_soc"] = config.PowerLimiter.FullSolarPassThroughSoc;
@@ -469,6 +470,7 @@ bool ConfigurationClass::read()
     config.PowerLimiter.BatterySocStopThreshold = powerlimiter["battery_soc_stop_threshold"] | POWERLIMITER_BATTERY_SOC_STOP_THRESHOLD;
     config.PowerLimiter.VoltageStartThreshold = powerlimiter["voltage_start_threshold"] | POWERLIMITER_VOLTAGE_START_THRESHOLD;
     config.PowerLimiter.VoltageStopThreshold = powerlimiter["voltage_stop_threshold"] | POWERLIMITER_VOLTAGE_STOP_THRESHOLD;
+    config.PowerLimiter.VoltageCellStopThreshold = powerlimiter["voltage_cell_stop_threshold"] | POWERLIMITER_VOLTAGE_CELL_STOP_THRESHOLD;
     config.PowerLimiter.VoltageLoadCorrectionFactor = powerlimiter["voltage_load_correction_factor"] | POWERLIMITER_VOLTAGE_LOAD_CORRECTION_FACTOR;
     config.PowerLimiter.RestartHour = powerlimiter["inverter_restart_hour"] | POWERLIMITER_RESTART_HOUR;
     config.PowerLimiter.FullSolarPassThroughSoc = powerlimiter["full_solar_passthrough_soc"] | POWERLIMITER_FULL_SOLAR_PASSTHROUGH_SOC;

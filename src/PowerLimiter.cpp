@@ -244,6 +244,8 @@ void PowerLimiterClass::loop()
     auto getBatteryPower = [this,&config]() -> bool {
         if (config.PowerLimiter.IsInverterSolarPowered) { return false; }
 
+        if (isCellStopThresholdReached()) { return false; }
+
         if (isStopThresholdReached()) { return false; }
 
         if (isStartThresholdReached()) { return true; }
@@ -913,6 +915,10 @@ bool PowerLimiterClass::testThreshold(float socThreshold, float voltThreshold,
               return compare(stats->getSoC(), socThreshold);
     }
 
+    // if volThreshold for one cell check if min cell voltage is reached
+    if (voltThreshold <= 5) {
+        return compare(stats->getVoltageCellMin(), voltThreshold);
+    }
     // use voltage threshold as fallback
     if (voltThreshold <= 0.0) { return false; }
 
@@ -937,6 +943,17 @@ bool PowerLimiterClass::isStopThresholdReached()
     return testThreshold(
             config.PowerLimiter.BatterySocStopThreshold,
             config.PowerLimiter.VoltageStopThreshold,
+            [](float a, float b) -> bool { return a <= b; }
+    );
+}
+
+bool PowerLimiterClass::isCellStopThresholdReached()
+{
+    CONFIG_T& config = Configuration.get();
+
+    return testThreshold(
+            config.PowerLimiter.BatterySocStopThreshold,
+            config.PowerLimiter.VoltageCellStopThreshold,
             [](float a, float b) -> bool { return a <= b; }
     );
 }

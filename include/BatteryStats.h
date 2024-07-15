@@ -24,6 +24,10 @@ class BatteryStats {
         float getVoltage() const { return _voltage; }
         uint32_t getVoltageAgeSeconds() const { return (millis() - _lastUpdateVoltage) / 1000; }
 
+        float getVoltageCellMin() const { return _voltageCellMin; }
+        uint32_t getVoltageCellMinAgeSeconds() const { return (millis() - _lastUpdateVoltageCellMin) / 1000; }
+
+
         // convert stats to JSON for web application live view
         virtual void getLiveViewData(JsonVariant& root) const;
 
@@ -57,6 +61,11 @@ class BatteryStats {
             _lastUpdateVoltage = _lastUpdate = timestamp;
         }
 
+        void setVoltageCellMin(float voltageCellMin, uint32_t timestamp) {
+            _voltageCellMin = voltageCellMin;
+            _lastUpdateVoltageCellMin = _lastUpdate = timestamp;
+        }
+
         String _manufacturer = "unknown";
         String _hwversion = "";
         String _fwversion = "";
@@ -69,6 +78,8 @@ class BatteryStats {
         uint32_t _lastUpdateSoC = 0;
         float _voltage = 0; // total battery pack voltage
         uint32_t _lastUpdateVoltage = 0;
+        float _voltageCellMin = 0; // total battery pack voltage
+        uint32_t _lastUpdateVoltageCellMin = 0;
 };
 
 class PylontechBatteryStats : public BatteryStats {

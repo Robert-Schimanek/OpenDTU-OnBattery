@@ -227,6 +227,7 @@ struct CONFIG_T {
         uint32_t BatterySocStopThreshold;
         float VoltageStartThreshold;
         float VoltageStopThreshold;
+        float VoltageCellStopThreshold;
         float VoltageLoadCorrectionFactor;
         int8_t RestartHour;
         uint32_t FullSolarPassThroughSoc;

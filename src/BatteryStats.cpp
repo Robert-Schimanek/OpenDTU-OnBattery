@@ -379,6 +379,8 @@ void JkBmsBatteryStats::updateFrom(JkBms::DataPointContainer const& dp)
             _cellMaxMilliVolt = std::max(_cellMaxMilliVolt, iter->second);
         }
         _cellVoltageTimestamp = millis();
+        BatteryStats::setVoltageCellMin(static_cast<float>(_cellMinMilliVolt) / 1000,
+                _cellVoltageTimestamp);
     }
 
     auto oVersion = _dataPoints.get<Label::BmsSoftwareVersion>();

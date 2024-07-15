@@ -189,6 +189,11 @@
             </CardElement>
 
             <CardElement :text="$t('powerlimiteradmin.VoltageThresholds')" textVariant="text-bg-primary" add-space v-if="canUseVoltageThresholds()">
+                <InputElement :label="$t('powerlimiteradmin.CellStopThreshold')"
+                              v-model="powerLimiterConfigList.voltage_cell_stop_threshold"
+                              placeholder="2.9" min="2.5" max="4.3" postfix="V"
+                              type="number" step="0.001" wide/>
+
                 <InputElement :label="$t('powerlimiteradmin.StartThreshold')"
                               v-model="powerLimiterConfigList.voltage_start_threshold"
                               placeholder="50" min="16" max="66" postfix="V"

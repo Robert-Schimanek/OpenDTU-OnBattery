@@ -52,7 +52,8 @@ void WebApiPowerLimiterClass::onStatus(AsyncWebServerRequest* request)
     root["battery_soc_start_threshold"] = config.PowerLimiter.BatterySocStartThreshold;
     root["battery_soc_stop_threshold"] = config.PowerLimiter.BatterySocStopThreshold;
     root["voltage_start_threshold"] = static_cast<int>(config.PowerLimiter.VoltageStartThreshold * 100 +0.5) / 100.0;
-    root["voltage_stop_threshold"] = static_cast<int>(config.PowerLimiter.VoltageStopThreshold * 100 +0.5) / 100.0;;
+    root["voltage_stop_threshold"] = static_cast<int>(config.PowerLimiter.VoltageStopThreshold * 100 +0.5) / 100.0;
+    root["voltage_cell_stop_threshold"] = static_cast<int>(config.PowerLimiter.VoltageCellStopThreshold * 100 +0.5) / 100.0;
     root["voltage_load_correction_factor"] = config.PowerLimiter.VoltageLoadCorrectionFactor;
     root["inverter_restart_hour"] = config.PowerLimiter.RestartHour;
     root["full_solar_passthrough_soc"] = config.PowerLimiter.FullSolarPassThroughSoc;
@@ -187,6 +188,8 @@ void WebApiPowerLimiterClass::onAdminPost(AsyncWebServerRequest* request)
     config.PowerLimiter.VoltageStartThreshold = static_cast<int>(config.PowerLimiter.VoltageStartThreshold * 100) / 100.0;
     config.PowerLimiter.VoltageStopThreshold = root["voltage_stop_threshold"].as<float>();
     config.PowerLimiter.VoltageStopThreshold = static_cast<int>(config.PowerLimiter.VoltageStopThreshold * 100) / 100.0;
+    config.PowerLimiter.VoltageCellStopThreshold = root["voltage_cell_stop_threshold"].as<float>();
+    config.PowerLimiter.VoltageCellStopThreshold = static_cast<int>(config.PowerLimiter.VoltageCellStopThreshold * 100) / 100.0;
     config.PowerLimiter.VoltageLoadCorrectionFactor = root["voltage_load_correction_factor"].as<float>();
     config.PowerLimiter.RestartHour = root["inverter_restart_hour"].as<int8_t>();
 

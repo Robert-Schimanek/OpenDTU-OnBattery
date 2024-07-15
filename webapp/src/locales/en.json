@@ -639,6 +639,7 @@
         "IgnoreSoc": "Ignore Battery SoC",
         "StartThreshold": "Start Threshold for Battery Discharging",
         "StopThreshold": "Stop Threshold for Battery Discharging",
+        "CellStopThreshold": "Stop Threshold for Discharging regarding weakest battery cell",
         "FullSolarPassthroughStartThreshold": "Full Solar-Passthrough Start Threshold",
         "FullSolarPassthroughStartThresholdHint": "Inverter power is set equal to Victron MPPT power (minus efficiency factors) while above this threshold. Use this if you want to supply excess power to the grid when the battery is full.",
         "VoltageSolarPassthroughStopThreshold": "Full Solar-Passthrough Stop Threshold",
