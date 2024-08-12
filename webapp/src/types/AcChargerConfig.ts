@@ -2,6 +2,7 @@ export interface AcChargerConfig {
   enabled: boolean;
   verbose_logging: boolean;
   can_controller_frequency: number;
+  max_current_multiplier: number;
   auto_power_enabled: boolean;
   auto_power_batterysoc_limits_enabled: boolean;
   voltage_limit: number;

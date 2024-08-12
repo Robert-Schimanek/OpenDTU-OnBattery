@@ -858,9 +858,10 @@
     "acchargeradmin": {
         "ChargerSettings": "AC Ladegerät Einstellungen",
         "Configuration": "AC Ladegerät Konfiguration",
-        "EnableHuawei": "Huawei R4850G2 an CAN Bus Interface aktiv",
+        "EnableHuawei": "Huawei Ladegerät an CAN Bus Interface aktiv",
         "VerboseLogging": "@:base.VerboseLogging",
         "CanControllerFrequency": "Frequenz des Quarzes am CAN Controller",
+        "ChargerModel": "Verwendetes Modell / Ladegerät",
         "EnableAutoPower": "Automatische Leistungssteuerung",
         "ChargerMeterOverChargerStats": "Externer Leistungsmessung ( Powermeter bzw. externe Leistungsmessung benötigt)",
         "EnableBatterySoCLimits": "Ladezustand einer angeschlossenen Batterie berücksichtigen",

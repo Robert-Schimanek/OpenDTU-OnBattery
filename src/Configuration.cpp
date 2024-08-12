@@ -221,6 +221,7 @@ bool ConfigurationClass::write()
     huawei["enabled"] = config.Huawei.Enabled;
     huawei["verbose_logging"] = config.Huawei.VerboseLogging;
     huawei["can_controller_frequency"] = config.Huawei.CAN_Controller_Frequency;
+    huawei["max_current_multiplier"] = config.Huawei.Max_Current_Multiplier;
     huawei["auto_power_enabled"] = config.Huawei.Auto_Power_Enabled;
     huawei["auto_power_batterysoc_limits_enabled"] = config.Huawei.Auto_Power_BatterySoC_Limits_Enabled;
     huawei["emergency_charge_enabled"] = config.Huawei.Emergency_Charge_Enabled;
@@ -490,6 +491,7 @@ bool ConfigurationClass::read()
     config.Huawei.Enabled = huawei["enabled"] | HUAWEI_ENABLED;
     config.Huawei.VerboseLogging = huawei["verbose_logging"] | VERBOSE_LOGGING;
     config.Huawei.CAN_Controller_Frequency = huawei["can_controller_frequency"] | HUAWEI_CAN_CONTROLLER_FREQUENCY;
+    config.Huawei.Max_Current_Multiplier = huawei["max_current_multiplier"] | HUAWEI_MAX_CURRENT_MULTIPLIER;
     config.Huawei.Auto_Power_Enabled = huawei["auto_power_enabled"] | false;
     config.Huawei.Auto_Power_BatterySoC_Limits_Enabled = huawei["auto_power_batterysoc_limits_enabled"] | false;
     config.Huawei.Emergency_Charge_Enabled = huawei["emergency_charge_enabled"] | false;

@@ -23,6 +23,19 @@
                     </div>
                 </div>
 
+                <div class="row mb-3" v-show="acChargerConfigList.enabled">
+                    <label class="col-sm-4 col-form-label">
+                        {{ $t('acchargeradmin.ChargerModel') }}
+                    </label>
+                    <div class="col-sm-8">
+                        <select class="form-select" v-model="acChargerConfigList.max_current_multiplier">
+                            <option v-for="chargerModel in chargerModelList" :key="chargerModel.key" :value="chargerModel.value">
+                                {{ chargerModel.key }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
                 <InputElement v-show="acChargerConfigList.enabled"
                               :label="$t('acchargeradmin.VerboseLogging')"
                               v-model="acChargerConfigList.verbose_logging"
@@ -172,6 +185,12 @@ export default defineComponent({
             frequencyTypeList: [
                 { key:  8, value:  8000000 },
                 { key: 16, value: 16000000 },
+            ],
+            chargerModelList: [
+                { key: "Huawei R4875", value: 8 },
+                { key: "Huawei R4850", value: 20 },
+                { key: "Huawei R4830", value: 30 },
+                { key: "Huawei R4815", value: 38 },
             ],
         };
     },

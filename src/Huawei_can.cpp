@@ -252,7 +252,7 @@ RectifierParameters_t * HuaweiCanClass::get()
 }
 
 
-void HuaweiCanClass::processReceivedParameters()
+void HuaweiCanClass::processReceivedParameters(uint8_t max_current_multiplier)
 {
     _rp.input_power = HuaweiCanComm.getParameterValue(HUAWEI_INPUT_POWER_IDX) / 1024.0;
     _rp.input_frequency = HuaweiCanComm.getParameterValue(HUAWEI_INPUT_FREQ_IDX) / 1024.0;
@@ -260,7 +260,7 @@ void HuaweiCanClass::processReceivedParameters()
     _rp.output_power = HuaweiCanComm.getParameterValue(HUAWEI_OUTPUT_POWER_IDX) / 1024.0;
     _rp.efficiency = HuaweiCanComm.getParameterValue(HUAWEI_EFFICIENCY_IDX) / 1024.0;
     _rp.output_voltage = HuaweiCanComm.getParameterValue(HUAWEI_OUTPUT_VOLTAGE_IDX) / 1024.0;
-    _rp.max_output_current = static_cast<float>(HuaweiCanComm.getParameterValue(HUAWEI_OUTPUT_CURRENT_MAX_IDX)) / MAX_CURRENT_MULTIPLIER;
+    _rp.max_output_current = static_cast<float>(HuaweiCanComm.getParameterValue(HUAWEI_OUTPUT_CURRENT_MAX_IDX)) / max_current_multiplier;
     _rp.input_voltage = HuaweiCanComm.getParameterValue(HUAWEI_INPUT_VOLTAGE_IDX) / 1024.0;
     _rp.output_temp = HuaweiCanComm.getParameterValue(HUAWEI_OUTPUT_TEMPERATURE_IDX) / 1024.0;
     _rp.input_temp = HuaweiCanComm.getParameterValue(HUAWEI_INPUT_TEMPERATURE_IDX) / 1024.0;
@@ -282,7 +282,7 @@ void HuaweiCanClass::loop()
 
   bool verboseLogging = config.Huawei.VerboseLogging;
 
-  processReceivedParameters();
+  processReceivedParameters( config.Huawei.Max_Current_Multiplier );
 
   uint8_t com_error = HuaweiCanComm.getErrorCode(true);
   if (com_error & HUAWEI_ERROR_CODE_RX) {
@@ -511,7 +511,7 @@ void HuaweiCanClass::_setValue(float in, uint8_t parameterType)
     if (parameterType == HUAWEI_OFFLINE_VOLTAGE || parameterType == HUAWEI_ONLINE_VOLTAGE) {
         value = in * 1024;
     } else if (parameterType == HUAWEI_OFFLINE_CURRENT || parameterType == HUAWEI_ONLINE_CURRENT) {
-        value = in * MAX_CURRENT_MULTIPLIER;
+        value = in * config.Huawei.Max_Current_Multiplier;
     } else {
         return;
     }

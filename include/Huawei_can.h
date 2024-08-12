@@ -34,9 +34,6 @@
 #define HUAWEI_MINIMAL_OFFLINE_VOLTAGE 48
 #define HUAWEI_MINIMAL_ONLINE_VOLTAGE 42
 
-// #define MAX_CURRENT_MULTIPLIER 20
-#define MAX_CURRENT_MULTIPLIER 30 // other appliance
-
 // Index values for rec_values array
 #define HUAWEI_INPUT_POWER_IDX 0
 #define HUAWEI_INPUT_FREQ_IDX 1
@@ -136,7 +133,7 @@ public:
 
 private:
     void loop();
-    void processReceivedParameters();
+    void processReceivedParameters( uint8_t max_current_multiplier );
     void _setValue(float in, uint8_t parameterType);
 
     Task _loopTask;

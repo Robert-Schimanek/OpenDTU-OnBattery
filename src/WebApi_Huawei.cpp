@@ -161,6 +161,7 @@ void WebApiHuaweiClass::onAdminGet(AsyncWebServerRequest* request)
     root["enabled"] = config.Huawei.Enabled;
     root["verbose_logging"] = config.Huawei.VerboseLogging;
     root["can_controller_frequency"] = config.Huawei.CAN_Controller_Frequency;
+    root["max_current_multiplier"] = config.Huawei.Max_Current_Multiplier;
     root["auto_power_enabled"] = config.Huawei.Auto_Power_Enabled;
     root["auto_power_batterysoc_limits_enabled"] = config.Huawei.Auto_Power_BatterySoC_Limits_Enabled;
     root["emergency_charge_enabled"] = config.Huawei.Emergency_Charge_Enabled;
@@ -194,6 +195,7 @@ void WebApiHuaweiClass::onAdminPost(AsyncWebServerRequest* request)
 
     if (!(root.containsKey("enabled")) ||
         !(root.containsKey("can_controller_frequency")) ||
+        !(root.containsKey("max_current_multiplier")) ||
         !(root.containsKey("auto_power_enabled")) ||
         !(root.containsKey("emergency_charge_enabled")) ||
         !(root.containsKey("voltage_limit")) ||
@@ -210,6 +212,7 @@ void WebApiHuaweiClass::onAdminPost(AsyncWebServerRequest* request)
     config.Huawei.Enabled = root["enabled"].as<bool>();
     config.Huawei.VerboseLogging = root["verbose_logging"];
     config.Huawei.CAN_Controller_Frequency = root["can_controller_frequency"].as<uint32_t>();
+    config.Huawei.Max_Current_Multiplier = root["max_current_multiplier"];
     config.Huawei.Auto_Power_Enabled = root["auto_power_enabled"].as<bool>();
     config.Huawei.Auto_Power_BatterySoC_Limits_Enabled = root["auto_power_batterysoc_limits_enabled"].as<bool>();
     config.Huawei.Emergency_Charge_Enabled = root["emergency_charge_enabled"].as<bool>();

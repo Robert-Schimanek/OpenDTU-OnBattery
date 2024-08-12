@@ -249,6 +249,7 @@ struct CONFIG_T {
         bool Enabled;
         bool VerboseLogging;
         uint32_t CAN_Controller_Frequency;
+        uint8_t Max_Current_Multiplier;
         bool Auto_Power_Enabled;
         bool Auto_Power_BatterySoC_Limits_Enabled;
         bool Emergency_Charge_Enabled;
