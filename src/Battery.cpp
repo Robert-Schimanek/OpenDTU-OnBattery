@@ -5,7 +5,7 @@
 #include "JkBmsController.h"
 #include "VictronSmartShunt.h"
 #include "MqttBattery.h"
-#include "SerialPortManager.h"
+#include "PytesCanReceiver.h"
 
 BatteryClass Battery;
 
@@ -39,7 +39,6 @@ void BatteryClass::updateSettings()
         _upProvider->deinit();
         _upProvider = nullptr;
     }
-    SerialPortManager.invalidateBatteryPort();
 
     CONFIG_T& config = Configuration.get();
     if (!config.Battery.Enabled) { return; }
@@ -59,23 +58,15 @@ void BatteryClass::updateSettings()
         case 3:
             _upProvider = std::make_unique<VictronSmartShunt>();
             break;
+        case 4:
+            _upProvider = std::make_unique<PytesCanReceiver>();
+            break;
         default:
-            MessageOutput.printf("Unknown battery provider: %d\r\n", config.Battery.Provider);
+            MessageOutput.printf("[Battery] Unknown provider: %d\r\n", config.Battery.Provider);
             return;
     }
 
-    if(_upProvider->usesHwPort2()) {
-        if (!SerialPortManager.allocateBatteryPort(2)) {
-            MessageOutput.printf("[Battery] Serial port %d already in use. Initialization aborted!\r\n", 2);
-            _upProvider = nullptr;
-            return;
-        }
-    }
-
-    if (!_upProvider->init(verboseLogging)) {
-        SerialPortManager.invalidateBatteryPort();
-        _upProvider = nullptr;
-    }
+    if (!_upProvider->init(verboseLogging)) { _upProvider = nullptr; }
 }
 
 void BatteryClass::loop()
