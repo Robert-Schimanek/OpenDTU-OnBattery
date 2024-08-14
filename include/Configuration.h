@@ -128,6 +128,17 @@ using PowerMeterHttpSmlConfig = struct POWERMETER_HTTP_SML_CONFIG_T;
 
 enum BatteryVoltageUnit { Volts = 0, DeciVolts = 1, CentiVolts = 2, MilliVolts = 3 };
 
+struct POWERMETER_CONFIG_T {
+    bool Enabled;
+    bool VerboseLogging;
+    uint32_t Source;
+    PowerMeterMqttConfig Mqtt;
+    PowerMeterSerialSdmConfig SerialSdm;
+    PowerMeterHttpJsonConfig HttpJson;
+    PowerMeterHttpSmlConfig HttpSml;
+};
+using PowerMeterConfig = struct POWERMETER_CONFIG_T;
+
 struct CONFIG_T {
     struct {
         uint32_t Version;
@@ -238,15 +249,11 @@ struct CONFIG_T {
         bool UpdatesOnly;
     } Vedirect;
 
-    struct PowerMeterConfig {
-        bool Enabled;
-        bool VerboseLogging;
-        uint32_t Source;
-        PowerMeterMqttConfig Mqtt;
-        PowerMeterSerialSdmConfig SerialSdm;
-        PowerMeterHttpJsonConfig HttpJson;
-        PowerMeterHttpSmlConfig HttpSml;
-    } PowerMeter;
+    POWERMETER_CONFIG_T PowerMeter;
+
+    POWERMETER_CONFIG_T PowerMeterInverter;
+
+    POWERMETER_CONFIG_T PowerMeterCharger;
 
     struct {
         bool Enabled;
@@ -323,6 +330,7 @@ public:
     bool write();
     void migrate();
     CONFIG_T& get();
+    PowerMeterConfig& getByName(const std::string& name);
 
     INVERTER_CONFIG_T* getFreeInverterSlot();
     INVERTER_CONFIG_T* getInverterConfig(const uint64_t serial);
@@ -339,6 +347,7 @@ public:
     static void deserializePowerMeterSerialSdmConfig(JsonObject const& source, PowerMeterSerialSdmConfig& target);
     static void deserializePowerMeterHttpJsonConfig(JsonObject const& source, PowerMeterHttpJsonConfig& target);
     static void deserializePowerMeterHttpSmlConfig(JsonObject const& source, PowerMeterHttpSmlConfig& target);
+
 };
 
 extern ConfigurationClass Configuration;

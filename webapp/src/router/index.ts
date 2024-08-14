@@ -10,6 +10,8 @@ import FirmwareUpgradeView from '@/views/FirmwareUpgradeView.vue';
 import HomeView from '@/views/HomeView.vue';
 import VedirectAdminView from '@/views/VedirectAdminView.vue';
 import PowerMeterAdminView from '@/views/PowerMeterAdminView.vue';
+import PowerMeterInverterAdminView from '@/views/PowerMeterInverterAdminView.vue';
+import PowerMeterChargerAdminView from '@/views/PowerMeterChargerAdminView.vue';
 import PowerLimiterAdminView from '@/views/PowerLimiterAdminView.vue';
 import VedirectInfoView from '@/views/VedirectInfoView.vue';
 import InverterAdminView from '@/views/InverterAdminView.vue';
@@ -98,6 +100,16 @@ const router = createRouter({
             path: '/settings/powermeter',
             name: 'Power meter Settings',
             component: PowerMeterAdminView,
+        },
+        {
+            path: '/settings/powermeterinverter',
+            name: 'Inverter Power Meter Settings',
+            component: PowerMeterInverterAdminView,
+        },
+        {
+            path: '/settings/powermetercharger',
+            name: 'Charger Power Meter Settings',
+            component: PowerMeterChargerAdminView,
         },
         {
             path: '/settings/powerlimiter',

@@ -43,19 +43,6 @@
                     </div>
                 </div>
 
-                <div class="row mb-3" v-show="acChargerConfigList.enabled">
-                    <label class="col-sm-4 col-form-label">
-                        {{ $t('acchargeradmin.ChargerModel') }}
-                    </label>
-                    <div class="col-sm-8">
-                        <select class="form-select" v-model="acChargerConfigList.max_current_multiplier">
-                            <option v-for="chargerModel in chargerModelList" :key="chargerModel.key" :value="chargerModel.value">
-                                {{ chargerModel.key }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-
                 <InputElement
                     v-show="acChargerConfigList.enabled"
                     :label="$t('acchargeradmin.VerboseLogging')"
@@ -71,11 +58,6 @@
                     type="checkbox"
                     wide
                 />
-
-                <InputElement v-show="acChargerConfigList.enabled && acChargerConfigList.auto_power_enabled"
-                              :label="$t('acchargeradmin.ChargerMeterOverChargerStats')"
-                              v-model="acChargerConfigList.charger_meter_not_charger"
-                              type="checkbox" wide/>
 
                 <InputElement v-show="acChargerConfigList.enabled && acChargerConfigList.auto_power_enabled"
                               :label="$t('acchargeradmin.ChargerMeterOverChargerStats')"

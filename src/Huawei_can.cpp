@@ -5,7 +5,7 @@
 #include "Battery.h"
 #include "Huawei_can.h"
 #include "MessageOutput.h"
-#include "PowerMeter.h"
+#include "PowerMeters.h"
 #include "PowerLimiter.h"
 #include "Configuration.h"
 #include "Battery.h"
@@ -387,27 +387,19 @@ void HuaweiCanClass::loop()
     }
 
     // Deactivate autopower if power meter update is older than 10 seconds
-    if (PowerMeter.getLastPowerMeterUpdate() < ( millis() - 10000 ) )  {
+    if (PowerMeter.getLastUpdate() < ( millis() - 10000 ) )  {
         _autoPowerEnabled = false;
         _setValue(0, HUAWEI_ONLINE_CURRENT);
         MessageOutput.printf("[HuaweiCanClass::loop] No updates from powermeter in the last 10 seconds, disable\r\n");
         return;
     }
 
-    // Deactivate autopower if power meter update is older than 10 seconds
-    if (PowerMeter.getLastPowerMeterUpdate() < ( millis() - 10000 ) )  {
-        _autoPowerEnabled = false;
-        _setValue(0, HUAWEI_ONLINE_CURRENT);
-        MessageOutput.printf("[HuaweiCanClass::loop] No updates from powermeter in the last 10 seconds, disable\r\n");
-        return;
-    }
-
-    if (PowerMeter.getLastPowerMeterUpdate() > _lastPowerMeterUpdateReceivedMillis &&
+    if (PowerMeter.getLastUpdate() > _lastPowerMeterUpdateReceivedMillis &&
         _autoPowerEnabledCounter > 0) {
         // We have received a new PowerMeter value. Also we're _autoPowerEnabled
         // So we're good to calculate a new limit
 
-      _lastPowerMeterUpdateReceivedMillis = PowerMeter.getLastPowerMeterUpdate();
+      _lastPowerMeterUpdateReceivedMillis = PowerMeter.getLastUpdate();
 
       // Calculate new power limit
       float newPowerLimit = -1 * round(PowerMeter.getPowerTotal());
@@ -417,9 +409,8 @@ void HuaweiCanClass::loop()
       if (!config.Huawei.Charger_Meter_Not_Charger) {
         newPowerLimit += _rp.output_power + config.Huawei.Auto_Power_Target_Power_Consumption / efficiency;
       } else {
-        newPowerLimit += ( PowerMeter.getPowerCharger() + config.Huawei.Auto_Power_Target_Power_Consumption ) / efficiency;
+        newPowerLimit += ( PowerMeterCharger.getPowerTotal() + config.Huawei.Auto_Power_Target_Power_Consumption ) / efficiency;
       }
-
 
       if (verboseLogging){
         MessageOutput.printf("[HuaweiCanClass::loop] newPowerLimit: %f, output_power: %f \r\n", newPowerLimit, _rp.output_power);

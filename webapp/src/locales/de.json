@@ -11,6 +11,8 @@
         "DeviceManager": "Hardware",
         "VedirectSettings": "VE.Direct",
         "PowerMeterSettings": "Stromzähler",
+        "PowerMeterInverterSettings": "Lestungsmessung Wechselrichter",
+        "PowerMeterChargerSettings": "Leistungsmessung Ladegerät",
         "BatterySettings": "Batterie",
         "AcChargerSettings": "AC Ladegerät",
         "ConfigManagement": "Konfigurationsverwaltung",
@@ -592,6 +594,12 @@
         "testHttpSmlHeader": "Konfiguration testen",
         "testHttpSmlRequest": "HTTP(S)-Anfrage senden und Antwort verarbeiten",
         "HTTP_SML": "HTTP(S) + SML - Konfiguration"
+    },
+    "powermeterinverteradmin": {
+        "PowerMeterSettings": "Externe Leistungsmessung Wechselrichter - Einstellungen"
+    },
+    "powermeterchargeradmin": {
+        "PowerMeterSettings": "Externe Leistungsmessung Ladegerät - Einstellungen"
     },
     "httprequestsettings": {
         "url": "URL",

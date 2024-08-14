@@ -8,8 +8,6 @@
 #include "PowerMeterSerialSml.h"
 #include "PowerMeterUdpSmaHomeManager.h"
 
-PowerMeterClass PowerMeter;
-
 void PowerMeterClass::init(Scheduler& scheduler)
 {
     scheduler.addTask(_loopTask);
@@ -26,7 +24,8 @@ void PowerMeterClass::updateSettings()
 
     if (_upProvider) { _upProvider.reset(); }
 
-    auto const& pmcfg = Configuration.get().PowerMeter;
+    auto const& pmcfg = Configuration.getByName(_name);
+
 
     if (!pmcfg.Enabled) { return; }
 

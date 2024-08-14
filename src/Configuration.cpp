@@ -222,6 +222,41 @@ bool ConfigurationClass::write()
     JsonObject powermeter_http_sml = powermeter["http_sml"].to<JsonObject>();
     serializePowerMeterHttpSmlConfig(config.PowerMeter.HttpSml, powermeter_http_sml);
 
+    JsonObject powermeter_inverter = doc["powermeter_inverter"].to<JsonObject>();
+    powermeter_inverter["enabled"] = config.PowerMeterInverter.Enabled;
+    powermeter_inverter["verbose_logging"] = config.PowerMeterInverter.VerboseLogging;
+    powermeter_inverter["source"] = config.PowerMeterInverter.Source;
+
+    JsonObject powermeter_inverter_mqtt = powermeter_inverter["mqtt"].to<JsonObject>();
+    serializePowerMeterMqttConfig(config.PowerMeterInverter.Mqtt, powermeter_inverter_mqtt);
+
+    JsonObject powermeter_inverter_serial_sdm = powermeter_inverter["serial_sdm"].to<JsonObject>();
+    serializePowerMeterSerialSdmConfig(config.PowerMeterInverter.SerialSdm, powermeter_inverter_serial_sdm);
+
+    JsonObject powermeter_inverter_http_json = powermeter_inverter["http_json"].to<JsonObject>();
+    serializePowerMeterHttpJsonConfig(config.PowerMeterInverter.HttpJson, powermeter_inverter_http_json);
+
+    JsonObject powermeter_inverter_http_sml = powermeter_inverter["http_sml"].to<JsonObject>();
+    serializePowerMeterHttpSmlConfig(config.PowerMeterInverter.HttpSml, powermeter_inverter_http_sml);
+
+    // PowerMeterCharger Configuration
+    JsonObject powermeter_charger = doc["powermeter_charger"].to<JsonObject>();
+    powermeter_charger["enabled"] = config.PowerMeterCharger.Enabled;
+    powermeter_charger["verbose_logging"] = config.PowerMeterCharger.VerboseLogging;
+    powermeter_charger["source"] = config.PowerMeterCharger.Source;
+
+    JsonObject powermeter_charger_mqtt = powermeter_charger["mqtt"].to<JsonObject>();
+    serializePowerMeterMqttConfig(config.PowerMeterCharger.Mqtt, powermeter_charger_mqtt);
+
+    JsonObject powermeter_charger_serial_sdm = powermeter_charger["serial_sdm"].to<JsonObject>();
+    serializePowerMeterSerialSdmConfig(config.PowerMeterCharger.SerialSdm, powermeter_charger_serial_sdm);
+
+    JsonObject powermeter_charger_http_json = powermeter_charger["http_json"].to<JsonObject>();
+    serializePowerMeterHttpJsonConfig(config.PowerMeterCharger.HttpJson, powermeter_charger_http_json);
+
+    JsonObject powermeter_charger_http_sml = powermeter_charger["http_sml"].to<JsonObject>();
+    serializePowerMeterHttpSmlConfig(config.PowerMeterCharger.HttpSml, powermeter_charger_http_sml);
+
     JsonObject powerlimiter = doc["powerlimiter"].to<JsonObject>();
     powerlimiter["enabled"] = config.PowerLimiter.Enabled;
     powerlimiter["verbose_logging"] = config.PowerLimiter.VerboseLogging;
@@ -578,6 +613,36 @@ bool ConfigurationClass::read()
         target.IndividualRequests = powermeter["http_individual_requests"] | false;
     }
 
+    JsonObject powermetercharger = doc["powermeter_charger"];
+    config.PowerMeterCharger.Enabled = powermetercharger["enabled"] | POWERMETER_CHARGER_ENABLED;
+    config.PowerMeterCharger.VerboseLogging = powermetercharger["verbose_logging"] | VERBOSE_LOGGING;
+    config.PowerMeterCharger.Source = powermetercharger["source"] | POWERMETER_CHARGER_SOURCE;
+
+    deserializePowerMeterMqttConfig(powermetercharger["mqtt"], config.PowerMeterCharger.Mqtt);
+
+    deserializePowerMeterSerialSdmConfig(powermetercharger["serial_sdm"], config.PowerMeterCharger.SerialSdm);
+
+    JsonObject powermetercharger_http_json = powermetercharger["http_json"];
+    deserializePowerMeterHttpJsonConfig(powermetercharger_http_json, config.PowerMeterCharger.HttpJson);
+
+    JsonObject powermetercharger_sml = powermetercharger["http_sml"];
+    deserializePowerMeterHttpSmlConfig(powermetercharger_sml, config.PowerMeterCharger.HttpSml);
+
+    JsonObject powermeterinverter = doc["powermeter_inverter"];
+    config.PowerMeterInverter.Enabled = powermeterinverter["enabled"] | POWERMETER_INVERTER_ENABLED;
+    config.PowerMeterInverter.VerboseLogging = powermeterinverter["verbose_logging"] | VERBOSE_LOGGING;
+    config.PowerMeterInverter.Source = powermeterinverter["source"] | POWERMETER_INVERTER_SOURCE;
+
+    deserializePowerMeterMqttConfig(powermeterinverter["mqtt"], config.PowerMeterInverter.Mqtt);
+
+    deserializePowerMeterSerialSdmConfig(powermeterinverter["serial_sdm"], config.PowerMeterInverter.SerialSdm);
+
+    JsonObject powermeterinverter_http_json = powermeterinverter["http_json"];
+    deserializePowerMeterHttpJsonConfig(powermeterinverter_http_json, config.PowerMeterInverter.HttpJson);
+
+    JsonObject powermeterinverter_sml = powermeterinverter["http_sml"];
+    deserializePowerMeterHttpSmlConfig(powermeterinverter_sml, config.PowerMeterInverter.HttpSml);
+
     JsonObject powerlimiter = doc["powerlimiter"];
     config.PowerLimiter.Enabled = powerlimiter["enabled"] | POWERLIMITER_ENABLED;
     config.PowerLimiter.VerboseLogging = powerlimiter["verbose_logging"] | VERBOSE_LOGGING;
@@ -715,6 +780,21 @@ void ConfigurationClass::migrate()
 CONFIG_T& ConfigurationClass::get()
 {
     return config;
+}
+
+PowerMeterConfig& ConfigurationClass::getByName(const std::string& name) {
+
+    CONFIG_T& config = get();
+
+    if (name == "PowerMeter") {
+        return config.PowerMeter;
+    } else if (name == "PowerMeterInverter") {
+        return config.PowerMeterInverter;
+    } else if (name == "PowerMeterCharger") {
+        return config.PowerMeterCharger;
+    } else {
+        throw std::runtime_error("Invalid PowerMeter name: " + name);
+    }
 }
 
 INVERTER_CONFIG_T* ConfigurationClass::getFreeInverterSlot()

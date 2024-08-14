@@ -11,6 +11,8 @@
         "DeviceManager": "Device-Manager",
         "VedirectSettings": "VE.Direct",
         "PowerMeterSettings": "Power Meter",
+        "PowerMeterInverterSettings": "Power Meter Inverter",
+        "PowerMeterChargerSettings": "Power Meter Charger",
         "BatterySettings": "Battery",
         "AcChargerSettings": "AC Charger",
         "ConfigManagement": "Config Management",
@@ -597,6 +599,12 @@
         "testHttpSmlHeader": "Test Configuration",
         "testHttpSmlRequest": "Send HTTP(S) request and process response",
         "HTTP_SML": "Configuration"
+    },
+    "powermeterinverteradmin": {
+        "PowerMeterSettings": "External Power Meter Inverter Settings"
+    },
+    "powermeterchargeradmin": {
+        "PowerMeterSettings": "External Power Meter Charger Settings"
     },
     "httprequestsettings": {
         "url": "URL",
