@@ -145,12 +145,9 @@ void WebApiHuaweiClass::onPost(AsyncWebServerRequest* request)
     WebApi.sendJsonResponse(request, response, __FUNCTION__, __LINE__);
 }
 
-
-
-
 void WebApiHuaweiClass::onAdminGet(AsyncWebServerRequest* request)
 {
-    if (!WebApi.checkCredentialsReadonly(request)) {
+    if (!WebApi.checkCredentials(request)) {
         return;
     }
 

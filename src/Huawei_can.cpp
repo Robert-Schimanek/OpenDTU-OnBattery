@@ -394,6 +394,14 @@ void HuaweiCanClass::loop()
         return;
     }
 
+    // Deactivate autopower if power meter update is older than 10 seconds
+    if (PowerMeter.getLastPowerMeterUpdate() < ( millis() - 10000 ) )  {
+        _autoPowerEnabled = false;
+        _setValue(0, HUAWEI_ONLINE_CURRENT);
+        MessageOutput.printf("[HuaweiCanClass::loop] No updates from powermeter in the last 10 seconds, disable\r\n");
+        return;
+    }
+
     if (PowerMeter.getLastPowerMeterUpdate() > _lastPowerMeterUpdateReceivedMillis &&
         _autoPowerEnabledCounter > 0) {
         // We have received a new PowerMeter value. Also we're _autoPowerEnabled
