@@ -6,16 +6,22 @@
 #include "VeDirectFrameHandler.h"
 #include "ArduinoJson.h"
 #include "AsyncJson.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttHandleVedirectHass.h"
 #include "MqttHandleHass.h"
 #include "MqttSettings.h"
 #include "PowerLimiter.h"
-#include "PowerMeter.h"
+#include <PowerMeters.h>
 #include "PowerMeterHttpJson.h"
 #include "PowerMeterHttpSml.h"
 #include "WebApi.h"
 #include "helper.h"
+
+
+WebApiPowerMeterClass::WebApiPowerMeterClass(const std::string& name, const std::string& baseUrl)
+    : _name(name), _baseUrl(baseUrl)
+{
+}
 
 void WebApiPowerMeterClass::init(AsyncWebServer& server, Scheduler& scheduler)
 {
@@ -23,11 +29,24 @@ void WebApiPowerMeterClass::init(AsyncWebServer& server, Scheduler& scheduler)
 
     _server = &server;
 
-    _server->on("/api/powermeter/status", HTTP_GET, std::bind(&WebApiPowerMeterClass::onStatus, this, _1));
-    _server->on("/api/powermeter/config", HTTP_GET, std::bind(&WebApiPowerMeterClass::onAdminGet, this, _1));
-    _server->on("/api/powermeter/config", HTTP_POST, std::bind(&WebApiPowerMeterClass::onAdminPost, this, _1));
-    _server->on("/api/powermeter/testhttpjsonrequest", HTTP_POST, std::bind(&WebApiPowerMeterClass::onTestHttpJsonRequest, this, _1));
-    _server->on("/api/powermeter/testhttpsmlrequest", HTTP_POST, std::bind(&WebApiPowerMeterClass::onTestHttpSmlRequest, this, _1));
+    _server->on((_baseUrl + "/status").c_str(), HTTP_GET, std::bind(&WebApiPowerMeterClass::onStatus, this, _1));
+    _server->on((_baseUrl + "/config").c_str(), HTTP_GET, std::bind(&WebApiPowerMeterClass::onAdminGet, this, _1));
+    _server->on((_baseUrl + "/config").c_str(), HTTP_POST, std::bind(&WebApiPowerMeterClass::onAdminPost, this, _1));
+    _server->on((_baseUrl + "/testhttpjsonrequest").c_str(), HTTP_POST, std::bind(&WebApiPowerMeterClass::onTestHttpJsonRequest, this, _1));
+    _server->on((_baseUrl + "/testhttpsmlrequest").c_str(), HTTP_POST, std::bind(&WebApiPowerMeterClass::onTestHttpSmlRequest, this, _1));
+
+}
+
+void WebApiPowerMeterClass::updateSettings() {
+    if (_name == "PowerMeter") {
+        PowerMeter.updateSettings();
+    } else if (_name == "PowerMeterInverter") {
+        PowerMeterInverter.updateSettings();
+    } else if (_name == "PowerMeterCharger") {
+        PowerMeterCharger.updateSettings();
+    } else {
+        Serial.println("Error: Unknown PowerMeter type");
+    }
 }
 
 void WebApiPowerMeterClass::onStatus(AsyncWebServerRequest* request)
@@ -38,23 +57,23 @@ void WebApiPowerMeterClass::onStatus(AsyncWebServerRequest* request)
 
     AsyncJsonResponse* response = new AsyncJsonResponse();
     auto& root = response->getRoot();
-    const CONFIG_T& config = Configuration.get();
+    auto const& pmcfg = Configuration.getByName(_name);
 
-    root["enabled"] = config.PowerMeter.Enabled;
-    root["verbose_logging"] = config.PowerMeter.VerboseLogging;
-    root["source"] = config.PowerMeter.Source;
+    root["enabled"] = pmcfg.Enabled;
+    root["verbose_logging"] = pmcfg.VerboseLogging;
+    root["source"] = pmcfg.Source;
 
     auto mqtt = root["mqtt"].to<JsonObject>();
-    Configuration.serializePowerMeterMqttConfig(config.PowerMeter.Mqtt, mqtt);
+    Configuration.serializePowerMeterMqttConfig(pmcfg.Mqtt, mqtt);
 
     auto serialSdm = root["serial_sdm"].to<JsonObject>();
-    Configuration.serializePowerMeterSerialSdmConfig(config.PowerMeter.SerialSdm, serialSdm);
+    Configuration.serializePowerMeterSerialSdmConfig(pmcfg.SerialSdm, serialSdm);
 
     auto httpJson = root["http_json"].to<JsonObject>();
-    Configuration.serializePowerMeterHttpJsonConfig(config.PowerMeter.HttpJson, httpJson);
+    Configuration.serializePowerMeterHttpJsonConfig(pmcfg.HttpJson, httpJson);
 
     auto httpSml = root["http_sml"].to<JsonObject>();
-    Configuration.serializePowerMeterHttpSmlConfig(config.PowerMeter.HttpSml, httpSml);
+    Configuration.serializePowerMeterHttpSmlConfig(pmcfg.HttpSml, httpSml);
 
     WebApi.sendJsonResponse(request, response, __FUNCTION__, __LINE__);
 }
@@ -151,28 +170,28 @@ void WebApiPowerMeterClass::onAdminPost(AsyncWebServerRequest* request)
         }
     }
 
-    CONFIG_T& config = Configuration.get();
-    config.PowerMeter.Enabled = root["enabled"].as<bool>();
-    config.PowerMeter.VerboseLogging = root["verbose_logging"].as<bool>();
-    config.PowerMeter.Source = root["source"].as<uint8_t>();
+    auto& pmcfg = Configuration.getByName(_name);
+    pmcfg.Enabled = root["enabled"].as<bool>();
+    pmcfg.VerboseLogging = root["verbose_logging"].as<bool>();
+    pmcfg.Source = root["source"].as<uint8_t>();
 
     Configuration.deserializePowerMeterMqttConfig(root["mqtt"].as<JsonObject>(),
-            config.PowerMeter.Mqtt);
+            pmcfg.Mqtt);
 
     Configuration.deserializePowerMeterSerialSdmConfig(root["serial_sdm"].as<JsonObject>(),
-            config.PowerMeter.SerialSdm);
+            pmcfg.SerialSdm);
 
     Configuration.deserializePowerMeterHttpJsonConfig(root["http_json"].as<JsonObject>(),
-            config.PowerMeter.HttpJson);
+            pmcfg.HttpJson);
 
     Configuration.deserializePowerMeterHttpSmlConfig(root["http_sml"].as<JsonObject>(),
-            config.PowerMeter.HttpSml);
+            pmcfg.HttpSml);
 
     WebApi.writeConfig(retMsg);
 
     WebApi.sendJsonResponse(request, response, __FUNCTION__, __LINE__);
 
-    PowerMeter.updateSettings();
+    updateSettings();
 }
 
 void WebApiPowerMeterClass::onTestHttpJsonRequest(AsyncWebServerRequest* request)

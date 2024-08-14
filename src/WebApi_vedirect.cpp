@@ -6,7 +6,7 @@
 #include "VictronMppt.h"
 #include "ArduinoJson.h"
 #include "AsyncJson.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "WebApi.h"
 #include "WebApi_errors.h"
 #include "helper.h"
@@ -28,7 +28,7 @@ void WebApiVedirectClass::onVedirectStatus(AsyncWebServerRequest* request)
     if (!WebApi.checkCredentialsReadonly(request)) {
         return;
     }
-    
+
     AsyncJsonResponse* response = new AsyncJsonResponse();
     auto& root = response->getRoot();
     const CONFIG_T& config = Configuration.get();

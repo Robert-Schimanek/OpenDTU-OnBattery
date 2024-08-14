@@ -3,7 +3,7 @@
  * Copyright (C) 2022 - 2023 Thomas Basler and others
  */
 #include "NtpSettings.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include <Arduino.h>
 #include <time.h>
 

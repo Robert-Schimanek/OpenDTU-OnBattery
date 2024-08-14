@@ -4,7 +4,7 @@
  */
 #include "WebApi_ws_Huawei.h"
 #include "AsyncJson.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Huawei_can.h"
 #include "MessageOutput.h"
 #include "Utils.h"

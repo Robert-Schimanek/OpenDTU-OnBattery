@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_sysstatus.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "NetworkSettings.h"
 #include "PinMapping.h"
 #include "WebApi.h"

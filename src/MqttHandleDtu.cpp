@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "MqttHandleDtu.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
 #include <Hoymiles.h>

@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "NetworkSettings.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "PinMapping.h"
 #include "Utils.h"

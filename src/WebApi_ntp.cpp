@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_ntp.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "NtpSettings.h"
 #include "SunPosition.h"
 #include "WebApi.h"

@@ -4,13 +4,19 @@
 #include <ESPAsyncWebServer.h>
 #include <TaskSchedulerDeclarations.h>
 #include <ArduinoJson.h>
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 
 class WebApiPowerMeterClass {
 public:
+    WebApiPowerMeterClass(const std::string& name, const std::string& baseUrl);
+
     void init(AsyncWebServer& server, Scheduler& scheduler);
+    void updateSettings();
 
 private:
+    std::string _name;
+    std::string _baseUrl;
+
     void onStatus(AsyncWebServerRequest* request);
     void onAdminGet(AsyncWebServerRequest* request);
     void onAdminPost(AsyncWebServerRequest* request);

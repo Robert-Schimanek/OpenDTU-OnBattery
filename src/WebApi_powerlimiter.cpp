@@ -6,7 +6,7 @@
 #include "VeDirectFrameHandler.h"
 #include "ArduinoJson.h"
 #include "AsyncJson.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttHandlePowerLimiterHass.h"
 #include "PowerLimiter.h"
 #include "WebApi.h"

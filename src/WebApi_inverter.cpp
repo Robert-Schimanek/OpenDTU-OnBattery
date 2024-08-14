@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_inverter.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttHandleHass.h"
 #include "WebApi.h"
 #include "WebApi_errors.h"

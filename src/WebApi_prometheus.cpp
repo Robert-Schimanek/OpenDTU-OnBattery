@@ -4,7 +4,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_prometheus.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "NetworkSettings.h"
 #include "WebApi.h"

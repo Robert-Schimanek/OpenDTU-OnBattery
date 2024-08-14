@@ -69,6 +69,8 @@ private:
     WebApiNtpClass _webApiNtp;
     WebApiPowerClass _webApiPower;
     WebApiPowerMeterClass _webApiPowerMeter;
+    WebApiPowerMeterClass _webApiPowerMeterInverter;
+    WebApiPowerMeterClass _webApiPowerMeterCharger;
     WebApiPowerLimiterClass _webApiPowerLimiter;
     WebApiPrometheusClass _webApiPrometheus;
     WebApiSecurityClass _webApiSecurity;

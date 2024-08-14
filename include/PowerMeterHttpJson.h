@@ -9,7 +9,7 @@
 #include <mutex>
 #include <stdint.h>
 #include "HttpGetter.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "PowerMeterProvider.h"
 
 using Auth_t = HttpRequestConfig::Auth;

@@ -2,7 +2,7 @@
 /*
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Datastore.h"
 #include "Display_Graphic.h"
 #include "InverterSettings.h"
@@ -31,6 +31,7 @@
 #include "Utils.h"
 #include "WebApi.h"
 #include "PowerMeter.h"
+#include <PowerMeters.h>
 #include "PowerLimiter.h"
 #include "defaults.h"
 #include <Arduino.h>
@@ -178,10 +179,12 @@ void setup()
 
     VictronMppt.init(scheduler);
 
-    // Power meter
     PowerMeter.init(scheduler);
 
-    // Dynamic power limiter
+    PowerMeterInverter.init(scheduler);
+
+    PowerMeterCharger.init(scheduler);
+
     PowerLimiter.init(scheduler);
 
     // Initialize Huawei AC-charger PSU / CAN bus

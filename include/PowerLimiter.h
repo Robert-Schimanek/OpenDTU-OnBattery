@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #pragma once
 
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include <espMqttClient.h>
 #include <Arduino.h>
 #include <Hoymiles.h>

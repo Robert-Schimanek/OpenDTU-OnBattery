@@ -6,8 +6,9 @@
 #include "Utils.h"
 #include "Battery.h"
 #include "PowerMeter.h"
+#include <PowerMeters.h>
 #include "PowerLimiter.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
 #include "Huawei_can.h"
@@ -189,7 +190,7 @@ void PowerLimiterClass::loop()
 
     if (!_oInverterStatsMillis.has_value()) {
         if (config.PowerLimiter.DoNotWaitForStats) {
-            _oInverterStatsMillis = PowerMeter.getLastPowerMeterInverterUpdate();
+            _oInverterStatsMillis = PowerMeterInverter.getLastUpdate();
         } else if (!config.PowerLimiter.DoNotWaitForStats) {
             auto lastStats = _inverter->Statistics()->getLastUpdate();
             if (lastStats <= lastUpdateCmd) {
@@ -206,7 +207,7 @@ void PowerLimiterClass::loop()
     // arrives. this can be the case for readings provided by networked meter
     // readers, where a packet needs to travel through the network for some
     // time after the actual measurement was done by the reader.
-    if (!config.PowerLimiter.DoNotWaitForStats && PowerMeter.isDataValid() && PowerMeter.getLastPowerMeterUpdate() <= (*_oInverterStatsMillis + 2000)) {
+    if (!config.PowerLimiter.DoNotWaitForStats && PowerMeter.isDataValid() && PowerMeter.getLastUpdate() <= (*_oInverterStatsMillis + 2000)) {
         return announceStatus(Status::PowerMeterPending);
     }
 
@@ -463,8 +464,8 @@ bool PowerLimiterClass::calcPowerLimit(std::shared_ptr<InverterAbstract> inverte
     //
     auto inverterOutput = 0;
     // Take inverter power meter if configured and more recent than 1,5 seconds
-    if (config.PowerLimiter.InverterMeterNotStats && ( PowerMeter.getLastPowerMeterInverterUpdate() > (millis() - 1500) )) {
-        inverterOutput = static_cast<int32_t>(PowerMeter.getPowerInverter());
+    if (config.PowerLimiter.InverterMeterNotStats && ( PowerMeterInverter.getLastUpdate() > (millis() - 1500) )) {
+        inverterOutput = static_cast<int32_t>(PowerMeterInverter.getPowerTotal());
     } else {
         // if the last external power meter update from the inverter ist older than 1,5 seconds take the value from inverter statistics
         inverterOutput = static_cast<int32_t>(inverter->Statistics()->getChannelFieldValue(TYPE_AC, CH0, FLD_PAC));

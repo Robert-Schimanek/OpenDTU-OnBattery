@@ -2,7 +2,7 @@
 #pragma once
 
 #include <atomic>
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 
 class PowerMeterProvider {
 public:

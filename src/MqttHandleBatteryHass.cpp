@@ -3,7 +3,7 @@
 #include "PylontechCanReceiver.h"
 #include "Battery.h"
 #include "MqttHandleBatteryHass.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttSettings.h"
 #include "MqttHandleHass.h"
 #include "Utils.h"

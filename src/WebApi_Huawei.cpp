@@ -4,7 +4,7 @@
  */
 #include "WebApi_Huawei.h"
 #include "Huawei_can.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "PinMapping.h"
 #include "WebApi.h"

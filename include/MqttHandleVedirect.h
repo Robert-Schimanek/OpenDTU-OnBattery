@@ -2,7 +2,7 @@
 #pragma once
 
 #include "VeDirectMpptController.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include <Arduino.h>
 #include <map>
 #include <TaskSchedulerDeclarations.h>

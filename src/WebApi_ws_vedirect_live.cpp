@@ -4,7 +4,7 @@
  */
 #include "WebApi_ws_vedirect_live.h"
 #include "AsyncJson.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "Utils.h"
 #include "WebApi.h"

@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "PowerMeter.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "PowerMeterHttpJson.h"
 #include "PowerMeterHttpSml.h"
 #include "PowerMeterMqtt.h"
 #include "PowerMeterSerialSdm.h"
 #include "PowerMeterSerialSml.h"
 #include "PowerMeterUdpSmaHomeManager.h"
-
-PowerMeterClass PowerMeter;
 
 void PowerMeterClass::init(Scheduler& scheduler)
 {
@@ -26,7 +24,8 @@ void PowerMeterClass::updateSettings()
 
     if (_upProvider) { _upProvider.reset(); }
 
-    auto const& pmcfg = Configuration.get().PowerMeter;
+    auto const& pmcfg = Configuration.getByName(_name);
+
 
     if (!pmcfg.Enabled) { return; }
 

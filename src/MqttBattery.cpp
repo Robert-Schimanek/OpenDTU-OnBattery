@@ -1,6 +1,6 @@
 #include <functional>
 
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttBattery.h"
 #include "MqttSettings.h"
 #include "MessageOutput.h"

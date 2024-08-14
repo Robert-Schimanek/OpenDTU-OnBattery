@@ -6,7 +6,7 @@
 #include "ArduinoJson.h"
 #include "AsyncJson.h"
 #include "Battery.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttHandleBatteryHass.h"
 #include "MqttHandlePowerLimiterHass.h"
 #include "WebApi.h"

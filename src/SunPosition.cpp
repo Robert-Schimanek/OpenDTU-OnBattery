@@ -3,7 +3,7 @@
  * Copyright (C) 2023-2024 Thomas Basler and others
  */
 #include "SunPosition.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Utils.h"
 #include <Arduino.h>
 

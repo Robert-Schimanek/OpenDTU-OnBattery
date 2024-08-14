@@ -14,6 +14,8 @@ void PowerMeterProvider::mqttPublish(String const& topic, float const& value) co
 
 void PowerMeterProvider::mqttLoop() const
 {
+    if (!_verboseLogging) { return; }
+
     if (!MqttSettings.getConnected()) { return; }
 
     if (!isDataValid()) { return; }

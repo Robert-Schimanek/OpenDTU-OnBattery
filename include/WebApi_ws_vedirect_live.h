@@ -2,7 +2,7 @@
 #pragma once
 
 #include "ArduinoJson.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include <ESPAsyncWebServer.h>
 #include <TaskSchedulerDeclarations.h>
 #include <VeDirectMpptController.h>

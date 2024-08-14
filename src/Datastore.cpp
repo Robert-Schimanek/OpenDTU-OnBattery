@@ -3,7 +3,7 @@
  * Copyright (C) 2023-2024 Thomas Basler and others
  */
 #include "Datastore.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include <Hoymiles.h>
 
 DatastoreClass Datastore;

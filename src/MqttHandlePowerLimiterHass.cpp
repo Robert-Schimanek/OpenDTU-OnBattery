@@ -4,7 +4,7 @@
  */
 #include "MqttHandlePowerLimiterHass.h"
 #include "MqttHandleHass.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
 #include "MessageOutput.h"

@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include "BatteryStats.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttSettings.h"
 #include "JkBmsDataPoints.h"
 #include "MqttSettings.h"
