@@ -80,4 +80,6 @@ export interface LiveData {
     huawei: Huawei;
     battery: Battery;
     power_meter: PowerMeter;
+    power_meter_inverter: PowerMeter;
+    power_meter_charger: PowerMeter;
 }

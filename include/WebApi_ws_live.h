@@ -33,6 +33,10 @@ private:
     uint32_t _lastPublishHuawei = 0;
     uint32_t _lastPublishBattery = 0;
     uint32_t _lastPublishPowerMeter = 0;
+    uint32_t _lastPublishPowerMeterInverter = 0;
+    uint32_t _lastPublishPowerMeterCharger = 0;
+
+
 
     uint32_t _lastPublishStats[INV_MAX_COUNT] = { 0 };
 
