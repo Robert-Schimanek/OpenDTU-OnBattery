@@ -398,6 +398,8 @@
         "BatteryCharge": "Batterie Ladezustand",
         "BatteryPower": "Batterie Leistung",
         "HomePower": "Leistung / Netz",
+        "InverterPower": "Externe Leistungsmessung Inverter",
+        "ChargerPower": "Externe Leistungsmessung Ladegerät",
         "HuaweiPower": "Huawei AC Leistung"
     },
     "inverterchannelproperty": {

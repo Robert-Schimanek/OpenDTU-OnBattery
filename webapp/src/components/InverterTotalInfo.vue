@@ -90,6 +90,19 @@
                 </h2>
             </CardElement>
         </div>
+        <div class="col" v-if="powerMeterInverterData.enabled">
+            <CardElement centerContent textVariant="text-bg-success" :text="$t('invertertotalinfo.InverterPower')">
+                <h2>
+                    {{
+                        $n(powerMeterInverterData.Power.v, 'decimal', {
+                            minimumFractionDigits: powerMeterInverterData.Power.d,
+                            maximumFractionDigits: powerMeterInverterData.Power.d,
+                        })
+                    }}
+                    <small class="text-muted">{{ powerMeterInverterData.Power.u }}</small>
+                </h2>
+            </CardElement>
+        </div>
         <template v-if="totalBattData.enabled">
             <div class="col">
                 <CardElement
@@ -182,6 +195,19 @@
                 </h2>
             </CardElement>
         </div>
+        <div class="col" v-if="powerMeterChargerData.enabled">
+            <CardElement centerContent textVariant="text-bg-success" :text="$t('invertertotalinfo.ChargerPower')">
+                <h2>
+                    {{
+                        $n(powerMeterChargerData.Power.v, 'decimal', {
+                            minimumFractionDigits: powerMeterChargerData.Power.d,
+                            maximumFractionDigits: powerMeterChargerData.Power.d,
+                        })
+                    }}
+                    <small class="text-muted">{{ powerMeterChargerData.Power.u }}</small>
+                </h2>
+            </CardElement>
+        </div>
     </div>
 </template>
 
@@ -199,6 +225,8 @@ export default defineComponent({
         totalVeData: { type: Object as PropType<Vedirect>, required: true },
         totalBattData: { type: Object as PropType<Battery>, required: true },
         powerMeterData: { type: Object as PropType<PowerMeter>, required: true },
+        powerMeterInverterData: { type: Object as PropType<PowerMeter>, required: true },
+        powerMeterChargerData: { type: Object as PropType<PowerMeter>, required: true },
         huaweiData: { type: Object as PropType<Huawei>, required: true },
     },
 });

@@ -13,6 +13,8 @@
             :totalVeData="liveData.vedirect"
             :totalBattData="liveData.battery"
             :powerMeterData="liveData.power_meter"
+            :powerMeterInverterData="liveData.power_meter_inverter"
+            :powerMeterChargerData="liveData.power_meter_charger"
             :huaweiData="liveData.huawei"
         />
         <div class="row gy-3 mt-0">
@@ -594,6 +596,12 @@ export default defineComponent({
                     }
                     if (typeof newData.power_meter !== 'undefined') {
                         Object.assign(this.liveData.power_meter, newData.power_meter);
+                    }
+                    if (typeof newData.power_meter_inverter !== 'undefined') {
+                        Object.assign(this.liveData.power_meter_inverter, newData.power_meter_inverter);
+                    }
+                    if (typeof newData.power_meter_charger !== 'undefined') {
+                        Object.assign(this.liveData.power_meter_charger, newData.power_meter_charger);
                     }
 
                     if (typeof newData.total === 'undefined') {

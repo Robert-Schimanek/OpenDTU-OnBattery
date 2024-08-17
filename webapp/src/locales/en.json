@@ -400,6 +400,8 @@
         "BatteryCharge": "Battery Charge",
         "BatteryPower": "Battery Power",
         "HomePower": "Grid Power",
+        "InverterPower": "External Power Meter Inverter",
+        "ChargerPower": "External Power Meter Charger",
         "HuaweiPower": "Huawei AC Power"
     },
     "inverterchannelproperty": {

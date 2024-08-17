@@ -122,6 +122,28 @@ void WebApiWsLiveClass::generateOnBatteryJsonResponse(JsonVariant& root, bool al
 
         if (!all) { _lastPublishPowerMeter = millis(); }
     }
+
+    if (all || (PowerMeterInverter.getLastUpdate() - _lastPublishPowerMeterInverter) < halfOfAllMillis) {
+        auto powerMeterInverterObj = root["power_meter_inverter"].to<JsonObject>();
+        powerMeterInverterObj["enabled"] = config.PowerMeterInverter.Enabled;
+
+        if (config.PowerMeterInverter.Enabled) {
+            addTotalField(powerMeterInverterObj, "Power", PowerMeterInverter.getPowerTotal(), "W", 1);
+        }
+
+        if (!all) { _lastPublishPowerMeterInverter = millis(); }
+    }
+
+    if (all || (PowerMeterCharger.getLastUpdate() - _lastPublishPowerMeterCharger) < halfOfAllMillis) {
+        auto powerMeterChargerObj = root["power_meter_charger"].to<JsonObject>();
+        powerMeterChargerObj["enabled"] = config.PowerMeterCharger.Enabled;
+
+        if (config.PowerMeterCharger.Enabled) {
+            addTotalField(powerMeterChargerObj, "Power", PowerMeterCharger.getPowerTotal(), "W", 1);
+        }
+
+        if (!all) { _lastPublishPowerMeterCharger = millis(); }
+    }
 }
 
 void WebApiWsLiveClass::sendOnBatteryStats()
