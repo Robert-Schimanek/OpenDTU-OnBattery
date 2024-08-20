@@ -11,7 +11,7 @@
 #include "MqttHandleHass.h"
 #include "MqttSettings.h"
 #include "PowerLimiter.h"
-#include "PowerMeters.h"
+#include <PowerMeters.h>
 #include "PowerMeterHttpJson.h"
 #include "PowerMeterHttpSml.h"
 #include "WebApi.h"

@@ -9,7 +9,7 @@
 #include "WebApi.h"
 #include "Battery.h"
 #include "Huawei_can.h"
-#include "PowerMeters.h"
+#include <PowerMeters.h>
 #include "VictronMppt.h"
 #include "defaults.h"
 #include <AsyncJson.h>

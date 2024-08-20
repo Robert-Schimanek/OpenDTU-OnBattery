@@ -5,7 +5,7 @@
 #include "Battery.h"
 #include "Huawei_can.h"
 #include "MessageOutput.h"
-#include "PowerMeters.h"
+#include <PowerMeters.h>
 #include "PowerLimiter.h"
 #include "Configuration.h"
 #include "Battery.h"

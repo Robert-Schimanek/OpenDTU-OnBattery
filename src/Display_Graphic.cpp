@@ -4,7 +4,7 @@
  */
 #include "Display_Graphic.h"
 #include "Datastore.h"
-#include "PowerMeters.h"
+#include <PowerMeters.h>
 #include "Configuration.h"
 #include <NetworkSettings.h>
 #include <map>

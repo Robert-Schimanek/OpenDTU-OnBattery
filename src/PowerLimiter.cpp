@@ -6,7 +6,7 @@
 #include "Utils.h"
 #include "Battery.h"
 #include "PowerMeter.h"
-#include "PowerMeters.h"
+#include <PowerMeters.h>
 #include "PowerLimiter.h"
 #include "Configuration.h"
 #include "MqttSettings.h"
