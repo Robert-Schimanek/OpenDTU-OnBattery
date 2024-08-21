@@ -1,0 +1,3 @@
+[submodule "lib/Huaymiles-Turbo"]
+	path = lib/Huaymiles-Turbo
+	url = https://github.com/Robert-Schimanek/Huaymiles-Turbo
