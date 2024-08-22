@@ -14,7 +14,11 @@ This fork is focused on creating a slim version of OpenDTU-OnBattery for AC-powe
 
 ## History of the project
 
-The original OpenDTU project was started from [this discussion](https://www.mikrocontroller.net/topic/525778) on Mikrocontroller.net. The goal was to replace the original Hoymiles DTU (Telemetry Gateway) with their cloud access. Through extensive reverse engineering, the Hoymiles protocol was decrypted and analyzed.
+The original OpenDTU project was started from [a discussion on
+Mikrocontroller.net](https://www.mikrocontroller.net/topic/525778). It was the
+goal to replace the original Hoymiles DTU (Telemetry Gateway) to avoid using
+Hoymile's cloud. With a lot of reverse engineering the Hoymiles protocol was
+decrypted and analyzed.
 
 The original OpenDTU-OnBattery is an extension of OpenDTU to support battery chargers, battery management systems (BMS), and power meters on a single ESP32. With the help of a dynamic power limiter, power production can be adjusted to the actual consumption. In this way, it is possible to come as close as possible to the goal of zero feed-in.
 

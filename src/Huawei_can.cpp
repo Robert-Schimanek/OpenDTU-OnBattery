@@ -9,6 +9,7 @@
 #include "PowerLimiter.h"
 #include <HoyweiConfiguration.h>
 #include "Battery.h"
+#include "SPIPortManager.h"
 #include <SPI.h>
 #include <mcp_can.h>
 
@@ -35,12 +36,11 @@ void HuaweiCanCommunicationTask(void* parameter) {
 
 bool HuaweiCanCommClass::init(uint8_t huawei_miso, uint8_t huawei_mosi, uint8_t huawei_clk,
         uint8_t huawei_irq, uint8_t huawei_cs, uint32_t frequency) {
-    auto SPI_HUAWEI = HSPI;
-    if(PinMapping.isValidCmt2300Config() && !PinMapping.isValidNrf24Config()) {
-        SPI_HUAWEI = VSPI;
-    }
-    MessageOutput.printf("Huawei CAN: using SPI: %d", SPI_HUAWEI);
-    SPI = new SPIClass(SPI_HUAWEI);
+
+    auto oSPInum = SPIPortManager.allocatePort("Huawei CAN");
+    if (!oSPInum) { return false; }
+    MessageOutput.printf("Huawei CAN: using SPI: %d", oSPInum);
+    SPI = new SPIClass(*oSPInum);
     SPI->begin(huawei_clk, huawei_miso, huawei_mosi, huawei_cs);
     pinMode(huawei_cs, OUTPUT);
     digitalWrite(huawei_cs, HIGH);
@@ -240,7 +240,7 @@ void HuaweiCanClass::updateSettings(uint8_t huawei_miso, uint8_t huawei_mosi, ui
       _mode = HUAWEI_MODE_AUTO_INT;
     }
 
-    xTaskCreate(HuaweiCanCommunicationTask,"HUAWEI_CAN_0",1000,NULL,0,&_HuaweiCanCommunicationTaskHdl);
+    xTaskCreate(HuaweiCanCommunicationTask,"HUAWEI_CAN_0",2000,NULL,0,&_HuaweiCanCommunicationTaskHdl);
 
     MessageOutput.println("[HuaweiCanClass::init] MCP2515 Initialized Successfully!");
     _initialized = true;

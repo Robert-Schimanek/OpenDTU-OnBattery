@@ -113,6 +113,14 @@
                 />
 
                 <InputElement
+                    v-show="canUseBatteryDischargeAtNight()"
+                    :label="$t('powerlimiteradmin.BatteryDischargeAtNight')"
+                    v-model="powerLimiterConfigList.battery_always_use_at_night"
+                    type="checkbox"
+                    wide
+                />
+
+                <InputElement
                     v-show="canUseOverscaling()"
                     :label="$t('powerlimiteradmin.UseOverscalingToCompensateShading')"
                     :tooltip="$t('powerlimiteradmin.UseOverscalingToCompensateShadingHint')"
@@ -228,13 +236,6 @@
                 />
 
                 <div v-if="powerLimiterConfigList.solar_passthrough_enabled">
-                    <InputElement
-                        :label="$t('powerlimiteradmin.BatteryDischargeAtNight')"
-                        v-model="powerLimiterConfigList.battery_always_use_at_night"
-                        type="checkbox"
-                        wide
-                    />
-
                     <InputElement
                         :label="$t('powerlimiteradmin.SolarPassthroughLosses')"
                         v-model="powerLimiterConfigList.solar_passthrough_losses"
@@ -502,6 +503,10 @@ export default defineComponent({
         canUseOverscaling() {
             const cfg = this.powerLimiterConfigList;
             return cfg.is_inverter_solar_powered;
+        },
+        canUseBatteryDischargeAtNight() {
+            const cfg = this.powerLimiterConfigList;
+            return !cfg.is_inverter_solar_powered;
         },
         canUseSolarPassthrough() {
             const cfg = this.powerLimiterConfigList;
