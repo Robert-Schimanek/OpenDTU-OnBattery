@@ -4,7 +4,7 @@
  */
 #include "WebApi_ws_battery.h"
 #include "AsyncJson.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Battery.h"
 #include "MessageOutput.h"
 #include "WebApi.h"
@@ -64,7 +64,7 @@ void WebApiWsBatteryLiveClass::sendDataTaskCb()
         std::lock_guard<std::mutex> lock(_mutex);
         JsonDocument root;
         JsonVariant var = root;
-        
+
         generateCommonJsonResponse(var);
 
         if (Utils::checkJsonAlloc(root, __FUNCTION__, __LINE__)) {

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "PowerMeter.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "PowerMeterHttpJson.h"
 #include "PowerMeterHttpSml.h"
 #include "PowerMeterMqtt.h"

@@ -5,7 +5,7 @@
 #include "Display_Graphic.h"
 #include "Datastore.h"
 #include <PowerMeters.h>
-#include "Configuration.h"
+#include "HoyweiConfiguration.h"
 #include <NetworkSettings.h>
 #include <map>
 #include <time.h>

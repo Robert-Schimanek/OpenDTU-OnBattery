@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "defaults.h"
 #include <AsyncJson.h>

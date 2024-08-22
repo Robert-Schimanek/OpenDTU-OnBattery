@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "HardwareSerial.h"
 #include "PinMapping.h"
 #include "MessageOutput.h"

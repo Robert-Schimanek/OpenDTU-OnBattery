@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include <Arduino.h>
 #include <HTTPClient.h>
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "PowerMeterProvider.h"
 #include "sml.h"
 

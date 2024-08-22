@@ -3,7 +3,7 @@
  * Copyright (C) 2022 Thomas Basler and others
  */
 #include "MqttHandleVedirectHass.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttSettings.h"
 #include "MqttHandleHass.h"
 #include "NetworkSettings.h"

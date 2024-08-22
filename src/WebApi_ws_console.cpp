@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_ws_console.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "WebApi.h"
 #include "defaults.h"

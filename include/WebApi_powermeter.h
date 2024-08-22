@@ -4,7 +4,7 @@
 #include <ESPAsyncWebServer.h>
 #include <TaskSchedulerDeclarations.h>
 #include <ArduinoJson.h>
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 
 class WebApiPowerMeterClass {
 public:

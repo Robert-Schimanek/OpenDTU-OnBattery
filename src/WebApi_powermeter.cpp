@@ -6,7 +6,7 @@
 #include "VeDirectFrameHandler.h"
 #include "ArduinoJson.h"
 #include "AsyncJson.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttHandleVedirectHass.h"
 #include "MqttHandleHass.h"
 #include "MqttSettings.h"

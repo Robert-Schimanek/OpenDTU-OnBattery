@@ -5,7 +5,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <SoftwareSerial.h>
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "PowerMeterProvider.h"
 #include "SDM.h"
 

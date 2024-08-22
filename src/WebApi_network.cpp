@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_network.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "NetworkSettings.h"
 #include "WebApi.h"
 #include "WebApi_errors.h"

@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_device.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Display_Graphic.h"
 #include "PinMapping.h"
 #include "Utils.h"

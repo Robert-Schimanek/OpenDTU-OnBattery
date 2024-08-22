@@ -3,7 +3,7 @@
  * Copyright (C) 2023-2024 Thomas Basler and others
  */
 #include "Display_Graphic_Diagram.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Datastore.h"
 #include <algorithm>
 

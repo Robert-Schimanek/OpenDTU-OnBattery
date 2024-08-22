@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "VeDirectMpptController.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include <TaskSchedulerDeclarations.h>
 
 class VictronMpptClass {

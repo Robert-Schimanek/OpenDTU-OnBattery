@@ -8,7 +8,7 @@
 #include "PowerMeter.h"
 #include <PowerMeters.h>
 #include "PowerLimiter.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
 #include "Huawei_can.h"

@@ -2,7 +2,7 @@
 /*
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "NetworkSettings.h"
 #include "Utils.h"
@@ -777,24 +777,9 @@ void ConfigurationClass::migrate()
     read();
 }
 
-CONFIG_T& ConfigurationClass::get()
+CONFIG_T_ODB& ConfigurationClass::get()
 {
     return config;
-}
-
-PowerMeterConfig& ConfigurationClass::getByName(const std::string& name) {
-
-    CONFIG_T& config = get();
-
-    if (name == "PowerMeter") {
-        return config.PowerMeter;
-    } else if (name == "PowerMeterInverter") {
-        return config.PowerMeterInverter;
-    } else if (name == "PowerMeterCharger") {
-        return config.PowerMeterCharger;
-    } else {
-        throw std::runtime_error("Invalid PowerMeter name: " + name);
-    }
 }
 
 INVERTER_CONFIG_T* ConfigurationClass::getFreeInverterSlot()
@@ -840,5 +825,3 @@ void ConfigurationClass::deleteInverterById(const uint8_t id)
         strlcpy(config.Inverter[id].channel[c].Name, "", sizeof(config.Inverter[id].channel[c].Name));
     }
 }
-
-ConfigurationClass Configuration;

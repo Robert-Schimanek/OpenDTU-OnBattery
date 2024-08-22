@@ -7,7 +7,7 @@
 #include "MessageOutput.h"
 #include <PowerMeters.h>
 #include "PowerLimiter.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Battery.h"
 #include <SPI.h>
 #include <mcp_can.h>

@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_firmware.h"
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Update.h"
 #include "Utils.h"
 #include "WebApi.h"

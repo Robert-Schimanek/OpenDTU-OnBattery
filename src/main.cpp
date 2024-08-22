@@ -2,7 +2,7 @@
 /*
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
-#include "Configuration.h"
+#include <HoyweiConfiguration.h>
 #include "Datastore.h"
 #include "Display_Graphic.h"
 #include "InverterSettings.h"
