@@ -246,7 +246,7 @@ void PowerLimiterClass::loop()
     auto getBatteryPower = [this,&config]() -> bool {
         if (config.PowerLimiter.IsInverterSolarPowered) { return false; }
 
-        if (isCellStopThresholdReached()) { return false; }
+        if (config.Battery.Enabled && isCellStopThresholdReached()) { return false; }
 
         auto isDayPeriod = SunPosition.isSunsetAvailable() ? SunPosition.isDayPeriod() : getSolarPower() > 0;
 
@@ -943,8 +943,8 @@ bool PowerLimiterClass::testThreshold(float socThreshold, float voltThreshold,
     }
 
     // if volThreshold for one cell check if min cell voltage is reached
-    if (voltThreshold <= 5 && stats->isVoltageCellMinValid()) {
-        return compare(stats->getVoltageCellMin(), voltThreshold);
+    if (voltThreshold <= 5) {
+    return stats->isVoltageCellMinValid() ? compare(stats->getVoltageCellMin(), voltThreshold) : true;
     }
     // use voltage threshold as fallback
     if (voltThreshold <= 0.0) { return false; }
