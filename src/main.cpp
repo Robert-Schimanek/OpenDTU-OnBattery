@@ -188,6 +188,8 @@ void setup()
 
     PowerMeterCharger.init(scheduler);
 
+    PowerMeterSolar.init(scheduler);
+
     PowerLimiter.init(scheduler);
 
     // Initialize Huawei AC-charger PSU / CAN bus

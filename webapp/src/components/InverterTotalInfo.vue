@@ -90,6 +90,19 @@
                 </h2>
             </CardElement>
         </div>
+        <div class="col" v-if="powerMeterSolarData.enabled">
+            <CardElement centerContent textVariant="text-bg-success" :text="$t('invertertotalinfo.SolarPower')">
+                <h2>
+                    {{
+                        $n(powerMeterSolarData.Power.v, 'decimal', {
+                            minimumFractionDigits: powerMeterSolarData.Power.d,
+                            maximumFractionDigits: powerMeterSolarData.Power.d,
+                        })
+                    }}
+                    <small class="text-muted">{{ powerMeterSolarData.Power.u }}</small>
+                </h2>
+            </CardElement>
+        </div>
         <div class="col" v-if="powerMeterInverterData.enabled">
             <CardElement centerContent textVariant="text-bg-success" :text="$t('invertertotalinfo.InverterPower')">
                 <h2>
@@ -227,6 +240,7 @@ export default defineComponent({
         powerMeterData: { type: Object as PropType<PowerMeter>, required: true },
         powerMeterInverterData: { type: Object as PropType<PowerMeter>, required: true },
         powerMeterChargerData: { type: Object as PropType<PowerMeter>, required: true },
+        powerMeterSolarData: { type: Object as PropType<PowerMeter>, required: true },
         huaweiData: { type: Object as PropType<Huawei>, required: true },
     },
 });

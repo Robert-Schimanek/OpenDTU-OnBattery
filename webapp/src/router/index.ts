@@ -12,6 +12,7 @@ import VedirectAdminView from '@/views/VedirectAdminView.vue';
 import PowerMeterAdminView from '@/views/PowerMeterAdminView.vue';
 import PowerMeterInverterAdminView from '@/views/PowerMeterInverterAdminView.vue';
 import PowerMeterChargerAdminView from '@/views/PowerMeterChargerAdminView.vue';
+import PowerMeterSolarAdminView from '@/views/PowerMeterSolarAdminView.vue';
 import PowerLimiterAdminView from '@/views/PowerLimiterAdminView.vue';
 import VedirectInfoView from '@/views/VedirectInfoView.vue';
 import InverterAdminView from '@/views/InverterAdminView.vue';
@@ -110,6 +111,11 @@ const router = createRouter({
             path: '/settings/powermetercharger',
             name: 'Charger Power Meter Settings',
             component: PowerMeterChargerAdminView,
+        },
+        {
+            path: '/settings/powermetersolar',
+            name: 'Solar Power Meter Settings',
+            component: PowerMeterSolarAdminView,
         },
         {
             path: '/settings/powerlimiter',

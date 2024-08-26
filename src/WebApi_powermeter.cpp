@@ -44,6 +44,8 @@ void WebApiPowerMeterClass::updateSettings() {
         PowerMeterInverter.updateSettings();
     } else if (_name == "PowerMeterCharger") {
         PowerMeterCharger.updateSettings();
+    } else if (_name == "PowerMeterSolar") {
+        PowerMeterSolar.updateSettings();
     } else {
         Serial.println("Error: Unknown PowerMeter type");
     }

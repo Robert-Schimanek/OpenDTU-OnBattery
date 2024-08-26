@@ -15,6 +15,7 @@
             :powerMeterData="liveData.power_meter"
             :powerMeterInverterData="liveData.power_meter_inverter"
             :powerMeterChargerData="liveData.power_meter_charger"
+            :powerMeterSolarData="liveData.power_meter_solar"
             :huaweiData="liveData.huawei"
         />
         <div class="row gy-3 mt-0">
@@ -603,7 +604,9 @@ export default defineComponent({
                     if (typeof newData.power_meter_charger !== 'undefined') {
                         Object.assign(this.liveData.power_meter_charger, newData.power_meter_charger);
                     }
-
+                    if (typeof newData.power_meter_solar !== 'undefined') {
+                        Object.assign(this.liveData.power_meter_solar, newData.power_meter_solar);
+                    }
                     if (typeof newData.total === 'undefined') {
                         return;
                     }

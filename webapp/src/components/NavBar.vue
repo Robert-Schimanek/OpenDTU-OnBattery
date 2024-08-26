@@ -92,6 +92,11 @@
                                 }}</router-link>
                             </li>
                             <li>
+                                <router-link @click="onClick" class="dropdown-item" to="/settings/powermetersolar">{{
+                                    $t('menu.PowerMeterSolarSettings')
+                                }}</router-link>
+                            </li>
+                            <li>
                                 <router-link @click="onClick" class="dropdown-item" to="/settings/powerlimiter"
                                     >Dynamic Power Limiter</router-link
                                 >

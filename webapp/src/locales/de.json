@@ -13,6 +13,7 @@
         "PowerMeterSettings": "Stromzähler",
         "PowerMeterInverterSettings": "Lestungsmessung Wechselrichter",
         "PowerMeterChargerSettings": "Leistungsmessung Ladegerät",
+        "PowerMeterSolarSettings": "Leistungsmessung Photovoltaik",
         "BatterySettings": "Batterie",
         "AcChargerSettings": "AC Ladegerät",
         "ConfigManagement": "Konfigurationsverwaltung",
@@ -402,6 +403,7 @@
         "HomePower": "Leistung / Netz",
         "InverterPower": "Externe Leistungsmessung Inverter",
         "ChargerPower": "Externe Leistungsmessung Ladegerät",
+        "SolarPower": "Externe Leistungsmessung Photovoltaik",
         "HuaweiPower": "Huawei AC Leistung"
     },
     "inverterchannelproperty": {
@@ -602,6 +604,9 @@
     },
     "powermeterchargeradmin": {
         "PowerMeterSettings": "Externe Leistungsmessung Ladegerät - Einstellungen"
+    },
+    "powermetersolaradmin": {
+        "PowerMeterSettings": "Externe Leistungsmessung Photovoltaik - Einstellungen"
     },
     "httprequestsettings": {
         "url": "URL",

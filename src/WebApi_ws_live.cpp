@@ -144,6 +144,17 @@ void WebApiWsLiveClass::generateOnBatteryJsonResponse(JsonVariant& root, bool al
 
         if (!all) { _lastPublishPowerMeterCharger = millis(); }
     }
+
+    if (all || (PowerMeterSolar.getLastUpdate() - _lastPublishPowerMeterSolar) < halfOfAllMillis) {
+        auto powerMeterSolarObj = root["power_meter_solar"].to<JsonObject>();
+        powerMeterSolarObj["enabled"] = config.PowerMeterSolar.Enabled;
+
+        if (config.PowerMeterSolar.Enabled) {
+            addTotalField(powerMeterSolarObj, "Power", PowerMeterSolar.getPowerTotal(), "W", 1);
+        }
+
+        if (!all) { _lastPublishPowerMeterSolar = millis(); }
+    }
 }
 
 void WebApiWsLiveClass::sendOnBatteryStats()

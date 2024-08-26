@@ -35,6 +35,8 @@ private:
     uint32_t _lastPublishPowerMeter = 0;
     uint32_t _lastPublishPowerMeterInverter = 0;
     uint32_t _lastPublishPowerMeterCharger = 0;
+    uint32_t _lastPublishPowerMeterSolar = 0;
+
 
 
 

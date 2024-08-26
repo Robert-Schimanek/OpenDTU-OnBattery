@@ -13,6 +13,7 @@
         "PowerMeterSettings": "Power Meter",
         "PowerMeterInverterSettings": "Power Meter Inverter",
         "PowerMeterChargerSettings": "Power Meter Charger",
+        "PowerMeterSolarSettings": "Power Meter Photovoltaik",
         "BatterySettings": "Battery",
         "AcChargerSettings": "AC Charger",
         "ConfigManagement": "Config Management",
@@ -404,6 +405,7 @@
         "HomePower": "Grid Power",
         "InverterPower": "External Power Meter Inverter",
         "ChargerPower": "External Power Meter Charger",
+        "SolarPower": "External Power Meter Photovoltaik",
         "HuaweiPower": "Huawei AC Power"
     },
     "inverterchannelproperty": {
@@ -607,6 +609,9 @@
     },
     "powermeterchargeradmin": {
         "PowerMeterSettings": "External Power Meter Charger Settings"
+    },
+    "powermetersolaradmin": {
+        "PowerMeterSettings": "External Power Meter Photovoltaik Settings"
     },
     "httprequestsettings": {
         "url": "URL",

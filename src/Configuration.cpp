@@ -257,6 +257,23 @@ bool ConfigurationClass::write()
     JsonObject powermeter_charger_http_sml = powermeter_charger["http_sml"].to<JsonObject>();
     serializePowerMeterHttpSmlConfig(config.PowerMeterCharger.HttpSml, powermeter_charger_http_sml);
 
+    JsonObject powermeter_solar = doc["powermeter_solar"].to<JsonObject>();
+    powermeter_solar["enabled"] = config.PowerMeterSolar.Enabled;
+    powermeter_solar["verbose_logging"] = config.PowerMeterSolar.VerboseLogging;
+    powermeter_solar["source"] = config.PowerMeterSolar.Source;
+
+    JsonObject powermeter_solar_mqtt = powermeter_solar["mqtt"].to<JsonObject>();
+    serializePowerMeterMqttConfig(config.PowerMeterSolar.Mqtt, powermeter_solar_mqtt);
+
+    JsonObject powermeter_solar_serial_sdm = powermeter_solar["serial_sdm"].to<JsonObject>();
+    serializePowerMeterSerialSdmConfig(config.PowerMeterSolar.SerialSdm, powermeter_solar_serial_sdm);
+
+    JsonObject powermeter_solar_http_json = powermeter_solar["http_json"].to<JsonObject>();
+    serializePowerMeterHttpJsonConfig(config.PowerMeterSolar.HttpJson, powermeter_solar_http_json);
+
+    JsonObject powermeter_solar_http_sml = powermeter_solar["http_sml"].to<JsonObject>();
+    serializePowerMeterHttpSmlConfig(config.PowerMeterSolar.HttpSml, powermeter_solar_http_sml);
+
     JsonObject powerlimiter = doc["powerlimiter"].to<JsonObject>();
     powerlimiter["enabled"] = config.PowerLimiter.Enabled;
     powerlimiter["verbose_logging"] = config.PowerLimiter.VerboseLogging;
@@ -642,6 +659,21 @@ bool ConfigurationClass::read()
 
     JsonObject powermeterinverter_sml = powermeterinverter["http_sml"];
     deserializePowerMeterHttpSmlConfig(powermeterinverter_sml, config.PowerMeterInverter.HttpSml);
+
+    JsonObject powermetersolar = doc["powermeter_solar"];
+    config.PowerMeterSolar.Enabled = powermetersolar["enabled"] | POWERMETER_SOLAR_ENABLED;
+    config.PowerMeterSolar.VerboseLogging = powermetersolar["verbose_logging"] | VERBOSE_LOGGING;
+    config.PowerMeterSolar.Source = powermetersolar["source"] | POWERMETER_SOLAR_SOURCE;
+
+    deserializePowerMeterMqttConfig(powermetersolar["mqtt"], config.PowerMeterSolar.Mqtt);
+
+    deserializePowerMeterSerialSdmConfig(powermetersolar["serial_sdm"], config.PowerMeterSolar.SerialSdm);
+
+    JsonObject powermetersolar_http_json = powermetersolar["http_json"];
+    deserializePowerMeterHttpJsonConfig(powermetersolar_http_json, config.PowerMeterSolar.HttpJson);
+
+    JsonObject powermetersolar_sml = powermetersolar["http_sml"];
+    deserializePowerMeterHttpSmlConfig(powermetersolar_sml, config.PowerMeterSolar.HttpSml);
 
     JsonObject powerlimiter = doc["powerlimiter"];
     config.PowerLimiter.Enabled = powerlimiter["enabled"] | POWERLIMITER_ENABLED;

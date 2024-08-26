@@ -12,7 +12,8 @@ WebApiClass::WebApiClass()
     : _server(HTTP_PORT),
     _webApiPowerMeter("PowerMeter","/api/powermeter"),
     _webApiPowerMeterInverter("PowerMeterInverter", "/api/powermeterinverter"),
-    _webApiPowerMeterCharger("PowerMeterCharger", "/api/powermetercharger")
+    _webApiPowerMeterCharger("PowerMeterCharger", "/api/powermetercharger"),
+    _webApiPowerMeterSolar("PowerMeterSolar", "/api/powermetersolar")
 {
 }
 
@@ -42,6 +43,7 @@ void WebApiClass::init(Scheduler& scheduler)
     _webApiPowerMeter.init(_server, scheduler);
     _webApiPowerMeterInverter.init(_server, scheduler);
     _webApiPowerMeterCharger.init(_server, scheduler);
+    _webApiPowerMeterSolar.init(_server, scheduler);
     _webApiPowerLimiter.init(_server, scheduler);
     _webApiWsVedirectLive.init(_server, scheduler);
     _webApiVedirect.init(_server, scheduler);
