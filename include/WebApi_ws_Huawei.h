@@ -20,7 +20,9 @@ private:
     AsyncWebSocket _ws;
 
     std::mutex _mutex;
-    
+
+    uint32_t _lastPublishHuawei = 0;
+
     Task _wsCleanupTask;
     void wsCleanupTaskCb();
 

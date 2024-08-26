@@ -57,6 +57,12 @@ void WebApiWsHuaweiLiveClass::sendDataTaskCb()
         return;
     }
 
+    if (!( millis() - _lastPublishHuawei > (5 * 1000) )) {
+            return;
+        }
+
+    _lastPublishHuawei = millis();
+
     try {
         std::lock_guard<std::mutex> lock(_mutex);
         JsonDocument root;

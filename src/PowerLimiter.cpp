@@ -943,7 +943,7 @@ bool PowerLimiterClass::testThreshold(float socThreshold, float voltThreshold,
     }
 
     // if volThreshold for one cell check if min cell voltage is reached
-    if (voltThreshold <= 5) {
+    if (voltThreshold <= 5 && stats->isVoltageCellMinValid()) {
         return compare(stats->getVoltageCellMin(), voltThreshold);
     }
     // use voltage threshold as fallback

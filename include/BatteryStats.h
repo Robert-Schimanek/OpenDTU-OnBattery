@@ -28,7 +28,6 @@ class BatteryStats {
         float getVoltageCellMin() const { return _voltageCellMin; }
         uint32_t getVoltageCellMinAgeSeconds() const { return (millis() - _lastUpdateVoltageCellMin) / 1000; }
 
-
         float getChargeCurrent() const { return _current; };
         uint8_t getChargeCurrentPrecision() const { return _currentPrecision; }
 
@@ -43,6 +42,7 @@ class BatteryStats {
 
         bool isSoCValid() const { return _lastUpdateSoC > 0; }
         bool isVoltageValid() const { return _lastUpdateVoltage > 0; }
+        bool isVoltageCellMinValid() const { return _lastUpdateVoltageCellMin > 0; }
         bool isCurrentValid() const { return _lastUpdateCurrent > 0; }
 
         // returns true if the battery reached a critically low voltage/SoC,
