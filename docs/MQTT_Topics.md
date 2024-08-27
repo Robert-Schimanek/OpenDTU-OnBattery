@@ -1,3 +1,3 @@
-# Moved
+# MQTT Topics
 
-Have a look at the [OpenDTU-OnBattery documentation](https://opendtu-onbattery.net/firmware/mqtt_topics/).
+This documentation will has been moved and can be found here: <https://tbnobody.github.io/OpenDTU-docs/firmware/mqtt_topics/>
