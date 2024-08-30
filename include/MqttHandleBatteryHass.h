@@ -19,7 +19,7 @@ private:
     Task _loopTask;
 
     bool _doPublish = true;
-    String serial = "0001"; // pseudo-serial, can be replaced in future with real serialnumber
+    String serial = "unknown"; // pseudo-serial, can be replaced in future with real serialnumber
 };
 
 extern MqttHandleBatteryHassClass MqttHandleBatteryHass;

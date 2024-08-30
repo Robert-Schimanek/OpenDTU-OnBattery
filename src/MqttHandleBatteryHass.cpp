@@ -38,6 +38,10 @@ void MqttHandleBatteryHassClass::loop()
     // to the MQTT broker or on config changes.
     if (!_doPublish) { return; }
 
+    if (config.Battery.Provider == 1) {
+        serial = "JK BMS (" + Battery.getStats()->getManufacturer() + ")";
+    }
+
     // the MQTT battery provider does not re-publish the SoC under a different
     // known topic. we don't know the manufacture either. HASS auto-discovery
     // for that provider makes no sense.
@@ -195,6 +199,12 @@ void MqttHandleBatteryHassClass::publishSensor(const char* caption, const char* 
     sensorId.replace(")", "");
     sensorId.toLowerCase();
 
+    auto& config = Configuration.get();
+    if (config.Battery.Provider == 1) {
+        serial = "JK BMS (" + Battery.getStats()->getManufacturer() + ")";
+    }
+
+
     String configTopic = "sensor/dtu_battery_" + serial
         + "/" + sensorId
         + "/config";
@@ -250,6 +260,11 @@ void MqttHandleBatteryHassClass::publishBinarySensor(const char* caption, const 
     sensorId.replace(")", "");
     sensorId.replace(":", "");
     sensorId.toLowerCase();
+
+    auto& config = Configuration.get();
+    if (config.Battery.Provider == 1) {
+        serial = "JK BMS (" + Battery.getStats()->getManufacturer() + ")";
+    }
 
     String configTopic = "binary_sensor/dtu_battery_" + serial
         + "/" + sensorId
