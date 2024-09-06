@@ -11,7 +11,7 @@
 #include <HoyweiConfiguration.h>
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
-#include "Huawei_can.h"
+#include <HoyweiHuaweiCan.h>
 #include <VictronMppt.h>
 #include "MessageOutput.h"
 #include "inverters/HMS_4CH.h"

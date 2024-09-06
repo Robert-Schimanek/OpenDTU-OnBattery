@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <math.h>
 
-HuaweiCanClass HuaweiCan;
+// HuaweiCanClass HuaweiCan;
 HuaweiCanCommClass HuaweiCanComm;
 
 // *******************************************************

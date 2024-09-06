@@ -92,6 +92,9 @@ typedef struct RectifierParameters {
 } RectifierParameters_t;
 
 class HuaweiCanCommClass {
+
+friend class HoyweiHuaweiCanClass;
+
 public:
     bool init(uint8_t huawei_miso, uint8_t huawei_mosi, uint8_t huawei_clk,
             uint8_t huawei_irq, uint8_t huawei_cs, uint32_t frequency);
@@ -120,6 +123,9 @@ private:
 };
 
 class HuaweiCanClass {
+
+friend class HoyweiHuaweiCanClass;
+
 public:
     void init(Scheduler& scheduler, uint8_t huawei_miso, uint8_t huawei_mosi, uint8_t huawei_clk, uint8_t huawei_irq, uint8_t huawei_cs, uint8_t huawei_power);
     void updateSettings(uint8_t huawei_miso, uint8_t huawei_mosi, uint8_t huawei_clk, uint8_t huawei_irq, uint8_t huawei_cs, uint8_t huawei_power);
@@ -156,5 +162,5 @@ private:
     bool _batteryEmergencyCharging = false;
 };
 
-extern HuaweiCanClass HuaweiCan;
+// extern HuaweiCanClass HuaweiCan;
 extern HuaweiCanCommClass HuaweiCanComm;

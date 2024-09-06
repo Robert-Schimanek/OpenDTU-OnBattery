@@ -8,7 +8,7 @@
 #include "Utils.h"
 #include "WebApi.h"
 #include <HoyweiBattery.h>
-#include "Huawei_can.h"
+#include <HoyweiHuaweiCan.h>
 #include <PowerMeters.h>
 #include "VictronMppt.h"
 #include "defaults.h"

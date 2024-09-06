@@ -12,7 +12,7 @@
 #include "SPIPortManager.h"
 #include "VictronMppt.h"
 #include <HoyweiBattery.h>
-#include "Huawei_can.h"
+#include <HoyweiHuaweiCan.h>
 #include "MqttHandleDtu.h"
 #include "MqttHandleHass.h"
 #include "MqttHandleVedirectHass.h"

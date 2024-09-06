@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_Huawei.h"
-#include "Huawei_can.h"
+#include <HoyweiHuaweiCan.h>
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "PinMapping.h"

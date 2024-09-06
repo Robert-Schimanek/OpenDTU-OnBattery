@@ -5,7 +5,7 @@
 #include "MqttHandleHuawei.h"
 #include "MessageOutput.h"
 #include "MqttSettings.h"
-#include "Huawei_can.h"
+#include <HoyweiHuaweiCan.h>
 #include "WebApi_Huawei.h"
 #include <ctime>
 
