@@ -8,6 +8,9 @@
 #include <map>
 
 class PowerMeterClass {
+
+friend class HoyweiPowerMeterClass;
+
 public:
     PowerMeterClass(const std::string& name) : _name(name) {}
 
