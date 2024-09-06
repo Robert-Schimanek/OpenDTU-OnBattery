@@ -4,7 +4,7 @@
  */
 
 #include "Utils.h"
-#include "Battery.h"
+#include <HoyweiBattery.h>
 #include "PowerMeter.h"
 #include <PowerMeters.h>
 #include "PowerLimiter.h"

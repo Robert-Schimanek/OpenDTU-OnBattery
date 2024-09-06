@@ -5,7 +5,7 @@
 #include "WebApi_ws_battery.h"
 #include "AsyncJson.h"
 #include <HoyweiConfiguration.h>
-#include "Battery.h"
+#include <HoyweiBattery.h>
 #include "MessageOutput.h"
 #include "WebApi.h"
 #include "defaults.h"

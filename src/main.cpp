@@ -11,7 +11,7 @@
 #include "SerialPortManager.h"
 #include "SPIPortManager.h"
 #include "VictronMppt.h"
-#include "Battery.h"
+#include <HoyweiBattery.h>
 #include "Huawei_can.h"
 #include "MqttHandleDtu.h"
 #include "MqttHandleHass.h"

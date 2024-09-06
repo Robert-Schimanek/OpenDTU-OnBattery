@@ -7,7 +7,7 @@
 #include "MqttBattery.h"
 #include "PytesCanReceiver.h"
 
-BatteryClass Battery;
+// BatteryClass Battery;
 
 std::shared_ptr<BatteryStats const> BatteryClass::getStats() const
 {

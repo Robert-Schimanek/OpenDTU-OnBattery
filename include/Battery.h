@@ -17,6 +17,9 @@ public:
 };
 
 class BatteryClass {
+
+friend class HoyweiBatteryClass;
+
 public:
     void init(Scheduler&);
     void updateSettings();
@@ -31,4 +34,4 @@ private:
     std::unique_ptr<BatteryProvider> _upProvider = nullptr;
 };
 
-extern BatteryClass Battery;
+// extern BatteryClass Battery;

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "PylontechCanReceiver.h"
-#include "Battery.h"
+#include <HoyweiBattery.h>
 #include "MqttHandleBatteryHass.h"
 #include <HoyweiConfiguration.h>
 #include "MqttSettings.h"

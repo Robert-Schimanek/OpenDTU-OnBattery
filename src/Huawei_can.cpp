@@ -3,7 +3,7 @@
  * Copyright (C) 2023 Malte Schmidt and others
  */
 #include <PowerLimiters.h>
-#include "Battery.h"
+#include <HoyweiBattery.h>
 #include "Huawei_can.h"
 #include "MessageOutput.h"
 #include <PowerMeters.h>
