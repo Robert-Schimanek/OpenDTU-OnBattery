@@ -33,7 +33,7 @@
 #include "WebApi.h"
 #include "PowerMeter.h"
 #include <PowerMeters.h>
-#include "PowerLimiter.h"
+#include <PowerLimiters.h>
 #include "defaults.h"
 #include <Arduino.h>
 #include <LittleFS.h>

@@ -9,7 +9,7 @@
 #include "Utils.h"
 #include "WebApi.h"
 #include "defaults.h"
-#include "PowerLimiter.h"
+#include <PowerLimiters.h>
 #include "VictronMppt.h"
 
 WebApiWsVedirectLiveClass::WebApiWsVedirectLiveClass()

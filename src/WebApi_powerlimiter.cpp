@@ -8,7 +8,7 @@
 #include "AsyncJson.h"
 #include <HoyweiConfiguration.h>
 #include "MqttHandlePowerLimiterHass.h"
-#include "PowerLimiter.h"
+#include <PowerLimiters.h>
 #include "WebApi.h"
 #include "helper.h"
 #include "WebApi_errors.h"

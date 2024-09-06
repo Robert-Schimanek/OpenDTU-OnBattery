@@ -20,7 +20,7 @@
 #include <frozen/map.h>
 #include "SunPosition.h"
 
-PowerLimiterClass PowerLimiter;
+//PowerLimiterClass PowerLimiter;
 
 void PowerLimiterClass::init(Scheduler& scheduler)
 {

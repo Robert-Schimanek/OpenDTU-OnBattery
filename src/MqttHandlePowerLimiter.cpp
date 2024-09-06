@@ -5,7 +5,7 @@
 #include "MessageOutput.h"
 #include "MqttSettings.h"
 #include "MqttHandlePowerLimiter.h"
-#include "PowerLimiter.h"
+#include <PowerLimiters.h>
 #include <ctime>
 #include <string>
 
@@ -87,7 +87,7 @@ void MqttHandlePowerLimiterClass::loop()
 
     auto val = static_cast<unsigned>(PowerLimiter.getMode());
     MqttSettings.publish("powerlimiter/status/mode", String(val));
-    
+
     MqttSettings.publish("powerlimiter/status/upper_power_limit", String(config.PowerLimiter.UpperPowerLimit));
 
     MqttSettings.publish("powerlimiter/status/target_power_consumption", String(config.PowerLimiter.TargetPowerConsumption));

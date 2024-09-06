@@ -2,11 +2,12 @@
 /*
  * Copyright (C) 2023 Malte Schmidt and others
  */
+#include <PowerLimiters.h>
 #include "Battery.h"
 #include "Huawei_can.h"
 #include "MessageOutput.h"
 #include <PowerMeters.h>
-#include "PowerLimiter.h"
+#include <PowerLimiters.h>
 #include <HoyweiConfiguration.h>
 #include "Battery.h"
 #include "SPIPortManager.h"

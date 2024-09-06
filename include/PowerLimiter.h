@@ -17,6 +17,9 @@
 #define PL_UI_STATE_USE_SOLAR_AND_BATTERY 3
 
 class PowerLimiterClass {
+
+friend class PowerLimiterHoyWeiClass;
+
 public:
     enum class Status : unsigned {
         Initializing,
@@ -104,4 +107,4 @@ private:
     bool useFullSolarPassthrough();
 };
 
-extern PowerLimiterClass PowerLimiter;
+// extern PowerLimiterClass PowerLimiter;
