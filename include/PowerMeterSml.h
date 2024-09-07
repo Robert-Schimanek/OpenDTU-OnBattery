@@ -8,7 +8,7 @@
 #include <Arduino.h>
 #include <HTTPClient.h>
 #include <HoyweiConfiguration.h>
-#include "PowerMeterProvider.h"
+#include <HoyweiPowerMeterProvider.h>
 #include "sml.h"
 
 class PowerMeterSml : public PowerMeterProvider {

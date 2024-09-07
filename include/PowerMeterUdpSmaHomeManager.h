@@ -5,7 +5,7 @@
 #pragma once
 
 #include <cstdint>
-#include "PowerMeterProvider.h"
+#include <HoyweiPowerMeterProvider.h>
 
 class PowerMeterUdpSmaHomeManager : public PowerMeterProvider {
 public:

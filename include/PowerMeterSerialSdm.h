@@ -6,7 +6,7 @@
 #include <condition_variable>
 #include <SoftwareSerial.h>
 #include <HoyweiConfiguration.h>
-#include "PowerMeterProvider.h"
+#include <HoyweiPowerMeterProvider.h>
 #include "SDM.h"
 
 class PowerMeterSerialSdm : public PowerMeterProvider {

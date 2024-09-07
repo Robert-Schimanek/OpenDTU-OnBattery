@@ -5,6 +5,9 @@
 #include <HoyweiConfiguration.h>
 
 class PowerMeterProvider {
+
+friend class HoyweiPowerMeterProviderClass;
+
 public:
     virtual ~PowerMeterProvider() { }
 

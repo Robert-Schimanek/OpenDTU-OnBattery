@@ -2,13 +2,13 @@
 #pragma once
 
 #include <HoyweiConfiguration.h>
-#include "PowerMeterProvider.h"
+#include <HoyweiPowerMeterProvider.h>
 #include <espMqttClient.h>
 #include <vector>
 #include <mutex>
 #include <array>
 
-class PowerMeterMqtt : public PowerMeterProvider {
+class PowerMeterMqtt : public HoyweiPowerMeterProviderClass {
 public:
     explicit PowerMeterMqtt(PowerMeterMqttConfig const& cfg)
         : _cfg(cfg) { }

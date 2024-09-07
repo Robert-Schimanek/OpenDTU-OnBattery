@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include "HttpGetter.h"
 #include <HoyweiConfiguration.h>
-#include "PowerMeterProvider.h"
+#include <HoyweiPowerMeterProvider.h>
 
 using Auth_t = HttpRequestConfig::Auth;
 using Unit_t = PowerMeterHttpJsonValue::Unit;

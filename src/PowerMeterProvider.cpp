@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-#include "PowerMeterProvider.h"
+#include "HoyweiPowerMeterProvider.h"
 #include "MqttSettings.h"
 
 bool PowerMeterProvider::isDataValid() const

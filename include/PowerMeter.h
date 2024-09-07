@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #pragma once
 
-#include "PowerMeterProvider.h"
+#include <HoyweiPowerMeterProvider.h>
 #include <TaskSchedulerDeclarations.h>
 #include <memory>
 #include <mutex>
