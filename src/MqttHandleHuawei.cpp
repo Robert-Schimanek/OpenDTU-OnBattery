@@ -9,7 +9,7 @@
 #include "WebApi_Huawei.h"
 #include <ctime>
 
-MqttHandleHuaweiClass MqttHandleHuawei;
+// MqttHandleHuaweiClass MqttHandleHuawei;
 
 void MqttHandleHuaweiClass::init(Scheduler& scheduler)
 {

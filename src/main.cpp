@@ -20,7 +20,7 @@
 #include "MqttHandleInverter.h"
 #include "MqttHandleInverterTotal.h"
 #include "MqttHandleVedirect.h"
-#include "MqttHandleHuawei.h"
+#include <HoyweiMqttHandleHuawei.h>
 #include "MqttHandlePowerLimiter.h"
 #include "MqttHandlePowerLimiterHass.h"
 #include "MqttSettings.h"

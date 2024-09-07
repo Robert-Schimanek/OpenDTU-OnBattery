@@ -12,6 +12,9 @@
 #include <frozen/string.h>
 
 class MqttHandleHuaweiClass {
+
+friend class HoyweiMqttHandleHuaweiClass;
+
 public:
     void init(Scheduler& scheduler);
 
@@ -57,4 +60,4 @@ private:
     std::deque<std::function<void()>> _mqttCallbacks;
 };
 
-extern MqttHandleHuaweiClass MqttHandleHuawei;
+// extern MqttHandleHuaweiClass MqttHandleHuawei;
