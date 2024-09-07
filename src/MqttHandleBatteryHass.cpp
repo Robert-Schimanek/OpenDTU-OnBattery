@@ -9,12 +9,15 @@
 #include "Utils.h"
 #include "__compiled_constants.h"
 
-MqttHandleBatteryHassClass MqttHandleBatteryHass;
+// MqttHandleBatteryHassClass MqttHandleBatteryHass;
 
 void MqttHandleBatteryHassClass::init(Scheduler& scheduler)
 {
+    const CONFIG_T& config = Configuration.get();
+
     scheduler.addTask(_loopTask);
     _loopTask.setCallback(std::bind(&MqttHandleBatteryHassClass::loop, this));
+    _loopTask.setInterval( config.Huawei.Target_Huawei_Data_Request_Interval);
     _loopTask.setIterations(TASK_FOREVER);
     _loopTask.enable();
 }

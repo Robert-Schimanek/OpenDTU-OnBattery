@@ -7,7 +7,7 @@
 #include "AsyncJson.h"
 #include <HoyweiBattery.h>
 #include <HoyweiConfiguration.h>
-#include "MqttHandleBatteryHass.h"
+#include <HoyweiMqttHandleBatteryHass.h>
 #include <HoyweiMqttHandlePowerLimiterHass.h>
 #include "WebApi.h"
 #include "WebApi_battery.h"

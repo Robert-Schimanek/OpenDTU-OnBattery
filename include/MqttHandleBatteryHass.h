@@ -5,6 +5,9 @@
 #include <TaskSchedulerDeclarations.h>
 
 class MqttHandleBatteryHassClass {
+
+friend class HoyweiMqttHandleBatteryHassClass;
+
 public:
     void init(Scheduler& scheduler);
     void forceUpdate() { _doPublish = true; }
@@ -22,4 +25,4 @@ private:
     String serial = "unknown"; // pseudo-serial, can be replaced in future with real serialnumber
 };
 
-extern MqttHandleBatteryHassClass MqttHandleBatteryHass;
+// extern MqttHandleBatteryHassClass MqttHandleBatteryHass;

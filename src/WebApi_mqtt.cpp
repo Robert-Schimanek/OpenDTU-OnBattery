@@ -4,7 +4,7 @@
  */
 #include "WebApi_mqtt.h"
 #include <HoyweiConfiguration.h>
-#include "MqttHandleBatteryHass.h"
+#include <HoyweiMqttHandleBatteryHass.h>
 #include "MqttHandleHass.h"
 #include <HoyweiMqttHandlePowerLimiterHass.h>
 #include "MqttHandleInverter.h"
