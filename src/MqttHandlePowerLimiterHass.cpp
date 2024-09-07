@@ -11,7 +11,7 @@
 #include "Utils.h"
 #include "__compiled_constants.h"
 
-MqttHandlePowerLimiterHassClass MqttHandlePowerLimiterHass;
+//MqttHandlePowerLimiterHassClass MqttHandlePowerLimiterHass;
 
 void MqttHandlePowerLimiterHassClass::init(Scheduler& scheduler)
 {

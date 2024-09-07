@@ -22,7 +22,7 @@
 #include "MqttHandleVedirect.h"
 #include <HoyweiMqttHandleHuawei.h>
 #include <HoyweiMqttHandlePowerLimiter.h>
-#include "MqttHandlePowerLimiterHass.h"
+#include <HoyweiMqttHandlePowerLimiterHass.h>
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
 #include "NtpSettings.h"

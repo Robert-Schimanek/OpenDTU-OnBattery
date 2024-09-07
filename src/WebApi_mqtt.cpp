@@ -6,7 +6,7 @@
 #include <HoyweiConfiguration.h>
 #include "MqttHandleBatteryHass.h"
 #include "MqttHandleHass.h"
-#include "MqttHandlePowerLimiterHass.h"
+#include <HoyweiMqttHandlePowerLimiterHass.h>
 #include "MqttHandleInverter.h"
 #include <HoyweiMqttHandleHuawei.h>
 #include <HoyweiMqttHandlePowerLimiter.h>

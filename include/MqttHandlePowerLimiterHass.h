@@ -5,6 +5,9 @@
 #include <TaskSchedulerDeclarations.h>
 
 class MqttHandlePowerLimiterHassClass {
+
+friend class HoyweiMqttHandlePowerLimiterHassClass;
+
 public:
     void init(Scheduler& scheduler);
     void publishConfig();
@@ -24,4 +27,4 @@ private:
     bool _updateForced = false;
 };
 
-extern MqttHandlePowerLimiterHassClass MqttHandlePowerLimiterHass;
+//extern MqttHandlePowerLimiterHassClass MqttHandlePowerLimiterHass;

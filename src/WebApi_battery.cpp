@@ -8,7 +8,7 @@
 #include <HoyweiBattery.h>
 #include <HoyweiConfiguration.h>
 #include "MqttHandleBatteryHass.h"
-#include "MqttHandlePowerLimiterHass.h"
+#include <HoyweiMqttHandlePowerLimiterHass.h>
 #include "WebApi.h"
 #include "WebApi_battery.h"
 #include "WebApi_errors.h"

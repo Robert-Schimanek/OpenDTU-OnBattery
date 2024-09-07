@@ -10,7 +10,7 @@
 #include "WebApi.h"
 #include "WebApi_errors.h"
 #include "helper.h"
-#include "MqttHandlePowerLimiterHass.h"
+#include <HoyweiMqttHandlePowerLimiterHass.h>
 
 void WebApiVedirectClass::init(AsyncWebServer& server, Scheduler& scheduler)
 {
