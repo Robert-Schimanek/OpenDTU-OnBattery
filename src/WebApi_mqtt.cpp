@@ -9,7 +9,7 @@
 #include "MqttHandlePowerLimiterHass.h"
 #include "MqttHandleInverter.h"
 #include <HoyweiMqttHandleHuawei.h>
-#include "MqttHandlePowerLimiter.h"
+#include <HoyweiMqttHandlePowerLimiter.h>
 #include "MqttHandleVedirectHass.h"
 #include "MqttHandleVedirect.h"
 #include "MqttSettings.h"

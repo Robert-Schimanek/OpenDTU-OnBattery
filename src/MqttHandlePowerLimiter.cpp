@@ -9,7 +9,7 @@
 #include <ctime>
 #include <string>
 
-MqttHandlePowerLimiterClass MqttHandlePowerLimiter;
+// MqttHandlePowerLimiterClass MqttHandlePowerLimiter;
 
 void MqttHandlePowerLimiterClass::init(Scheduler& scheduler)
 {

@@ -21,7 +21,7 @@
 #include "MqttHandleInverterTotal.h"
 #include "MqttHandleVedirect.h"
 #include <HoyweiMqttHandleHuawei.h>
-#include "MqttHandlePowerLimiter.h"
+#include <HoyweiMqttHandlePowerLimiter.h>
 #include "MqttHandlePowerLimiterHass.h"
 #include "MqttSettings.h"
 #include "NetworkSettings.h"

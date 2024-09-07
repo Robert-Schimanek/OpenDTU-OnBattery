@@ -11,6 +11,9 @@
 #include <frozen/string.h>
 
 class MqttHandlePowerLimiterClass {
+
+friend class HoyweiMqttHandlePowerLimiterClass;
+
 public:
     void init(Scheduler& scheduler);
 
@@ -63,4 +66,4 @@ private:
     std::deque<std::function<void()>> _mqttCallbacks;
 };
 
-extern MqttHandlePowerLimiterClass MqttHandlePowerLimiter;
+//extern MqttHandlePowerLimiterClass MqttHandlePowerLimiter;
