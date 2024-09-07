@@ -10,8 +10,8 @@
 
 class PowerMeterMqtt : public HoyweiPowerMeterProviderClass {
 public:
-    explicit PowerMeterMqtt(PowerMeterMqttConfig const& cfg)
-        : _cfg(cfg) { }
+    explicit PowerMeterMqtt(PowerMeterMqttConfig const& cfg, Source source = Source::HOME)
+        : _cfg(cfg) { _source = source; }
 
     ~PowerMeterMqtt();
 

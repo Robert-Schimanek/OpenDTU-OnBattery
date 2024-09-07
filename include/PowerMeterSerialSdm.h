@@ -9,16 +9,16 @@
 #include <HoyweiPowerMeterProvider.h>
 #include "SDM.h"
 
-class PowerMeterSerialSdm : public PowerMeterProvider {
+class PowerMeterSerialSdm : public HoyweiPowerMeterProviderClass {
 public:
     enum class Phases {
         One,
         Three
     };
 
-    PowerMeterSerialSdm(Phases phases, PowerMeterSerialSdmConfig const& cfg)
+    PowerMeterSerialSdm(Phases phases, PowerMeterSerialSdmConfig const& cfg, Source source = Source::HOME)
         : _phases(phases)
-        , _cfg(cfg) { }
+        , _cfg(cfg) { _source = source; }
 
     ~PowerMeterSerialSdm();
 

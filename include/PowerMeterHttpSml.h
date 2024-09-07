@@ -13,9 +13,9 @@
 
 class PowerMeterHttpSml : public PowerMeterSml {
 public:
-    explicit PowerMeterHttpSml(PowerMeterHttpSmlConfig const& cfg)
+    explicit PowerMeterHttpSml(PowerMeterHttpSmlConfig const& cfg, Source source = Source::HOME)
         : PowerMeterSml("PowerMeterHttpSml")
-        , _cfg(cfg) { }
+        , _cfg(cfg) {  _source = source; }
 
     ~PowerMeterHttpSml();
 

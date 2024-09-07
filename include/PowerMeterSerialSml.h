@@ -6,8 +6,8 @@
 
 class PowerMeterSerialSml : public PowerMeterSml {
 public:
-    PowerMeterSerialSml()
-        : PowerMeterSml("PowerMeterSerialSml") { }
+    PowerMeterSerialSml( Source source = Source::HOME )
+        : PowerMeterSml("PowerMeterSerialSml") { _source = source;}
 
     ~PowerMeterSerialSml();
 

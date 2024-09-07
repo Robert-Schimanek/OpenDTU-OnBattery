@@ -15,10 +15,10 @@
 using Auth_t = HttpRequestConfig::Auth;
 using Unit_t = PowerMeterHttpJsonValue::Unit;
 
-class PowerMeterHttpJson : public PowerMeterProvider {
+class PowerMeterHttpJson : public HoyweiPowerMeterProviderClass {
 public:
-    explicit PowerMeterHttpJson(PowerMeterHttpJsonConfig const& cfg)
-        : _cfg(cfg) { }
+    explicit PowerMeterHttpJson(PowerMeterHttpJsonConfig const& cfg, Source source = Source::HOME)
+        : _cfg(cfg) { _source = source; }
 
     ~PowerMeterHttpJson();
 

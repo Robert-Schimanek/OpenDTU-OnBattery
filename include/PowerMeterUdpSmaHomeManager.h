@@ -7,7 +7,7 @@
 #include <cstdint>
 #include <HoyweiPowerMeterProvider.h>
 
-class PowerMeterUdpSmaHomeManager : public PowerMeterProvider {
+class PowerMeterUdpSmaHomeManager : public HoyweiPowerMeterProviderClass {
 public:
     ~PowerMeterUdpSmaHomeManager();
 

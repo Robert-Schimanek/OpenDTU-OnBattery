@@ -11,7 +11,7 @@
 #include <HoyweiPowerMeterProvider.h>
 #include "sml.h"
 
-class PowerMeterSml : public PowerMeterProvider {
+class PowerMeterSml : public HoyweiPowerMeterProviderClass {
 public:
     float getPowerTotal() const final;
     void doMqttPublish() const final;
