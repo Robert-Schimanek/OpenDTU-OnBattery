@@ -371,6 +371,8 @@ void HuaweiCanClass::loop()
         inverter = Hoymiles.getInverterByPos(config.PowerLimiter.InverterId);
     }
 
+
+
     if (inverter != nullptr) {
         if(config.PowerLimiter.Enabled && PowerLimiter.getLastRequestedPowerLimit() > 0 ) {
           _setValue(0.0, HUAWEI_ONLINE_CURRENT);
@@ -378,7 +380,7 @@ void HuaweiCanClass::loop()
           _autoModeBlockedTillMillis = millis() + 750;
           MessageOutput.printf("[HuaweiCanClass::loop] Inverter command active, disable\r\n");
           return;
-        } else if (!config.PowerLimiter.Enabled && inverter->isProducing()) {
+        } else if (inverter->isProducing()) {
           // Don't run auto mode for a second now. Otherwise we may send too much over the CAN bus
           _setValue(0.0, HUAWEI_ONLINE_CURRENT);
           _autoModeBlockedTillMillis = millis() + 1000;
