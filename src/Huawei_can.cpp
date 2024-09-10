@@ -410,9 +410,9 @@ void HuaweiCanClass::loop()
 
       // Powerlimit is the requested output power + permissable Grid consumption factoring in the efficiency factor
       if (!config.Huawei.Charger_Meter_Not_Charger) {
-        newPowerLimit += _rp.output_power + config.Huawei.Auto_Power_Target_Power_Consumption / efficiency;
+        newPowerLimit += _rp.output_power / efficiency + config.Huawei.Auto_Power_Target_Power_Consumption;
       } else {
-        newPowerLimit += ( PowerMeterCharger.getPowerTotal() + config.Huawei.Auto_Power_Target_Power_Consumption ) / efficiency;
+        newPowerLimit += ( PowerMeterCharger.getPowerTotal() + config.Huawei.Auto_Power_Target_Power_Consumption );
       }
 
       if (verboseLogging){
