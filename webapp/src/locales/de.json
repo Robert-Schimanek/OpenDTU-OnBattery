@@ -919,8 +919,10 @@
         "targetPowerConsumption": "Angestrebter Netzbezug",
         "targetPowerConsumptionHint": "Bei postiven Werten wird die eingestellte Leistung aus dem Stromnetz bezogen. Bei negativen Werten wird das Netzteil vorzeitig abgeschaltet.",
         "targetHuaweiDataRequestInterval": "Angestrebtes Aktualisierungspotential",
-        "targetHuaweiDataRequestIntervalHint": "Als Basiswert wird ein Aktualisierungspotential von 2500 ms verwendet. Hier kann sukzessive das Aktualisierungspotential reduziert werden. Es ist dabei darauf zu achten, dass die Konsole und die ausführlichen Protokollierung deaktiviert sind. Andernfalls kann es zu unerwünschten Abstürzen des ESP32 kommen."
-        },
+        "targetHuaweiDataRequestIntervalHint": "Als Basiswert wird ein Aktualisierungspotential von 2500 ms verwendet. Hier kann sukzessive das Aktualisierungspotential reduziert werden. Es ist dabei darauf zu achten, dass die Konsole und die ausführlichen Protokollierung deaktiviert sind. Andernfalls kann es zu unerwünschten Abstürzen des ESP32 kommen.",
+        "surplusChargeFactor": "Ladeanteil des Leistungsüberschusses",
+        "surplusChargeFactorHint": "Passt die Menge der überschüssigen Leistung an, die zum Laden der Batterie verwendet wird. Wert zwischen 0.0 und 100.0 %."
+    },
     "battery": {
         "battery": "Batterie",
         "FwVersion": "Firmware-Version",

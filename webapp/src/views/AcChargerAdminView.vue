@@ -183,6 +183,17 @@
                                 <span class="input-group-text" id="targetPowerConsumptionDescription">W</span>
                             </div>
                         </div>
+                        <label for="surplusChargeFactor" class="col-sm-2 col-form-label">{{ $t('acchargeradmin.surplusChargeFactor') }}:
+                        	<BIconInfoCircle v-tooltip :title="$t('acchargeradmin.surplusChargeFactorHint')" />
+                        </label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="surplusChargeFactor"
+                                    placeholder="100" v-model="acChargerConfigList.surplus_charge_factor"
+                                    aria-describedby="surplusChargeFactorDescription" min="0" max="100" step="1" required/>
+                                <span class="input-group-text" id="surplusChargeFactorDescription">%</span>
+                            </div>
+                        </div>
 
                         <label for="targetHuaweiDataRequestInterval" class="col-sm-2 col-form-label">{{ $t('acchargeradmin.targetHuaweiDataRequestInterval') }}:
                           <BIconInfoCircle v-tooltip :title="$t('acchargeradmin.targetHuaweiDataRequestIntervalHint')" />

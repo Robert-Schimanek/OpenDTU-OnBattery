@@ -204,5 +204,5 @@ void MqttHandlePowerLimiterClass::onMqttCmd(MqttPowerLimiterCommand command, con
     }
 
     // not reached if the value did not change
-    Configuration.write();
+    Configuration.writeExtended();
 }

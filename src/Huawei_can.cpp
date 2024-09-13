@@ -143,7 +143,7 @@ void HuaweiCanCommClass::loop()
 
     const CONFIG_T& config = Configuration.get();
 
-    _nextRequestMillis = millis() + config.Huawei.Target_Huawei_Data_Request_Interval;
+    _nextRequestMillis = millis() + config.HoyweiHuawei.TargetHuaweiDataRequestInterval;
 
   }
 
@@ -283,7 +283,7 @@ void HuaweiCanClass::loop()
 
   bool verboseLogging = config.Huawei.VerboseLogging;
 
-  processReceivedParameters( config.Huawei.Max_Current_Multiplier );
+  processReceivedParameters( config.HoyweiHuawei.MaxCurrentMultiplier );
 
   uint8_t com_error = HuaweiCanComm.getErrorCode(true);
   if (com_error & HUAWEI_ERROR_CODE_RX) {
@@ -405,11 +405,11 @@ void HuaweiCanClass::loop()
       _lastPowerMeterUpdateReceivedMillis = PowerMeter.getLastUpdate();
 
       // Calculate new power limit
-      float newPowerLimit = -1 * round(PowerMeter.getPowerTotal());
+      float newPowerLimit = -0.01 * config.HoyweiHuawei.SurplusChargeFactor * round(PowerMeter.getPowerTotal());
       float efficiency =  (_rp.efficiency > 0.5 ? _rp.efficiency : 1.0);
 
       // Powerlimit is the requested output power + permissable Grid consumption factoring in the efficiency factor
-      if (!config.Huawei.Charger_Meter_Not_Charger) {
+      if (!config.HoyweiHuawei.ChargerMeterNotCharger) {
         newPowerLimit += _rp.output_power / efficiency + config.Huawei.Auto_Power_Target_Power_Consumption;
       } else {
         newPowerLimit += ( PowerMeterCharger.getPowerTotal() + config.Huawei.Auto_Power_Target_Power_Consumption );
@@ -470,7 +470,7 @@ void HuaweiCanClass::loop()
         _setValue(outputCurrent, HUAWEI_ONLINE_CURRENT);
 
         // Don't run auto mode some time to allow for output stabilization after issuing a new value
-        _autoModeBlockedTillMillis = millis() + 2 * config.Huawei.Target_Huawei_Data_Request_Interval;
+        _autoModeBlockedTillMillis = millis() + 2 * config.HoyweiHuawei.TargetHuaweiDataRequestInterval;
       } else {
         // requested PL is below minium. Set current to 0
         _autoPowerEnabled = false;
@@ -513,7 +513,7 @@ void HuaweiCanClass::_setValue(float in, uint8_t parameterType)
     if (parameterType == HUAWEI_OFFLINE_VOLTAGE || parameterType == HUAWEI_ONLINE_VOLTAGE) {
         value = in * 1024;
     } else if (parameterType == HUAWEI_OFFLINE_CURRENT || parameterType == HUAWEI_ONLINE_CURRENT) {
-        value = in * config.Huawei.Max_Current_Multiplier;
+        value = in * config.HoyweiHuawei.MaxCurrentMultiplier;
     } else {
         return;
     }

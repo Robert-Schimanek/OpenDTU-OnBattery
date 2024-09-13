@@ -286,7 +286,6 @@ struct CONFIG_T_ODB {
         bool Enabled;
         bool VerboseLogging;
         uint32_t CAN_Controller_Frequency;
-        uint8_t Max_Current_Multiplier;
         bool Auto_Power_Enabled;
         bool Auto_Power_BatterySoC_Limits_Enabled;
         bool Emergency_Charge_Enabled;
@@ -296,8 +295,6 @@ struct CONFIG_T_ODB {
         float Auto_Power_Upper_Power_Limit;
         uint8_t Auto_Power_Stop_BatterySoC_Threshold;
         float Auto_Power_Target_Power_Consumption;
-        uint32_t Target_Huawei_Data_Request_Interval;
-        bool Charger_Meter_Not_Charger;
     } Huawei;
 
 

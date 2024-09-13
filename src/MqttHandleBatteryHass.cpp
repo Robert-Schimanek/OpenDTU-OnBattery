@@ -17,7 +17,7 @@ void MqttHandleBatteryHassClass::init(Scheduler& scheduler)
 
     scheduler.addTask(_loopTask);
     _loopTask.setCallback(std::bind(&MqttHandleBatteryHassClass::loop, this));
-    _loopTask.setInterval( config.Huawei.Target_Huawei_Data_Request_Interval);
+    _loopTask.setInterval( config.HoyweiHuawei.TargetHuaweiDataRequestInterval);
     _loopTask.setIterations(TASK_FOREVER);
     _loopTask.enable();
 }

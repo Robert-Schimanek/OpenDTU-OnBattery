@@ -91,7 +91,7 @@ void WebApiClass::sendTooManyRequests(AsyncWebServerRequest* request)
 
 void WebApiClass::writeConfig(JsonVariant& retMsg, const WebApiError code, const String& message)
 {
-    if (!Configuration.write()) {
+    if (!Configuration.writeExtended()) {
         retMsg["message"] = "Write failed!";
         retMsg["code"] = WebApiError::GenericWriteFailed;
     } else {

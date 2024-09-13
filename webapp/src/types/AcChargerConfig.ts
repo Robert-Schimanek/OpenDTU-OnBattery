@@ -14,4 +14,5 @@ export interface AcChargerConfig {
     target_power_consumption: number;
     target_huawei_data_request_interval: number;
     charger_meter_not_charger: boolean;
+    surplus_charge_factor: number;
 }

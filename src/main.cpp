@@ -73,19 +73,20 @@ void setup()
 
     // Read configuration values
     MessageOutput.print("Reading configuration... ");
-    if (!Configuration.read()) {
+    if (!Configuration.readExtended()) {
         MessageOutput.print("initializing... ");
         Configuration.init();
-        if (Configuration.write()) {
+        if (Configuration.writeExtended()) {
             MessageOutput.print("written... ");
         } else {
             MessageOutput.print("failed... ");
         }
     }
-    if (Configuration.get().Cfg.Version != CONFIG_VERSION) {
-        MessageOutput.print("migrated... ");
-        Configuration.migrate();
-    }
+    //if (Configuration.get().Cfg.Version != CONFIG_VERSION) {
+    //    MessageOutput.print("migrated... ");
+    //    Configuration.migrate();
+    //}
+
     auto& config = Configuration.get();
     MessageOutput.println("done");
 
@@ -171,7 +172,7 @@ void setup()
             ((uint32_t)((dtuId >> 32) & 0xFFFFFFFF)),
             ((uint32_t)(dtuId & 0xFFFFFFFF)));
         config.Dtu.Serial = dtuId;
-        Configuration.write();
+        Configuration.writeExtended();
     }
     MessageOutput.println("done");
     MessageOutput.println("done");

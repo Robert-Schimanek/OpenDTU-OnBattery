@@ -158,7 +158,6 @@ void WebApiHuaweiClass::onAdminGet(AsyncWebServerRequest* request)
     root["enabled"] = config.Huawei.Enabled;
     root["verbose_logging"] = config.Huawei.VerboseLogging;
     root["can_controller_frequency"] = config.Huawei.CAN_Controller_Frequency;
-    root["max_current_multiplier"] = config.Huawei.Max_Current_Multiplier;
     root["auto_power_enabled"] = config.Huawei.Auto_Power_Enabled;
     root["auto_power_batterysoc_limits_enabled"] = config.Huawei.Auto_Power_BatterySoC_Limits_Enabled;
     root["emergency_charge_enabled"] = config.Huawei.Emergency_Charge_Enabled;
@@ -168,9 +167,11 @@ void WebApiHuaweiClass::onAdminGet(AsyncWebServerRequest* request)
     root["upper_power_limit"] = config.Huawei.Auto_Power_Upper_Power_Limit;
     root["stop_batterysoc_threshold"] = config.Huawei.Auto_Power_Stop_BatterySoC_Threshold;
     root["target_power_consumption"] = config.Huawei.Auto_Power_Target_Power_Consumption;
-    root["target_huawei_data_request_interval"] = config.Huawei.Target_Huawei_Data_Request_Interval;
-    root["charger_meter_not_charger"] = config.Huawei.Charger_Meter_Not_Charger;
 
+    root["max_current_multiplier"] = config.HoyweiHuawei.MaxCurrentMultiplier;
+    root["target_huawei_data_request_interval"] = config.HoyweiHuawei.TargetHuaweiDataRequestInterval;
+    root["charger_meter_not_charger"] = config.HoyweiHuawei.ChargerMeterNotCharger;
+    root["surplus_charge_factor"] = config.HoyweiHuawei.SurplusChargeFactor;
 
     response->setLength();
     request->send(response);
@@ -209,7 +210,6 @@ void WebApiHuaweiClass::onAdminPost(AsyncWebServerRequest* request)
     config.Huawei.Enabled = root["enabled"].as<bool>();
     config.Huawei.VerboseLogging = root["verbose_logging"];
     config.Huawei.CAN_Controller_Frequency = root["can_controller_frequency"].as<uint32_t>();
-    config.Huawei.Max_Current_Multiplier = root["max_current_multiplier"];
     config.Huawei.Auto_Power_Enabled = root["auto_power_enabled"].as<bool>();
     config.Huawei.Auto_Power_BatterySoC_Limits_Enabled = root["auto_power_batterysoc_limits_enabled"].as<bool>();
     config.Huawei.Emergency_Charge_Enabled = root["emergency_charge_enabled"].as<bool>();
@@ -219,8 +219,11 @@ void WebApiHuaweiClass::onAdminPost(AsyncWebServerRequest* request)
     config.Huawei.Auto_Power_Upper_Power_Limit = root["upper_power_limit"].as<float>();
     config.Huawei.Auto_Power_Stop_BatterySoC_Threshold = root["stop_batterysoc_threshold"];
     config.Huawei.Auto_Power_Target_Power_Consumption = root["target_power_consumption"];
-    config.Huawei.Target_Huawei_Data_Request_Interval = root["target_huawei_data_request_interval"];
-    config.Huawei.Charger_Meter_Not_Charger = root["charger_meter_not_charger"];
+
+    config.HoyweiHuawei.MaxCurrentMultiplier = root["max_current_multiplier"];
+    config.HoyweiHuawei.TargetHuaweiDataRequestInterval = root["target_huawei_data_request_interval"];
+    config.HoyweiHuawei.ChargerMeterNotCharger = root["charger_meter_not_charger"];
+    config.HoyweiHuawei.SurplusChargeFactor = root["surplus_charge_factor"];
 
 
     WebApi.writeConfig(retMsg);

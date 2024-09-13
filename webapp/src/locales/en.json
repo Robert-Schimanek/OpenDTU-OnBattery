@@ -926,7 +926,9 @@
         "targetPowerConsumption": "Target power consumption",
         "targetPowerConsumptionHint": "Postitive values use grid power to charge the battery. Negative values result in early shutdown",
         "targetHuaweiDataRequestInterval": "Desired update potential",
-        "targetHuaweiDataRequestIntervalHint": "A base value of 2500 ms for the update potential is used. The update potential can be gradually reduced. It is important to ensure that the console and detailed protocol are disabled. Otherwise, unwanted crashes of the ESP32 may occur."
+        "targetHuaweiDataRequestIntervalHint": "A base value of 2500 ms for the update potential is used. The update potential can be gradually reduced. It is important to ensure that the console and detailed protocol are disabled. Otherwise, unwanted crashes of the ESP32 may occur.",
+        "surplusChargeFactor": "Surplus charging factor",
+        "surplusChargeFactorHint": "The surplus charging factor adjusts the amount of power surplus taken to charge the battery. Set a value between 0.0 and 100.0 %."
     },
     "battery": {
         "battery": "Battery",

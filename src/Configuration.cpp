@@ -321,7 +321,6 @@ bool ConfigurationClass::write()
     huawei["enabled"] = config.Huawei.Enabled;
     huawei["verbose_logging"] = config.Huawei.VerboseLogging;
     huawei["can_controller_frequency"] = config.Huawei.CAN_Controller_Frequency;
-    huawei["max_current_multiplier"] = config.Huawei.Max_Current_Multiplier;
     huawei["auto_power_enabled"] = config.Huawei.Auto_Power_Enabled;
     huawei["auto_power_batterysoc_limits_enabled"] = config.Huawei.Auto_Power_BatterySoC_Limits_Enabled;
     huawei["emergency_charge_enabled"] = config.Huawei.Emergency_Charge_Enabled;
@@ -331,8 +330,6 @@ bool ConfigurationClass::write()
     huawei["upper_power_limit"] = config.Huawei.Auto_Power_Upper_Power_Limit;
     huawei["stop_batterysoc_threshold"] = config.Huawei.Auto_Power_Stop_BatterySoC_Threshold;
     huawei["target_power_consumption"] = config.Huawei.Auto_Power_Target_Power_Consumption;
-    huawei["target_huawei_data_request_interval"] = config.Huawei.Target_Huawei_Data_Request_Interval;
-    huawei["charger_meter_not_charger"] = config.Huawei.Charger_Meter_Not_Charger;
 
 
     if (!Utils::checkJsonAlloc(doc, __FUNCTION__, __LINE__)) {
@@ -723,7 +720,6 @@ bool ConfigurationClass::read()
     config.Huawei.Enabled = huawei["enabled"] | HUAWEI_ENABLED;
     config.Huawei.VerboseLogging = huawei["verbose_logging"] | VERBOSE_LOGGING;
     config.Huawei.CAN_Controller_Frequency = huawei["can_controller_frequency"] | HUAWEI_CAN_CONTROLLER_FREQUENCY;
-    config.Huawei.Max_Current_Multiplier = huawei["max_current_multiplier"] | HUAWEI_MAX_CURRENT_MULTIPLIER;
     config.Huawei.Auto_Power_Enabled = huawei["auto_power_enabled"] | false;
     config.Huawei.Auto_Power_BatterySoC_Limits_Enabled = huawei["auto_power_batterysoc_limits_enabled"] | false;
     config.Huawei.Emergency_Charge_Enabled = huawei["emergency_charge_enabled"] | false;
@@ -733,8 +729,6 @@ bool ConfigurationClass::read()
     config.Huawei.Auto_Power_Upper_Power_Limit = huawei["upper_power_limit"] | HUAWEI_AUTO_POWER_UPPER_POWER_LIMIT;
     config.Huawei.Auto_Power_Stop_BatterySoC_Threshold = huawei["stop_batterysoc_threshold"] | HUAWEI_AUTO_POWER_STOP_BATTERYSOC_THRESHOLD;
     config.Huawei.Auto_Power_Target_Power_Consumption = huawei["target_power_consumption"] | HUAWEI_AUTO_POWER_TARGET_POWER_CONSUMPTION;
-    config.Huawei.Target_Huawei_Data_Request_Interval = huawei["target_huawei_data_request_interval"] | HUAWEI_DATA_REQUEST_INTERVAL_MS;
-    config.Huawei.Charger_Meter_Not_Charger = huawei["charger_meter_not_charger"] | HUAWEI_CHARGER_METER_NOT_CHARGER;
 
     f.close();
     return true;
