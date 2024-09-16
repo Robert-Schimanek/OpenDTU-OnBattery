@@ -73,15 +73,16 @@ void setup()
 
     // Read configuration values
     MessageOutput.print("Reading configuration... ");
-    if (!Configuration.readExtended()) {
+    if (!Configuration.read()) {
         MessageOutput.print("initializing... ");
         Configuration.init();
-        if (Configuration.writeExtended()) {
+        if (Configuration.write()) {
             MessageOutput.print("written... ");
         } else {
             MessageOutput.print("failed... ");
         }
     }
+    Configuration.readExtended();
     //if (Configuration.get().Cfg.Version != CONFIG_VERSION) {
     //    MessageOutput.print("migrated... ");
     //    Configuration.migrate();
