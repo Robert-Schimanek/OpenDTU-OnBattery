@@ -24,8 +24,7 @@ void PowerMeterClass::updateSettings()
 
     if (_upProvider) { _upProvider.reset(); }
 
-    auto const& pmcfg = Configuration.getByName(_name);
-
+    auto const& pmcfg = Configuration.get().PowerMeter;
 
     if (!pmcfg.Enabled) { return; }
 

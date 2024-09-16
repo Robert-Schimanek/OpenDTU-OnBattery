@@ -12,7 +12,7 @@ class PowerMeterClass {
 friend class HoyweiPowerMeterClass;
 
 public:
-    PowerMeterClass(const std::string& name) : _name(name) {}
+    PowerMeterClass(PowerMeterSource source) : _source(source) {}
 
     void init(Scheduler& scheduler);
 
@@ -27,7 +27,7 @@ private:
 
     Task _loopTask;
 
-    std::string _name;
+    PowerMeterSource _source;
     bool _verboseLogging = true;
     uint32_t _lastPowerMeterCheck;
     // Used in Power limiter for safety check

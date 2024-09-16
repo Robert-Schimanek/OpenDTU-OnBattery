@@ -18,8 +18,8 @@
 #include "helper.h"
 
 
-WebApiPowerMeterClass::WebApiPowerMeterClass(const std::string& name, const std::string& baseUrl)
-    : _name(name), _baseUrl(baseUrl)
+WebApiPowerMeterClass::WebApiPowerMeterClass(PowerMeterSource source, const std::string& baseUrl)
+    : _source(source), _baseUrl(baseUrl)
 {
 }
 
@@ -38,13 +38,13 @@ void WebApiPowerMeterClass::init(AsyncWebServer& server, Scheduler& scheduler)
 }
 
 void WebApiPowerMeterClass::updateSettings() {
-    if (_name == "PowerMeter") {
+    if (_source == PowerMeterSource::HOME) {
         PowerMeter.updateSettings();
-    } else if (_name == "PowerMeterInverter") {
+    } else if (_source == PowerMeterSource::INVERTER_BATTERY) {
         PowerMeterInverter.updateSettings();
-    } else if (_name == "PowerMeterCharger") {
+    } else if (_source == PowerMeterSource::CHARGER) {
         PowerMeterCharger.updateSettings();
-    } else if (_name == "PowerMeterSolar") {
+    } else if (_source == PowerMeterSource::INVERTER_PV) {
         PowerMeterSolar.updateSettings();
     } else {
         Serial.println("Error: Unknown PowerMeter type");
@@ -59,7 +59,7 @@ void WebApiPowerMeterClass::onStatus(AsyncWebServerRequest* request)
 
     AsyncJsonResponse* response = new AsyncJsonResponse();
     auto& root = response->getRoot();
-    auto const& pmcfg = Configuration.getByName(_name);
+    auto const& pmcfg = Configuration.getBySource(_source);
 
     root["enabled"] = pmcfg.Enabled;
     root["verbose_logging"] = pmcfg.VerboseLogging;
@@ -172,7 +172,7 @@ void WebApiPowerMeterClass::onAdminPost(AsyncWebServerRequest* request)
         }
     }
 
-    auto& pmcfg = Configuration.getByName(_name);
+    auto& pmcfg = Configuration.getBySource(_source);
     pmcfg.Enabled = root["enabled"].as<bool>();
     pmcfg.VerboseLogging = root["verbose_logging"].as<bool>();
     pmcfg.Source = root["source"].as<uint8_t>();

@@ -10,10 +10,10 @@
 
 WebApiClass::WebApiClass()
     : _server(HTTP_PORT),
-    _webApiPowerMeter("PowerMeter","/api/powermeter"),
-    _webApiPowerMeterInverter("PowerMeterInverter", "/api/powermeterinverter"),
-    _webApiPowerMeterCharger("PowerMeterCharger", "/api/powermetercharger"),
-    _webApiPowerMeterSolar("PowerMeterSolar", "/api/powermetersolar")
+    _webApiPowerMeter(PowerMeterSource::HOME,"/api/powermeter"),
+    _webApiPowerMeterInverter(PowerMeterSource::INVERTER_BATTERY,"/api/powermeterinverter"),
+    _webApiPowerMeterCharger(PowerMeterSource::CHARGER,"/api/powermetercharger"),
+    _webApiPowerMeterSolar(PowerMeterSource::INVERTER_PV,"/api/powermetersolar")
 {
 }
 
