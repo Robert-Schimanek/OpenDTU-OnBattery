@@ -39,6 +39,7 @@
 #include <LittleFS.h>
 #include <TaskScheduler.h>
 #include <esp_heap_caps.h>
+#include <PriceProvider.h>
 
 void setup()
 {
@@ -205,6 +206,8 @@ void setup()
     }
 
     Battery.init(scheduler);
+
+    //OneMoreThing.init(scheduler); If you want to test one more thing you must uncomment this
 }
 
 void loop()

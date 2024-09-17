@@ -13,6 +13,9 @@ using up_http_client_t = std::unique_ptr<HTTPClient>;
 using sp_wifi_client_t = std::shared_ptr<WiFiClient>;
 
 class HttpRequestResult {
+
+    friend class HoyweiHttpGetterClass;
+
 public:
     HttpRequestResult(bool success,
             up_http_client_t upHttpClient = nullptr,
@@ -48,6 +51,9 @@ private:
 };
 
 class HttpGetter {
+
+    friend class HoyweiHttpGetterClass;
+
 public:
     explicit HttpGetter(HttpRequestConfig const& cfg)
         : _config(cfg) { }
