@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "PowerMeterSerialSml.h"
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include "MessageOutput.h"
 
 bool PowerMeterSerialSml::init()

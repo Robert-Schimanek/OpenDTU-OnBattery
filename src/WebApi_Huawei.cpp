@@ -6,7 +6,7 @@
 #include <HoyweiHuaweiCan.h>
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include "WebApi.h"
 #include "WebApi_errors.h"
 #include <AsyncJson.h>

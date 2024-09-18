@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "BatteryCanReceiver.h"
 #include "MessageOutput.h"
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include <driver/twai.h>
 
 bool BatteryCanReceiver::init(bool verboseLogging, char const* providerName)

@@ -5,7 +5,7 @@
 #include "InverterSettings.h"
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include "SunPosition.h"
 #include "SPIPortManager.h"
 #include <Hoymiles.h>

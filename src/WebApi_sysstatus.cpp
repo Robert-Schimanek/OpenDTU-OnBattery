@@ -5,7 +5,7 @@
 #include "WebApi_sysstatus.h"
 #include <HoyweiConfiguration.h>
 #include "NetworkSettings.h"
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include "WebApi.h"
 #include "__compiled_constants.h"
 #include <AsyncJson.h>

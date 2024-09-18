@@ -170,7 +170,7 @@
 #define POWERMETER_PIN_DERE -1
 #endif
 
-PinMappingClass PinMapping;
+//PinMappingClass PinMapping;
 
 PinMappingClass::PinMappingClass()
 {
@@ -329,7 +329,7 @@ bool PinMappingClass::init(const String& deviceMapping)
     return false;
 }
 
-bool PinMappingClass::isValidNrf24Config() const
+bool PinMappingClass::isValidNrf24Config()
 {
     return _pinMapping.nrf24_clk >= 0
         && _pinMapping.nrf24_cs >= 0
@@ -339,7 +339,7 @@ bool PinMappingClass::isValidNrf24Config() const
         && _pinMapping.nrf24_mosi >= 0;
 }
 
-bool PinMappingClass::isValidCmt2300Config() const
+bool PinMappingClass::isValidCmt2300Config()
 {
     return _pinMapping.cmt_clk >= 0
         && _pinMapping.cmt_cs >= 0
@@ -347,12 +347,12 @@ bool PinMappingClass::isValidCmt2300Config() const
         && _pinMapping.cmt_sdio >= 0;
 }
 
-bool PinMappingClass::isValidEthConfig() const
+bool PinMappingClass::isValidEthConfig()
 {
     return _pinMapping.eth_enabled;
 }
 
-bool PinMappingClass::isValidHuaweiConfig() const
+bool PinMappingClass::isValidHuaweiConfig()
 {
     return _pinMapping.huawei_miso >= 0
         && _pinMapping.huawei_mosi >= 0
