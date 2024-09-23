@@ -7,7 +7,7 @@
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "Utils.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "defaults.h"
 #include <PowerLimiters.h>
 #include "VictronMppt.h"

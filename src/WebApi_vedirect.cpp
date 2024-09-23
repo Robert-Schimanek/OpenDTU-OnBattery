@@ -7,7 +7,7 @@
 #include "ArduinoJson.h"
 #include "AsyncJson.h"
 #include <HoyweiConfiguration.h>
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
 #include "helper.h"
 #include <HoyweiMqttHandlePowerLimiterHass.h>

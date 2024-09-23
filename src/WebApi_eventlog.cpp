@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_eventlog.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include <AsyncJson.h>
 #include <Hoymiles.h>
 

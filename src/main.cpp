@@ -30,7 +30,7 @@
 #include "Scheduler.h"
 #include "SunPosition.h"
 #include "Utils.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "PowerMeter.h"
 #include <PowerMeters.h>
 #include <PowerLimiters.h>
@@ -207,7 +207,7 @@ void setup()
 
     Battery.init(scheduler);
 
-    //OneMoreThing.init(scheduler); If you want to test one more thing you must uncomment this
+    OneMoreThing.init(scheduler); // If you want to test one more thing you must uncomment this
 }
 
 void loop()

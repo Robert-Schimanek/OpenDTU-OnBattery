@@ -6,7 +6,7 @@
 #include "Datastore.h"
 #include "MessageOutput.h"
 #include "Utils.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include <HoyweiBattery.h>
 #include <HoyweiHuaweiCan.h>
 #include <PowerMeters.h>

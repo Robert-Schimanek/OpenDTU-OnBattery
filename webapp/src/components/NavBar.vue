@@ -8,7 +8,7 @@
 
                 <BIconSun v-else width="30" height="30" class="d-inline-block align-text-top text-warning" />
 
-                <span style="margin-left: 0.5rem"> OpenDTU-OnBattery </span>
+                <span style="margin-left: 0.5rem"> Hoywei Turbo </span>
                 <span class="text-info mx-2"
                     ><BIconBatteryCharging width="20" height="20" class="d-inline-block align-text-center"
                 /></span>
@@ -57,9 +57,9 @@
                                 }}</router-link>
                             </li>
                             <li>
-                                <router-link @click="onClick" class="dropdown-item" to="/settings/inverter"
-                                    >{{ $t('menu.InverterSettings') }}
-                                </router-link>
+                                <router-link @click="onClick" class="dropdown-item" to="/settings/dtu">{{
+                                    $t('menu.DTUSettings')
+                                }}</router-link>
                             </li>
                             <li>
                                 <router-link @click="onClick" class="dropdown-item" to="/settings/security"
@@ -67,9 +67,12 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link @click="onClick" class="dropdown-item" to="/settings/dtu">{{
-                                    $t('menu.DTUSettings')
-                                }}</router-link>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <router-link @click="onClick" class="dropdown-item" to="/settings/inverter"
+                                    >{{ $t('menu.InverterSettings') }}
+                                </router-link>
                             </li>
                             <li>
                                 <router-link @click="onClick" class="dropdown-item" to="/settings/vedirect">{{
@@ -114,6 +117,14 @@
                             <li>
                                 <router-link @click="onClick" class="dropdown-item" to="/settings/device">{{
                                     $t('menu.DeviceManager')
+                                }}</router-link>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <router-link @click="onClick" class="dropdown-item" to="/priceprovider">{{
+                                    $t('menu.PriceProviderAdmin')
                                 }}</router-link>
                             </li>
                             <li>

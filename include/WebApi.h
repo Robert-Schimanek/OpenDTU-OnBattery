@@ -34,7 +34,12 @@
 #include <ESPAsyncWebServer.h>
 #include <TaskSchedulerDeclarations.h>
 
+#include "WebApi_PriceProvider.h"
+
 class WebApiClass {
+
+    friend class HoyweiWebApiClass;
+
 public:
     WebApiClass();
     void init(Scheduler& scheduler);
@@ -69,9 +74,6 @@ private:
     WebApiNtpClass _webApiNtp;
     WebApiPowerClass _webApiPower;
     WebApiPowerMeterClass _webApiPowerMeter;
-    WebApiPowerMeterClass _webApiPowerMeterInverter;
-    WebApiPowerMeterClass _webApiPowerMeterCharger;
-    WebApiPowerMeterClass _webApiPowerMeterSolar;
     WebApiPowerLimiterClass _webApiPowerLimiter;
     WebApiPrometheusClass _webApiPrometheus;
     WebApiSecurityClass _webApiSecurity;
@@ -84,6 +86,11 @@ private:
     WebApiHuaweiClass _webApiHuaweiClass;
     WebApiWsHuaweiLiveClass _webApiWsHuaweiLive;
     WebApiWsBatteryLiveClass _webApiWsBatteryLive;
+
+    //WebApiPowerMeterClass _webApiPowerMeterInverter;
+    //WebApiPowerMeterClass _webApiPowerMeterCharger;
+    //WebApiPowerMeterClass _webApiPowerMeterSolar;
+    //WebApiPriceProviderClass _webApiPriceProvider;
 };
 
-extern WebApiClass WebApi;
+// extern WebApiClass WebApi;

@@ -9,7 +9,7 @@
 #include <HoyweiConfiguration.h>
 #include <HoyweiMqttHandlePowerLimiterHass.h>
 #include <PowerLimiters.h>
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "helper.h"
 #include "WebApi_errors.h"
 

@@ -8,7 +8,7 @@
 #include <HoyweiHuaweiCan.h>
 #include "MessageOutput.h"
 #include "Utils.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "defaults.h"
 
 WebApiWsHuaweiLiveClass::WebApiWsHuaweiLiveClass()

@@ -3,7 +3,7 @@
  * Copyright (C) 2022-2024 Thomas Basler and others
  */
 #include "WebApi_power.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
 #include <AsyncJson.h>
 #include <Hoymiles.h>

@@ -7,7 +7,7 @@
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "HoyweiPinMapping.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
 #include <AsyncJson.h>
 #include <Hoymiles.h>

@@ -5,7 +5,7 @@
 #include "WebApi_inverter.h"
 #include <HoyweiConfiguration.h>
 #include "MqttHandleHass.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
 #include "defaults.h"
 #include "helper.h"

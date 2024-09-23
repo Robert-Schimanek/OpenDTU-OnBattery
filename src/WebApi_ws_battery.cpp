@@ -7,7 +7,7 @@
 #include <HoyweiConfiguration.h>
 #include <HoyweiBattery.h>
 #include "MessageOutput.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "defaults.h"
 #include "Utils.h"
 

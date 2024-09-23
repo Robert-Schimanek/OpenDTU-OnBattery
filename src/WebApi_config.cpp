@@ -5,7 +5,7 @@
 #include "WebApi_config.h"
 #include <HoyweiConfiguration.h>
 #include "Utils.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
 #include <AsyncJson.h>
 #include <LittleFS.h>

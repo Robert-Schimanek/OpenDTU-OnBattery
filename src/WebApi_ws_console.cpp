@@ -5,7 +5,7 @@
 #include "WebApi_ws_console.h"
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "defaults.h"
 
 WebApiWsConsoleClass::WebApiWsConsoleClass()

@@ -15,7 +15,7 @@ try {
     // eslint-disable-next-line
     proxy_target = require('./vite.user.ts').proxy_target;
 } catch (error) {
-    proxy_target = '192.168.178.57';
+    proxy_target = '192.168.178.58';
 }
 
 // https://vitejs.dev/config/
@@ -26,7 +26,11 @@ export default defineConfig({
     cssInjectedByJsPlugin(),
     VueI18nPlugin({
         /* options */
-        include: path.resolve(path.dirname(fileURLToPath(import.meta.url)), './src/locales/**.json'),
+        include: [
+            path.resolve(path.dirname(fileURLToPath(import.meta.url)), './src/locales/**.json'),
+            // Add additional paths here, for example:
+            path.resolve(path.dirname(fileURLToPath(import.meta.url)), './src/Hoywei-Turbo-WebApp/locales/**.json'),
+        ],
         fullInstall: false,
         forceStringify: true,
         strictMessage: false,

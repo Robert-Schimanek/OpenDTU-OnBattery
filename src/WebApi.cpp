@@ -10,10 +10,7 @@
 
 WebApiClass::WebApiClass()
     : _server(HTTP_PORT),
-    _webApiPowerMeter(PowerMeterSource::HOME,"/api/powermeter"),
-    _webApiPowerMeterInverter(PowerMeterSource::INVERTER_BATTERY,"/api/powermeterinverter"),
-    _webApiPowerMeterCharger(PowerMeterSource::CHARGER,"/api/powermetercharger"),
-    _webApiPowerMeterSolar(PowerMeterSource::INVERTER_PV,"/api/powermetersolar")
+    _webApiPowerMeter(PowerMeterSource::HOME,"/api/powermeter")
 {
 }
 
@@ -41,9 +38,6 @@ void WebApiClass::init(Scheduler& scheduler)
     _webApiWsLive.init(_server, scheduler);
     _webApiBattery.init(_server, scheduler);
     _webApiPowerMeter.init(_server, scheduler);
-    _webApiPowerMeterInverter.init(_server, scheduler);
-    _webApiPowerMeterCharger.init(_server, scheduler);
-    _webApiPowerMeterSolar.init(_server, scheduler);
     _webApiPowerLimiter.init(_server, scheduler);
     _webApiWsVedirectLive.init(_server, scheduler);
     _webApiVedirect.init(_server, scheduler);
@@ -109,7 +103,7 @@ bool WebApiClass::parseRequestData(AsyncWebServerRequest* request, AsyncJsonResp
     if (!request->hasParam("data", true)) {
         retMsg["message"] = "No values found!";
         retMsg["code"] = WebApiError::GenericNoValueFound;
-        WebApi.sendJsonResponse(request, response, __FUNCTION__, __LINE__);
+        sendJsonResponse(request, response, __FUNCTION__, __LINE__);
         return false;
     }
 
@@ -118,7 +112,7 @@ bool WebApiClass::parseRequestData(AsyncWebServerRequest* request, AsyncJsonResp
     if (error) {
         retMsg["message"] = "Failed to parse data!";
         retMsg["code"] = WebApiError::GenericParseError;
-        WebApi.sendJsonResponse(request, response, __FUNCTION__, __LINE__);
+        sendJsonResponse(request, response, __FUNCTION__, __LINE__);
         return false;
     }
 
@@ -155,4 +149,4 @@ bool WebApiClass::sendJsonResponse(AsyncWebServerRequest* request, AsyncJsonResp
     return ret_val;
 }
 
-WebApiClass WebApi;
+//WebApiClass WebApi;

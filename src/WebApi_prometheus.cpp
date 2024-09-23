@@ -7,7 +7,7 @@
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
 #include "NetworkSettings.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include <Hoymiles.h>
 #include "__compiled_constants.h"
 

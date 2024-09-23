@@ -10,9 +10,6 @@ import FirmwareUpgradeView from '@/views/FirmwareUpgradeView.vue';
 import HomeView from '@/views/HomeView.vue';
 import VedirectAdminView from '@/views/VedirectAdminView.vue';
 import PowerMeterAdminView from '@/views/PowerMeterAdminView.vue';
-import PowerMeterInverterAdminView from '@/views/PowerMeterInverterAdminView.vue';
-import PowerMeterChargerAdminView from '@/views/PowerMeterChargerAdminView.vue';
-import PowerMeterSolarAdminView from '@/views/PowerMeterSolarAdminView.vue';
 import PowerLimiterAdminView from '@/views/PowerLimiterAdminView.vue';
 import VedirectInfoView from '@/views/VedirectInfoView.vue';
 import InverterAdminView from '@/views/InverterAdminView.vue';
@@ -26,7 +23,15 @@ import NtpAdminView from '@/views/NtpAdminView.vue';
 import NtpInfoView from '@/views/NtpInfoView.vue';
 import SecurityAdminView from '@/views/SecurityAdminView.vue';
 import SystemInfoView from '@/views/SystemInfoView.vue';
+
+// Import the views from the Hoywei-Turbo-WebApp
+import PowerMeterInverterAdminView from '@/Hoywei-Turbo-WebApp/views/PowerMeterInverterAdminView.vue';
+import PowerMeterChargerAdminView from '@/Hoywei-Turbo-WebApp/views/PowerMeterChargerAdminView.vue';
+import PowerMeterSolarAdminView from '@/Hoywei-Turbo-WebApp/views/PowerMeterSolarAdminView.vue';
+import PriceProviderAdminView from '@/Hoywei-Turbo-WebApp/views/PriceProviderAdminView.vue';
+
 import { createRouter, createWebHistory } from 'vue-router';
+
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -171,6 +176,11 @@ const router = createRouter({
             path: '/maintenance/reboot',
             name: 'Device Reboot',
             component: MaintenanceRebootView,
+        },
+        {
+            path: '/priceprovider',
+            name: 'PriceProviderAdmin',
+            component: PriceProviderAdminView,
         },
     ],
 });

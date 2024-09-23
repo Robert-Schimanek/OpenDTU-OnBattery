@@ -6,7 +6,7 @@
 #include <HoyweiConfiguration.h>
 #include "NetworkSettings.h"
 #include "HoyweiPinMapping.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "__compiled_constants.h"
 #include <AsyncJson.h>
 #include <CpuTemperature.h>

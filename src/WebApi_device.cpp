@@ -7,7 +7,7 @@
 #include "Display_Graphic.h"
 #include "HoyweiPinMapping.h"
 #include "Utils.h"
-#include "WebApi.h"
+#include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
 #include "helper.h"
 #include <AsyncJson.h>
