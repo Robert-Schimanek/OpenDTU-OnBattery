@@ -26,7 +26,7 @@
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
 #include "NtpSettings.h"
-#include "HoyweiPinMapping.h"
+#include "PinMapping.h"
 #include "Scheduler.h"
 #include "SunPosition.h"
 #include "Utils.h"
@@ -40,6 +40,7 @@
 #include <TaskScheduler.h>
 #include <esp_heap_caps.h>
 #include <PriceProvider.h>
+#include <DeviceManager.h>
 
 void setup()
 {
@@ -207,7 +208,9 @@ void setup()
 
     Battery.init(scheduler);
 
-    OneMoreThing.init(scheduler); // If you want to test one more thing you must uncomment this
+    // OneMoreThing.init(scheduler); // If you want to test one more thing you must uncomment this
+
+    // DeviceManager.init(scheduler);
 }
 
 void loop()

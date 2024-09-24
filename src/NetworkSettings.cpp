@@ -5,7 +5,7 @@
 #include "NetworkSettings.h"
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
-#include "HoyweiPinMapping.h"
+#include "PinMapping.h"
 #include "Utils.h"
 #include "defaults.h"
 #include <ESPmDNS.h>

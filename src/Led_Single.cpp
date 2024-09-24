@@ -7,7 +7,7 @@
 #include "Datastore.h"
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
-#include "HoyweiPinMapping.h"
+#include "PinMapping.h"
 #include <Hoymiles.h>
 
 LedSingleClass LedSingle;

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "PytesCanReceiver.h"
 #include "MessageOutput.h"
-#include "HoyweiPinMapping.h"
+#include "PinMapping.h"
 #include <driver/twai.h>
 #include <ctime>
 

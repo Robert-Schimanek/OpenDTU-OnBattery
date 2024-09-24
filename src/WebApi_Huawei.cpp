@@ -6,7 +6,7 @@
 #include <HoyweiHuaweiCan.h>
 #include <HoyweiConfiguration.h>
 #include "MessageOutput.h"
-#include "HoyweiPinMapping.h"
+#include "PinMapping.h"
 #include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
 #include <AsyncJson.h>
@@ -220,10 +220,10 @@ void WebApiHuaweiClass::onAdminPost(AsyncWebServerRequest* request)
     config.Huawei.Auto_Power_Stop_BatterySoC_Threshold = root["stop_batterysoc_threshold"];
     config.Huawei.Auto_Power_Target_Power_Consumption = root["target_power_consumption"];
 
-    config.HoyweiHuawei.MaxCurrentMultiplier = root["max_current_multiplier"];
-    config.HoyweiHuawei.TargetHuaweiDataRequestInterval = root["target_huawei_data_request_interval"];
-    config.HoyweiHuawei.ChargerMeterNotCharger = root["charger_meter_not_charger"];
-    config.HoyweiHuawei.SurplusChargeFactor = root["surplus_charge_factor"];
+    config.HoyweiHuawei.MaxCurrentMultiplier = root["max_current_multiplier"].as<uint8_t>();
+    config.HoyweiHuawei.TargetHuaweiDataRequestInterval = root["target_huawei_data_request_interval"].as<uint32_t>();
+    config.HoyweiHuawei.ChargerMeterNotCharger = root["charger_meter_not_charger"].as<bool>();
+    config.HoyweiHuawei.SurplusChargeFactor = root["surplus_charge_factor"].as<float>();
 
 
     WebApi.writeConfig(retMsg);

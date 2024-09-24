@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "VictronMppt.h"
 #include <HoyweiConfiguration.h>
-#include "HoyweiPinMapping.h"
+#include "PinMapping.h"
 #include "MessageOutput.h"
 #include "SerialPortManager.h"
 

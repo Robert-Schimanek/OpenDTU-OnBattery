@@ -5,7 +5,7 @@
 #include "WebApi_device.h"
 #include <HoyweiConfiguration.h>
 #include "Display_Graphic.h"
-#include "HoyweiPinMapping.h"
+#include "PinMapping.h"
 #include "Utils.h"
 #include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
