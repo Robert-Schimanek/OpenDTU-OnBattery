@@ -125,6 +125,7 @@ private:
 class HuaweiCanClass {
 
 friend class HoyweiHuaweiCanClass;
+friend class DeviceManagerClass;
 
 public:
     void init(Scheduler& scheduler, uint8_t huawei_miso, uint8_t huawei_mosi, uint8_t huawei_clk, uint8_t huawei_irq, uint8_t huawei_cs, uint8_t huawei_power);

@@ -5,7 +5,7 @@
 #include "WebApi_device.h"
 #include <HoyweiConfiguration.h>
 #include "Display_Graphic.h"
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include "Utils.h"
 #include "HoyweiWebApi.h"
 #include "WebApi_errors.h"
@@ -29,7 +29,7 @@ void WebApiDeviceClass::onDeviceAdminGet(AsyncWebServerRequest* request)
     AsyncJsonResponse* response = new AsyncJsonResponse();
     auto& root = response->getRoot();
     const CONFIG_T& config = Configuration.get();
-    const PinMapping_t& pin = PinMapping.get();
+    const PinMapping_Extended_t& pin = PinMapping.get();
 
     auto curPin = root["curPin"].to<JsonObject>();
     curPin["name"] = config.Dev_PinMapping;
@@ -49,6 +49,9 @@ void WebApiDeviceClass::onDeviceAdminGet(AsyncWebServerRequest* request)
     cmtPinObj["sdio"] = pin.cmt_sdio;
     cmtPinObj["gpio2"] = pin.cmt_gpio2;
     cmtPinObj["gpio3"] = pin.cmt_gpio3;
+
+    auto inverterPinObj = curPin["inverter"].to<JsonObject>();
+    inverterPinObj["power"] = pin.inverter_power;
 
     auto ethPinObj = curPin["eth"].to<JsonObject>();
     ethPinObj["enabled"] = pin.eth_enabled;

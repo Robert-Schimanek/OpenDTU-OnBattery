@@ -80,4 +80,4 @@ private:
     PinMapping_t _pinMapping;
 };
 
-extern PinMappingClass PinMapping;
+//extern PinMappingClass PinMapping;

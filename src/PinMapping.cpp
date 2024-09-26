@@ -170,7 +170,7 @@
 #define POWERMETER_PIN_DERE -1
 #endif
 
-PinMappingClass PinMapping;
+//PinMappingClass PinMapping;
 
 PinMappingClass::PinMappingClass()
 {

@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <HoyweiConfiguration.h>
 #include "HardwareSerial.h"
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include "MessageOutput.h"
 #include "JkBmsDataPoints.h"
 #include "JkBmsController.h"

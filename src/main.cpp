@@ -26,7 +26,7 @@
 #include "MqttSettings.h"
 #include "NetworkSettings.h"
 #include "NtpSettings.h"
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include "Scheduler.h"
 #include "SunPosition.h"
 #include "Utils.h"
@@ -210,7 +210,7 @@ void setup()
 
     // OneMoreThing.init(scheduler); // If you want to test one more thing you must uncomment this
 
-    // DeviceManager.init(scheduler);
+    DeviceManager.init(scheduler);
 }
 
 void loop()

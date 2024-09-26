@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #pragma once
 
-#include "PinMapping.h"
+#include "HoyweiPinMapping.h"
 #include <TaskSchedulerDeclarations.h>
 #include <TimeoutHelper.h>
 
